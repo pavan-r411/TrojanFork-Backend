@@ -1,0 +1,5847 @@
+{
+  "metadata": {
+    "product": "TrojanPlate",
+    "imported_from": "restaurants_usc_complete.json",
+    "dataset_version": "0.6.0-hackathon-complete-single-file",
+    "generated_at": "2026-11-15T02:30:00-08:00",
+    "imported_at": "2026-11-15T09:58:35.239163+00:00",
+    "demo_pin": {
+      "label": "USC University Park Campus - Tutor Campus Center (reference point)",
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    "default_max_miles": 1.0,
+    "distance_metric": "haversine_miles_straight_line",
+    "record_policy": "Imported seed DB. Published nutrition only when nutrition_source is published*; otherwise macros are estimated and labeled. Prices exclude tax/fees. Null means unknown.",
+    "nutrition_disclaimer": "Nutrition is ESTIMATED unless nutrition_source = published_by_chain. Restaurants rarely publish full macros. Do NOT present estimates as medical or verified nutrition. For a demo, show nutrition_source + confidence to the user. Verify with the chain nutrition calculator / restaurant before any health claim.",
+    "price_disclaimer": "Prices change and delivery prices differ from in-store. Fields carry price_source where known.",
+    "coverage_note": "V6 audit (2026-11-15, after GK said dishes were missed and no restaurant should be missed): re-audited the USC Village OFFICIAL tenant directory (uscvillage.com/directory), Yelp's Top 10 near USC, Tripadvisor nearby lists, the RoamRecs USC guide and the Tuscany on Fig retail row. ADDED 12 restaurants: Gogobop Korean Rice Bar (Village directory - it now occupies Kobunga's old Suite 1610), Pete's Burgers (Hoover, since 1972), QWENCH Juice Bar & DRNK (Hoover), La Chuperia (Flower St), Tenori onigiri and HEYTEA and Cold Stone Creamery (Tuscany row), Azao Sushi (late-night, Figueroa), Tirebiter Brewery (Figueroa), Neighborhood Grill by Post & Beam and South LA Cafe (both inside the Natural History Museum), and Little Galen (USC Hospitality athletics dining, open to the public, not on the UPC View All list). STATUS CORRECTIONS: Little Pan USC is reported closed (2026) and replaced by Tenori at the same address - its entry is flagged, not deleted; Kobunga is flagged as possibly replaced by Gogobop; 'Fertitta Cafe' is the same place as Chad Tons Family Cafe (Fertitta Hall), already in the USC set - Chad Tons' dishes were expanded from USC's own Nov 5, 2026 video. CHECKED AND EXCLUDED, each verified 2026-11-15: Figueroa Philly (permanently closed per Yelp live data), Pizza Studio USC (permanently closed), AhiPoki Bowl Figueroa (no listing newer than its 2016 opening), Cafecito de la Crepe (real but 1.38 mi away, outside radius), 'Galen Thai' (no such restaurant exists near USC - guide error), the 358 W 38th St delivery-only ghost-kitchen brands (Tacos by Dres, Monty's, Vietnamese Delight, Pad Thai Diva - no storefront), Harold & Belle's / El Valle Oaxaqueno / El Mana / Johnny's Pastrami (all 1.9+ mi west). DISHES: menu pass added ~70 dishes with menu_evidence (official chain menus/apps, Toast and merchant-set delivery menus, a photographed July 2026 receipt at QWENCH, USC Campus Dining's Nov 2026 Chad Tons video, Viztango's Sep 2026 Tuesday-deal post, Tenori's Jul-Aug 2026 opening coverage). Remaining honest limits: rotating food trucks/stands are not enumerated; a few Village tenants still carry typical-hours flags; Dirt Dog's status conflicts; South LA Cafe (NHM) is lightly verified.",
+    "counts": {
+      "restaurants_total": 102,
+      "source_dishes_total": 274
+    },
+    "mode": "usc_dining",
+    "menu_date": "2026-11-15",
+    "version": "usc-complete-dining",
+    "venues_count": 25,
+    "dishes_count": 60
+  },
+  "venues": [
+    {
+      "venue_id": "usc-everybodys-kitchen",
+      "name": "Everybody's Kitchen (EVK)",
+      "branch": "642 W 34th St (EVK)",
+      "lat": 34.021395,
+      "lng": -118.282167,
+      "address": "642 W 34th St (EVK), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "642 W 34th St (EVK), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.183,
+      "cuisines": [
+        "American",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/everybodys-kitchen/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/everybodys-kitchen/",
+      "source_ids": [
+        "usc-complete:usc-everybodys-kitchen"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "07:00",
+              "close": "20:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "saturday": [
+            {
+              "open": "08:30",
+              "close": "22:00"
+            }
+          ],
+          "sunday": [
+            {
+              "open": "08:30",
+              "close": "22:00"
+            }
+          ]
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-parkside-dining-hall",
+      "name": "Parkside Residential Dining Hall",
+      "branch": "Parkside, 3730 McClintock Ave",
+      "lat": 34.0201,
+      "lng": -118.29002,
+      "address": "Parkside, 3730 McClintock Ave, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Parkside, 3730 McClintock Ave, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.319,
+      "cuisines": [
+        "Global",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/parkside-restaurant-grill/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/parkside-restaurant-grill/",
+      "source_ids": [
+        "usc-complete:usc-parkside-dining-hall"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "saturday": [
+            {
+              "open": "08:30",
+              "close": "20:00"
+            }
+          ],
+          "sunday": [
+            {
+              "open": "08:30",
+              "close": "22:00"
+            }
+          ]
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-village-dining-hall",
+      "name": "USC Village Dining Hall",
+      "branch": "USC Village Dining Hall, McClintock Ave",
+      "lat": 34.025659,
+      "lng": -118.286195,
+      "address": "USC Village Dining Hall, McClintock Ave, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "USC Village Dining Hall, McClintock Ave, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.236,
+      "cuisines": [
+        "California Fresh",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/usc-village-dining-hall/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/usc-village-dining-hall/",
+      "source_ids": [
+        "usc-complete:usc-village-dining-hall"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "07:00",
+              "close": "22:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "07:00",
+              "close": "20:00"
+            }
+          ],
+          "saturday": [
+            {
+              "open": "08:30",
+              "close": "22:00"
+            }
+          ],
+          "sunday": [
+            {
+              "open": "11:00",
+              "close": "22:00"
+            }
+          ]
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-university-club",
+      "name": "Amy King Dundon-Berchtold University Club",
+      "branch": "University Club",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "University Club, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "University Club, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Full Service",
+        "American"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/university-club/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/university-club/",
+      "source_ids": [
+        "usc-complete:usc-university-club"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "11:00",
+              "close": "20:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "11:00",
+              "close": "20:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "11:00",
+              "close": "20:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "11:00",
+              "close": "20:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "11:00",
+              "close": "20:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-mckays",
+      "name": "McKay's",
+      "branch": "USC Hotel",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "USC Hotel, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "USC Hotel, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "American",
+        "Breakfast",
+        "Buffet"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/mckays/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/mckays/",
+      "source_ids": [
+        "usc-complete:usc-mckays"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "06:00",
+              "close": "11:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "06:00",
+              "close": "11:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "06:00",
+              "close": "11:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "06:00",
+              "close": "11:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "06:00",
+              "close": "11:00"
+            }
+          ],
+          "saturday": [
+            {
+              "open": "06:00",
+              "close": "11:00"
+            }
+          ],
+          "sunday": [
+            {
+              "open": "06:00",
+              "close": "11:00"
+            }
+          ]
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-moreton-fig",
+      "name": "MoretonFig (Special & Private Events Venue)",
+      "branch": "MoretonFig, Ronald Tutor Campus Center area",
+      "lat": 34.02043,
+      "lng": -118.28643,
+      "address": "MoretonFig, Ronald Tutor Campus Center area, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "MoretonFig, Ronald Tutor Campus Center area, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.152,
+      "cuisines": [
+        "Events Venue"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/moreton-fig-cafe-serving-equator-coffees/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/moreton-fig-cafe-serving-equator-coffees/",
+      "source_ids": [
+        "usc-complete:usc-moreton-fig"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [],
+          "tuesday": [],
+          "wednesday": [],
+          "thursday": [],
+          "friday": [],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-the-lab",
+      "name": "The Lab",
+      "branch": "University Gardens",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "University Gardens, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "University Gardens, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "American",
+        "Gastropub",
+        "Comfort Food"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/the-lab/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/the-lab/",
+      "source_ids": [
+        "usc-complete:usc-the-lab"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [],
+          "tuesday": [
+            {
+              "open": "15:00",
+              "close": "22:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "15:00",
+              "close": "22:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "15:00",
+              "close": "22:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "15:00",
+              "close": "22:00"
+            }
+          ],
+          "saturday": [
+            {
+              "open": "15:00",
+              "close": "22:00"
+            }
+          ],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-bowls-rtcc",
+      "name": "Bowls",
+      "branch": "Ronald Tutor Campus Center (RTCC)",
+      "lat": 34.02043,
+      "lng": -118.28643,
+      "address": "Ronald Tutor Campus Center (RTCC), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Ronald Tutor Campus Center (RTCC), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.152,
+      "cuisines": [
+        "Bowls",
+        "Global"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/new-bowl-concept/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/new-bowl-concept/",
+      "source_ids": [
+        "usc-complete:usc-bowls-rtcc"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "11:00",
+              "close": "17:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-burger-crush",
+      "name": "Burger Crush",
+      "branch": "Ronald Tutor Campus Center (RTCC)",
+      "lat": 34.02043,
+      "lng": -118.28643,
+      "address": "Ronald Tutor Campus Center (RTCC), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Ronald Tutor Campus Center (RTCC), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.152,
+      "cuisines": [
+        "Burgers",
+        "American"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/burger-crush/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/burger-crush/",
+      "source_ids": [
+        "usc-complete:usc-burger-crush"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "11:00",
+              "close": "16:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-cg-juice",
+      "name": "C&G Juice Co.",
+      "branch": "Ronald Tutor Campus Center (RTCC)",
+      "lat": 34.02043,
+      "lng": -118.28643,
+      "address": "Ronald Tutor Campus Center (RTCC), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Ronald Tutor Campus Center (RTCC), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.152,
+      "cuisines": [
+        "Juice",
+        "Smoothies",
+        "Acai Bowls"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/cg-juice-co/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/cg-juice-co/",
+      "source_ids": [
+        "usc-complete:usc-cg-juice"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "10:00",
+              "close": "18:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-cafe-annenberg",
+      "name": "Caf\u00e9 Annenberg",
+      "branch": "Wallis Annenberg Hall (ANN)",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "Wallis Annenberg Hall (ANN), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Wallis Annenberg Hall (ANN), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Cafe",
+        "Italian",
+        "Coffee"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/cafe-annenberg/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/cafe-annenberg/",
+      "source_ids": [
+        "usc-complete:usc-cafe-annenberg"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "07:30",
+              "close": "18:30"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "07:30",
+              "close": "18:30"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "07:30",
+              "close": "18:30"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "07:30",
+              "close": "18:30"
+            }
+          ],
+          "friday": [
+            {
+              "open": "07:30",
+              "close": "15:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-chad-tons",
+      "name": "Chad Tons Family Cafe",
+      "branch": "Fertitta Hall (JFF)",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "Fertitta Hall (JFF), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Fertitta Hall (JFF), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Asian",
+        "Sushi",
+        "Noodles"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/chad-tons-family-cafe/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/chad-tons-family-cafe/",
+      "source_ids": [
+        "usc-complete:usc-chad-tons"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "11:00",
+              "close": "18:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "11:00",
+              "close": "18:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "11:00",
+              "close": "18:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "11:00",
+              "close": "18:00"
+            }
+          ],
+          "friday": [],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-coffee-bean-sca",
+      "name": "Coffee Bean & Tea Leaf",
+      "branch": "School of Cinematic Arts (SCA)",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "School of Cinematic Arts (SCA), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "School of Cinematic Arts (SCA), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Tea"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/coffee-bean-tea-leaf/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/coffee-bean-tea-leaf/",
+      "source_ids": [
+        "usc-complete:usc-coffee-bean-sca"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "07:00",
+              "close": "18:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "07:00",
+              "close": "18:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "07:00",
+              "close": "18:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "07:00",
+              "close": "18:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "07:00",
+              "close": "17:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-law-school-cafe",
+      "name": "Law School Cafe",
+      "branch": "Gould School of Law",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "Gould School of Law, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Gould School of Law, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Cafe",
+        "Bowls"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/law-school-cafe/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/law-school-cafe/",
+      "source_ids": [
+        "usc-complete:usc-law-school-cafe"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "08:00",
+              "close": "15:30"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "08:00",
+              "close": "15:30"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "08:00",
+              "close": "15:30"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "08:00",
+              "close": "15:30"
+            }
+          ],
+          "friday": [
+            {
+              "open": "08:00",
+              "close": "14:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-literatea",
+      "name": "Literatea",
+      "branch": "Doheny Memorial Library (DML)",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "Doheny Memorial Library (DML), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Doheny Memorial Library (DML), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Cafe",
+        "Sandwiches",
+        "Tea"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/literatea/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/literatea/",
+      "source_ids": [
+        "usc-complete:usc-literatea"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "08:00",
+              "close": "15:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "08:00",
+              "close": "15:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "08:00",
+              "close": "15:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "08:00",
+              "close": "15:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "08:00",
+              "close": "13:30"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-panda-express-tcc",
+      "name": "Panda Express (TCC)",
+      "branch": "Ronald Tutor Campus Center (TCC)",
+      "lat": 34.02043,
+      "lng": -118.28643,
+      "address": "Ronald Tutor Campus Center (TCC), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Ronald Tutor Campus Center (TCC), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.152,
+      "cuisines": [
+        "Chinese",
+        "Fast Casual"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/panda-express/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/panda-express/",
+      "source_ids": [
+        "usc-complete:usc-panda-express-tcc"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "10:30",
+              "close": "18:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "10:30",
+              "close": "18:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "10:30",
+              "close": "18:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "10:30",
+              "close": "18:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "10:30",
+              "close": "17:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-popovich-cafe",
+      "name": "Popovich Caf\u00e9",
+      "branch": "Popovich Hall (JKP)",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "Popovich Hall (JKP), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Popovich Hall (JKP), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Breakfast"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/popovich-cafe/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/popovich-cafe/",
+      "source_ids": [
+        "usc-complete:usc-popovich-cafe"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "07:30",
+              "close": "17:30"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "07:30",
+              "close": "17:30"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "07:30",
+              "close": "17:30"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "07:30",
+              "close": "17:30"
+            }
+          ],
+          "friday": [
+            {
+              "open": "07:30",
+              "close": "14:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-rosso-oros",
+      "name": "Rosso Oro's",
+      "branch": "USC Hotel",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "USC Hotel, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "USC Hotel, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Pizza",
+        "Italian"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/rosso-oros/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/rosso-oros/",
+      "source_ids": [
+        "usc-complete:usc-rosso-oros"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "saturday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "sunday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ]
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-seeds-marketplace",
+      "name": "Seeds Marketplace",
+      "branch": "Ronald Tutor Campus Center (TCC)",
+      "lat": 34.02043,
+      "lng": -118.28643,
+      "address": "Ronald Tutor Campus Center (TCC), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Ronald Tutor Campus Center (TCC), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.152,
+      "cuisines": [
+        "Grab-and-Go",
+        "Salads",
+        "Sandwiches",
+        "Sushi"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/seeds-marketplace/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/seeds-marketplace/",
+      "source_ids": [
+        "usc-complete:usc-seeds-marketplace"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "07:00",
+              "close": "18:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "07:00",
+              "close": "18:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "07:00",
+              "close": "18:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "07:00",
+              "close": "18:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "07:00",
+              "close": "17:00"
+            }
+          ],
+          "saturday": [
+            {
+              "open": "09:00",
+              "close": "15:00"
+            }
+          ],
+          "sunday": [
+            {
+              "open": "09:00",
+              "close": "15:00"
+            }
+          ]
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-slice-shop",
+      "name": "Slice Shop",
+      "branch": "Ronald Tutor Campus Center (TCC)",
+      "lat": 34.02043,
+      "lng": -118.28643,
+      "address": "Ronald Tutor Campus Center (TCC), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Ronald Tutor Campus Center (TCC), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.152,
+      "cuisines": [
+        "Pizza",
+        "Italian"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/slice-shop/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/slice-shop/",
+      "source_ids": [
+        "usc-complete:usc-slice-shop"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "11:00",
+              "close": "17:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "11:00",
+              "close": "17:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "11:00",
+              "close": "17:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "11:00",
+              "close": "17:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "11:00",
+              "close": "16:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-taco-taco",
+      "name": "Taco-Taco",
+      "branch": "Ronald Tutor Campus Center (TCC)",
+      "lat": 34.02043,
+      "lng": -118.28643,
+      "address": "Ronald Tutor Campus Center (TCC), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Ronald Tutor Campus Center (TCC), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.152,
+      "cuisines": [
+        "Mexican",
+        "Tacos",
+        "Burritos"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/taco-taco/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/taco-taco/",
+      "source_ids": [
+        "usc-complete:usc-taco-taco"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "11:00",
+              "close": "18:30"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "11:00",
+              "close": "18:30"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "11:00",
+              "close": "18:30"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "11:00",
+              "close": "18:30"
+            }
+          ],
+          "friday": [
+            {
+              "open": "11:00",
+              "close": "16:30"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-the-upstairs",
+      "name": "The Upstairs",
+      "branch": "Ronald Tutor Campus Center (RTCC), 2nd floor",
+      "lat": 34.02043,
+      "lng": -118.28643,
+      "address": "Ronald Tutor Campus Center (RTCC), 2nd floor, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Ronald Tutor Campus Center (RTCC), 2nd floor, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.152,
+      "cuisines": [
+        "Poke",
+        "Ramen",
+        "Boba",
+        "Coffee"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/theupstairs/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/theupstairs/",
+      "source_ids": [
+        "usc-complete:usc-the-upstairs"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "11:00",
+              "close": "19:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "11:00",
+              "close": "23:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "11:00",
+              "close": "17:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": false,
+      "location_note": null
+    },
+    {
+      "venue_id": "usc-trojan-grounds",
+      "name": "Trojan Grounds featuring illy",
+      "branch": "Trojan Grounds (BSR, near Bovard)",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "Trojan Grounds (BSR, near Bovard), USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Trojan Grounds (BSR, near Bovard), USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Grab-and-Go"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/trojan-grounds-featuring-illy/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/trojan-grounds-featuring-illy/",
+      "source_ids": [
+        "usc-complete:usc-trojan-grounds"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "06:30",
+              "close": "24:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "06:30",
+              "close": "24:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "06:30",
+              "close": "24:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "06:30",
+              "close": "24:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "06:30",
+              "close": "24:00"
+            }
+          ],
+          "saturday": [
+            {
+              "open": "08:00",
+              "close": "18:00"
+            }
+          ],
+          "sunday": [
+            {
+              "open": "08:00",
+              "close": "18:00"
+            }
+          ]
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-tutor-hall-cafe",
+      "name": "Tutor Hall Caf\u00e9",
+      "branch": "Ronald Tutor Hall (RTH), Viterbi School of Engineering",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "Ronald Tutor Hall (RTH), Viterbi School of Engineering, USC University Park Campus, Los Angeles, CA, USA",
+      "formatted_address": "Ronald Tutor Hall (RTH), Viterbi School of Engineering, USC University Park Campus, Los Angeles, CA, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "Cafe",
+        "Indian",
+        "Sandwiches",
+        "Salads"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/tutor-hall-cafe/",
+      "menu_url": "https://hospitality.usc.edu/dining-locations/tutor-hall-cafe/",
+      "source_ids": [
+        "usc-complete:usc-tutor-hall-cafe"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "08:00",
+              "close": "16:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "08:00",
+              "close": "16:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "08:00",
+              "close": "16:00"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "08:00",
+              "close": "16:00"
+            }
+          ],
+          "friday": [
+            {
+              "open": "08:00",
+              "close": "15:00"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC Hospitality Hours of Operation, Regular Hours Aug 24 - Dec 4, 2026 (hospitality.usc.edu/hours-of-operation/)"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    },
+    {
+      "venue_id": "usc-little-galen",
+      "name": "Little Galen (Galen Athletic Pavilion dining)",
+      "branch": "usc_athletics_dining",
+      "lat": 34.02235,
+      "lng": -118.28515,
+      "address": "Heritage Hall / John McKay Center complex, 3501 Childs Way, Los Angeles, CA 90007, USA",
+      "formatted_address": "Heritage Hall / John McKay Center complex, 3501 Childs Way, Los Angeles, CA 90007, USA",
+      "place_id": null,
+      "distance_miles_from_tommy_trojan": 0.0,
+      "cuisines": [
+        "American",
+        "Health-focused"
+      ],
+      "website": "https://calendar.usc.edu/little_galen_gap_773",
+      "menu_url": "https://calendar.usc.edu/little_galen_gap_773",
+      "source_ids": [
+        "usc-complete:usc-little-galen"
+      ],
+      "venue_type": "usc_dining_hall",
+      "payment_model": "meal_swipe_ayce",
+      "hours": {
+        "timezone": "America/Los_Angeles",
+        "weekly": {
+          "monday": [
+            {
+              "open": "07:30",
+              "close": "14:30"
+            }
+          ],
+          "tuesday": [
+            {
+              "open": "07:30",
+              "close": "14:30"
+            }
+          ],
+          "wednesday": [
+            {
+              "open": "07:30",
+              "close": "14:30"
+            }
+          ],
+          "thursday": [
+            {
+              "open": "07:30",
+              "close": "14:30"
+            }
+          ],
+          "friday": [
+            {
+              "open": "07:30",
+              "close": "14:30"
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        },
+        "source": "USC calendar page: open to the public for breakfast and lunch Mon-Fri; exact clock times not published in sources checked - window estimated, verify"
+      },
+      "dataset_category": "usc_dining",
+      "coords_provisional": true,
+      "location_note": "Coordinates approximated to USC UPC reference point; verify entrance."
+    }
+  ],
+  "dishes": [
+    {
+      "dish_id": "usc-everybodys-kitchen-made-to-order-omelet-(egg-station)",
+      "venue_id": "usc-everybodys-kitchen",
+      "venue_name": "Everybody's Kitchen (EVK)",
+      "name": "Made-to-Order Omelet (egg station)",
+      "description": "Made-to-order omelet from EVK egg station.",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "all_you_care_to_eat_meal_swipe",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "dietary_labels": [
+        "high_protein",
+        "low_carb"
+      ],
+      "allergens_published": [
+        "egg",
+        "milk"
+      ],
+      "ingredients_published": [
+        "eggs",
+        "cheese",
+        "vegetables (choice)",
+        "cooking oil"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 420,
+          "protein_g": 26,
+          "carbohydrates_g": 6,
+          "fat_g": 32,
+          "fiber_g": 1,
+          "sugar_g": 3,
+          "sodium_mg": 620,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-everybodys-kitchen-made-to-order-omelet-(egg-station)"
+      ],
+      "lat": 34.021395,
+      "lng": -118.282167
+    },
+    {
+      "dish_id": "usc-everybodys-kitchen-birria-quesadilla-(action-station,-rotating)",
+      "venue_id": "usc-everybodys-kitchen",
+      "venue_name": "Everybody's Kitchen (EVK)",
+      "name": "Birria Quesadilla (action station, rotating)",
+      "description": "Rotating action-station Birria quesadilla - not served daily.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "all_you_care_to_eat_meal_swipe",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk"
+      ],
+      "ingredients_published": [
+        "beef birria",
+        "flour tortilla",
+        "cheese",
+        "onion",
+        "cilantro",
+        "consomme"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 680,
+          "protein_g": 38,
+          "carbohydrates_g": 42,
+          "fat_g": 38,
+          "fiber_g": 3,
+          "sugar_g": 3,
+          "sodium_mg": 1350,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-everybodys-kitchen-birria-quesadilla-(action-station,-rotating)"
+      ],
+      "lat": 34.021395,
+      "lng": -118.282167
+    },
+    {
+      "dish_id": "usc-everybodys-kitchen-build-your-own-poke-bowl-(action-station,-rotati",
+      "venue_id": "usc-everybodys-kitchen",
+      "venue_name": "Everybody's Kitchen (EVK)",
+      "name": "Build-Your-Own Poke Bowl (action station, rotating)",
+      "description": "Rotating poke bowl station.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "all_you_care_to_eat_meal_swipe",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "high_protein",
+        "seafood"
+      ],
+      "allergens_published": [
+        "fish",
+        "soy",
+        "sesame",
+        "wheat - soy sauce"
+      ],
+      "ingredients_published": [
+        "sushi rice",
+        "raw fish (varies)",
+        "soy sauce",
+        "edamame",
+        "cucumber",
+        "seaweed"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 520,
+          "protein_g": 32,
+          "carbohydrates_g": 58,
+          "fat_g": 16,
+          "fiber_g": 4,
+          "sugar_g": 8,
+          "sodium_mg": 1200,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-everybodys-kitchen-build-your-own-poke-bowl-(action-station,-rotati"
+      ],
+      "lat": 34.021395,
+      "lng": -118.282167
+    },
+    {
+      "dish_id": "usc-parkside-dining-hall-pho-(action-station,-rotating)",
+      "venue_id": "usc-parkside-dining-hall",
+      "venue_name": "Parkside Residential Dining Hall",
+      "name": "Pho (action station, rotating)",
+      "description": "Rotating pho bar.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "all_you_care_to_eat_meal_swipe",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Global",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "high_protein"
+      ],
+      "allergens_published": [
+        "soy - verify"
+      ],
+      "ingredients_published": [
+        "rice noodles",
+        "beef or chicken broth",
+        "sliced beef",
+        "bean sprouts",
+        "herbs",
+        "lime"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 480,
+          "protein_g": 34,
+          "carbohydrates_g": 58,
+          "fat_g": 10,
+          "fiber_g": 3,
+          "sugar_g": 5,
+          "sodium_mg": 1900,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-parkside-dining-hall-pho-(action-station,-rotating)"
+      ],
+      "lat": 34.0201,
+      "lng": -118.29002
+    },
+    {
+      "dish_id": "usc-parkside-dining-hall-mongolian-grill-stir-fry-(action-station,-rotati",
+      "venue_id": "usc-parkside-dining-hall",
+      "venue_name": "Parkside Residential Dining Hall",
+      "name": "Mongolian Grill Stir-Fry (action station, rotating)",
+      "description": "Made-to-order Mongolian-style stir-fry - protein and vegetables chosen by guest.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "all_you_care_to_eat_meal_swipe",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Global",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "dietary_labels": [
+        "customizable",
+        "high_protein"
+      ],
+      "allergens_published": [
+        "soy",
+        "wheat",
+        "sesame"
+      ],
+      "ingredients_published": [
+        "protein of choice (beef/chicken/tofu)",
+        "mixed vegetables",
+        "noodles or rice",
+        "mongolian sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 620,
+          "protein_g": 36,
+          "carbohydrates_g": 62,
+          "fat_g": 24,
+          "fiber_g": 6,
+          "sugar_g": 10,
+          "sodium_mg": 1500,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-parkside-dining-hall-mongolian-grill-stir-fry-(action-station,-rotati"
+      ],
+      "lat": 34.0201,
+      "lng": -118.29002
+    },
+    {
+      "dish_id": "usc-parkside-dining-hall-plant-forward-entree-+-salad-bar-plate",
+      "venue_id": "usc-parkside-dining-hall",
+      "venue_name": "Parkside Residential Dining Hall",
+      "name": "Plant-Forward Entree + Salad Bar Plate",
+      "description": "Plant-forward entree with salad bar - Parkside is nut/peanut-sensitive with Allergen Awareness Zone.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "all_you_care_to_eat_meal_swipe",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Global",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "dietary_labels": [
+        "allergen_aware",
+        "dairy-free",
+        "high_fiber",
+        "vegan",
+        "vegetarian"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "plant-based protein (varies)",
+        "grains",
+        "salad greens",
+        "vegetables",
+        "vinaigrette"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 450,
+          "protein_g": 18,
+          "carbohydrates_g": 55,
+          "fat_g": 17,
+          "fiber_g": 11,
+          "sugar_g": 7,
+          "sodium_mg": 650,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-parkside-dining-hall-plant-forward-entree-+-salad-bar-plate"
+      ],
+      "lat": 34.0201,
+      "lng": -118.29002
+    },
+    {
+      "dish_id": "usc-village-dining-hall-salad-bar-bowl-with-grains-and-protein",
+      "venue_id": "usc-village-dining-hall",
+      "venue_name": "USC Village Dining Hall",
+      "name": "Salad Bar Bowl with Grains and Protein",
+      "description": "Salad bar anchor: greens, grains, protein, toppings - guest-built.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "all_you_care_to_eat_meal_swipe",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "California Fresh",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "dietary_labels": [
+        "customizable",
+        "high_fiber",
+        "high_protein"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "salad greens",
+        "grains",
+        "grilled protein (varies)",
+        "vegetables",
+        "toppings",
+        "dressing"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 520,
+          "protein_g": 35,
+          "carbohydrates_g": 45,
+          "fat_g": 22,
+          "fiber_g": 9,
+          "sugar_g": 6,
+          "sodium_mg": 700,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-village-dining-hall-salad-bar-bowl-with-grains-and-protein"
+      ],
+      "lat": 34.025659,
+      "lng": -118.286195
+    },
+    {
+      "dish_id": "usc-village-dining-hall-vegan-station-entree-(rotating)",
+      "venue_id": "usc-village-dining-hall",
+      "venue_name": "USC Village Dining Hall",
+      "name": "Vegan Station Entree (rotating)",
+      "description": "From USC's first fully self-contained vegan station - dish rotates.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "all_you_care_to_eat_meal_swipe",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "California Fresh",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "high_fiber",
+        "vegan",
+        "vegetarian"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "plant-based protein (varies)",
+        "vegetables",
+        "grains",
+        "plant-based sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 480,
+          "protein_g": 20,
+          "carbohydrates_g": 58,
+          "fat_g": 18,
+          "fiber_g": 12,
+          "sugar_g": 7,
+          "sodium_mg": 700,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-village-dining-hall-vegan-station-entree-(rotating)"
+      ],
+      "lat": 34.025659,
+      "lng": -118.286195
+    },
+    {
+      "dish_id": "usc-village-dining-hall-expo-ramen-bowl-(rotating-themed-bar)",
+      "venue_id": "usc-village-dining-hall",
+      "venue_name": "USC Village Dining Hall",
+      "name": "Expo Ramen Bowl (rotating themed bar)",
+      "description": "Expo station rotating ramen bar.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "all_you_care_to_eat_meal_swipe",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "California Fresh",
+        "Buffet",
+        "All-You-Care-To-Eat"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "wheat",
+        "egg",
+        "soy"
+      ],
+      "ingredients_published": [
+        "ramen noodles",
+        "broth",
+        "protein (varies)",
+        "egg",
+        "vegetables",
+        "scallion"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 580,
+          "protein_g": 30,
+          "carbohydrates_g": 68,
+          "fat_g": 20,
+          "fiber_g": 4,
+          "sugar_g": 6,
+          "sodium_mg": 1800,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-village-dining-hall-expo-ramen-bowl-(rotating-themed-bar)"
+      ],
+      "lat": 34.025659,
+      "lng": -118.286195
+    },
+    {
+      "dish_id": "usc-university-club-university-club-buffet-plate-(members-only)",
+      "venue_id": "usc-university-club",
+      "venue_name": "Amy King Dundon-Berchtold University Club",
+      "name": "University Club Buffet Plate (members only)",
+      "description": "Full-service buffet plate - items rotate, estimate only.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 28.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Full Service",
+        "American"
+      ],
+      "dietary_labels": [
+        "members_only"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "rotating buffet entrees",
+        "vegetables",
+        "grains",
+        "salad"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 700,
+          "protein_g": 35,
+          "carbohydrates_g": 50,
+          "fat_g": 38,
+          "fiber_g": 5,
+          "sugar_g": 6,
+          "sodium_mg": 1200,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-university-club-university-club-buffet-plate-(members-only)"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-university-club-grilled-salmon-entree",
+      "venue_id": "usc-university-club",
+      "venue_name": "Amy King Dundon-Berchtold University Club",
+      "name": "Grilled Salmon Entree",
+      "description": "Full-service members' dining room entree pattern - estimated.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Full Service",
+        "American"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "gluten-free",
+        "members_only"
+      ],
+      "allergens_published": [
+        "fish"
+      ],
+      "ingredients_published": [
+        "salmon",
+        "seasonal vegetables",
+        "grains"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 560,
+          "protein_g": 38,
+          "carbohydrates_g": 28,
+          "fat_g": 32,
+          "fiber_g": 4,
+          "sugar_g": 4,
+          "sodium_mg": 700,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.4; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-university-club-grilled-salmon-entree"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-mckays-breakfast-buffet-plate",
+      "venue_id": "usc-mckays",
+      "venue_name": "McKay's",
+      "name": "Breakfast Buffet Plate",
+      "description": "Breakfast buffet - eggs, protein, sides, estimate.",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 22.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Breakfast",
+        "Buffet"
+      ],
+      "dietary_labels": [
+        "breakfast"
+      ],
+      "allergens_published": [
+        "egg",
+        "milk",
+        "wheat"
+      ],
+      "ingredients_published": [
+        "eggs",
+        "breakfast potatoes",
+        "bacon or sausage",
+        "toast",
+        "fruit"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 750,
+          "protein_g": 28,
+          "carbohydrates_g": 48,
+          "fat_g": 48,
+          "fiber_g": 4,
+          "sugar_g": 10,
+          "sodium_mg": 1300,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-mckays-breakfast-buffet-plate"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-mckays-hazelnut-waffle",
+      "venue_id": "usc-mckays",
+      "venue_name": "McKay's",
+      "name": "Hazelnut Waffle",
+      "description": "Named in McKay's Places offerings list.",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Breakfast",
+        "Buffet"
+      ],
+      "dietary_labels": [
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "wheat",
+        "tree nuts",
+        "milk",
+        "egg"
+      ],
+      "ingredients_published": [
+        "waffle",
+        "hazelnut spread",
+        "powdered sugar"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 520,
+          "protein_g": 9,
+          "carbohydrates_g": 68,
+          "fat_g": 24,
+          "fiber_g": 3,
+          "sugar_g": 28,
+          "sodium_mg": 480,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.45; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": {
+        "source_type": "places_offerings",
+        "source_detail": "McKay's Places record lists hazelnut waffle among offerings",
+        "evidence_date": "2026-11-15",
+        "within_last_year": true
+      },
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-mckays-hazelnut-waffle"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-moreton-fig-event-catering-plate-(events-only)",
+      "venue_id": "usc-moreton-fig",
+      "venue_name": "MoretonFig (Special & Private Events Venue)",
+      "name": "Event Catering Plate (events only)",
+      "description": "Private/special events fare only - no regular menu in this dataset.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "meal_swipe_or_check_in_store",
+      "pricing_model": "events_only_no_regular_price",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Events Venue"
+      ],
+      "dietary_labels": [
+        "events_only"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "event catering items (varies)"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 600,
+          "protein_g": 25,
+          "carbohydrates_g": 45,
+          "fat_g": 32,
+          "fiber_g": 4,
+          "sugar_g": 6,
+          "sodium_mg": 1000,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-moreton-fig-event-catering-plate-(events-only)"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-the-lab-the-lab-burger---elevated-comfort-entree",
+      "venue_id": "usc-the-lab",
+      "venue_name": "The Lab",
+      "name": "The Lab Burger / Elevated Comfort Entree",
+      "description": "Elevated comfort-food entree - representative burger estimate, menu varies.",
+      "meal_periods": [
+        "dinner"
+      ],
+      "price_amount": 19.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Gastropub",
+        "Comfort Food"
+      ],
+      "dietary_labels": [
+        "comfort_food"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk"
+      ],
+      "ingredients_published": [
+        "beef patty",
+        "burger bun",
+        "cheese",
+        "lettuce",
+        "tomato",
+        "fries"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 850,
+          "protein_g": 42,
+          "carbohydrates_g": 48,
+          "fat_g": 52,
+          "fiber_g": 4,
+          "sugar_g": 7,
+          "sodium_mg": 1450,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-the-lab-the-lab-burger---elevated-comfort-entree"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-the-lab-shareable-appetizer-plate",
+      "venue_id": "usc-the-lab",
+      "venue_name": "The Lab",
+      "name": "Shareable Appetizer Plate",
+      "description": "Menu made for sharing - representative shareable plate, estimate.",
+      "meal_periods": [
+        "dinner"
+      ],
+      "price_amount": 14.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Gastropub",
+        "Comfort Food"
+      ],
+      "dietary_labels": [
+        "shareable"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "shareable appetizer items (varies)"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 550,
+          "protein_g": 18,
+          "carbohydrates_g": 40,
+          "fat_g": 34,
+          "fiber_g": 3,
+          "sugar_g": 5,
+          "sodium_mg": 1100,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-the-lab-shareable-appetizer-plate"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-bowls-rtcc-teriyaki-bowl",
+      "venue_id": "usc-bowls-rtcc",
+      "venue_name": "Bowls",
+      "name": "Teriyaki Bowl",
+      "description": "Teriyaki-style bowl, rotating menu.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 13.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Bowls",
+        "Global"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "soy",
+        "wheat"
+      ],
+      "ingredients_published": [
+        "teriyaki chicken",
+        "rice",
+        "vegetables",
+        "teriyaki sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 620,
+          "protein_g": 38,
+          "carbohydrates_g": 72,
+          "fat_g": 18,
+          "fiber_g": 4,
+          "sugar_g": 16,
+          "sodium_mg": 1400,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-bowls-rtcc-teriyaki-bowl"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-bowls-rtcc-cajun-bowl",
+      "venue_id": "usc-bowls-rtcc",
+      "venue_name": "Bowls",
+      "name": "Cajun Bowl",
+      "description": "Cajun-flavored bowl, rotating menu.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 13.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Bowls",
+        "Global"
+      ],
+      "dietary_labels": [
+        "high_protein",
+        "spicy"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "cajun-spiced protein",
+        "rice",
+        "vegetables",
+        "cajun seasoning"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 600,
+          "protein_g": 36,
+          "carbohydrates_g": 65,
+          "fat_g": 20,
+          "fiber_g": 5,
+          "sugar_g": 5,
+          "sodium_mg": 1300,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-bowls-rtcc-cajun-bowl"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-burger-crush-smash-burger",
+      "venue_id": "usc-burger-crush",
+      "venue_name": "Burger Crush",
+      "name": "Smash Burger",
+      "description": "Made-to-order smash burger.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Burgers",
+        "American"
+      ],
+      "dietary_labels": [
+        "comfort_food"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk",
+        "egg"
+      ],
+      "ingredients_published": [
+        "smashed beef patty",
+        "burger bun",
+        "cheese",
+        "pickles",
+        "burger sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 650,
+          "protein_g": 32,
+          "carbohydrates_g": 38,
+          "fat_g": 40,
+          "fiber_g": 2,
+          "sugar_g": 6,
+          "sodium_mg": 1150,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-burger-crush-smash-burger"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-burger-crush-chicken-tenders-with-fries",
+      "venue_id": "usc-burger-crush",
+      "venue_name": "Burger Crush",
+      "name": "Chicken Tenders with Fries",
+      "description": "Crowd-favorite chicken tenders and crispy golden fries.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Burgers",
+        "American"
+      ],
+      "dietary_labels": [
+        "comfort_food"
+      ],
+      "allergens_published": [
+        "wheat",
+        "egg"
+      ],
+      "ingredients_published": [
+        "breaded chicken tenders",
+        "french fries",
+        "dipping sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 780,
+          "protein_g": 36,
+          "carbohydrates_g": 62,
+          "fat_g": 42,
+          "fiber_g": 4,
+          "sugar_g": 3,
+          "sodium_mg": 1400,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-burger-crush-chicken-tenders-with-fries"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-cg-juice-acai-bowl",
+      "venue_id": "usc-cg-juice",
+      "venue_name": "C&G Juice Co.",
+      "name": "Acai Bowl",
+      "description": "Nourishing acai bowl.",
+      "meal_periods": [
+        "breakfast",
+        "lunch"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Juice",
+        "Smoothies",
+        "Acai Bowls"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "refreshing",
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "tree_nut - granola may contain, verify"
+      ],
+      "ingredients_published": [
+        "acai blend",
+        "banana",
+        "berries",
+        "granola",
+        "honey"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 420,
+          "protein_g": 8,
+          "carbohydrates_g": 68,
+          "fat_g": 14,
+          "fiber_g": 9,
+          "sugar_g": 38,
+          "sodium_mg": 60,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-cg-juice-acai-bowl"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-cg-juice-protein-blend-smoothie",
+      "venue_id": "usc-cg-juice",
+      "venue_name": "C&G Juice Co.",
+      "name": "Protein Blend Smoothie",
+      "description": "Protein blend smoothie - best diet-app item at this location.",
+      "meal_periods": [
+        "breakfast",
+        "lunch"
+      ],
+      "price_amount": 10.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Juice",
+        "Smoothies",
+        "Acai Bowls"
+      ],
+      "dietary_labels": [
+        "high_protein",
+        "post_workout",
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "milk",
+        "soy"
+      ],
+      "ingredients_published": [
+        "fruit",
+        "protein powder (type varies)",
+        "juice / milk base (varies)"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 380,
+          "protein_g": 25,
+          "carbohydrates_g": 52,
+          "fat_g": 8,
+          "fiber_g": 5,
+          "sugar_g": 40,
+          "sodium_mg": 150,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-cg-juice-protein-blend-smoothie"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-cafe-annenberg-italian-style-sandwich",
+      "venue_id": "usc-cafe-annenberg",
+      "venue_name": "Caf\u00e9 Annenberg",
+      "name": "Italian-Style Sandwich",
+      "description": "Italian-style sandwich layered with fresh ingredients.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Italian",
+        "Coffee"
+      ],
+      "dietary_labels": [
+        "cafe"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk"
+      ],
+      "ingredients_published": [
+        "ciabatta / sandwich bread",
+        "italian deli meat or mozzarella (varies)",
+        "tomato",
+        "lettuce",
+        "pesto / dressing"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 560,
+          "protein_g": 26,
+          "carbohydrates_g": 48,
+          "fat_g": 28,
+          "fiber_g": 3,
+          "sugar_g": 4,
+          "sodium_mg": 1250,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-cafe-annenberg-italian-style-sandwich"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-cafe-annenberg-crisp-salad",
+      "venue_id": "usc-cafe-annenberg",
+      "venue_name": "Caf\u00e9 Annenberg",
+      "name": "Crisp Salad",
+      "description": "Fresh crisp salad.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Italian",
+        "Coffee"
+      ],
+      "dietary_labels": [
+        "low_calorie",
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "milk"
+      ],
+      "ingredients_published": [
+        "salad greens",
+        "vegetables",
+        "cheese (varies)",
+        "vinaigrette"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 320,
+          "protein_g": 12,
+          "carbohydrates_g": 18,
+          "fat_g": 22,
+          "fiber_g": 5,
+          "sugar_g": 5,
+          "sodium_mg": 550,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-cafe-annenberg-crisp-salad"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-chad-tons-custom-rice-bowl",
+      "venue_id": "usc-chad-tons",
+      "venue_name": "Chad Tons Family Cafe",
+      "name": "Custom Rice Bowl",
+      "description": "Customizable rice bowl.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 13.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Asian",
+        "Sushi",
+        "Noodles"
+      ],
+      "dietary_labels": [
+        "customizable",
+        "high_protein"
+      ],
+      "allergens_published": [
+        "soy"
+      ],
+      "ingredients_published": [
+        "rice",
+        "protein (varies)",
+        "vegetables",
+        "sauce (varies)"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 600,
+          "protein_g": 34,
+          "carbohydrates_g": 68,
+          "fat_g": 20,
+          "fiber_g": 4,
+          "sugar_g": 8,
+          "sodium_mg": 1300,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-chad-tons-custom-rice-bowl"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-chad-tons-banh-mi-sandwich",
+      "venue_id": "usc-chad-tons",
+      "venue_name": "Chad Tons Family Cafe",
+      "name": "Banh Mi Sandwich",
+      "description": "Banh mi sandwich.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Asian",
+        "Sushi",
+        "Noodles"
+      ],
+      "dietary_labels": [
+        "asian"
+      ],
+      "allergens_published": [
+        "wheat",
+        "egg",
+        "soy"
+      ],
+      "ingredients_published": [
+        "baguette",
+        "protein (varies)",
+        "pickled vegetables",
+        "cilantro",
+        "mayo"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 540,
+          "protein_g": 26,
+          "carbohydrates_g": 58,
+          "fat_g": 22,
+          "fiber_g": 3,
+          "sugar_g": 7,
+          "sodium_mg": 1200,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-chad-tons-banh-mi-sandwich"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-chad-tons-hand-rolled-sushi-(roll)",
+      "venue_id": "usc-chad-tons",
+      "venue_name": "Chad Tons Family Cafe",
+      "name": "Hand-Rolled Sushi (roll)",
+      "description": "Hand-rolled sushi - fish varies.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 13.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Asian",
+        "Sushi",
+        "Noodles"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "seafood"
+      ],
+      "allergens_published": [
+        "fish",
+        "soy",
+        "sesame"
+      ],
+      "ingredients_published": [
+        "sushi rice",
+        "nori",
+        "fish (varies)",
+        "avocado",
+        "cucumber"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 420,
+          "protein_g": 20,
+          "carbohydrates_g": 58,
+          "fat_g": 12,
+          "fiber_g": 4,
+          "sugar_g": 8,
+          "sodium_mg": 800,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-chad-tons-hand-rolled-sushi-(roll)"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-chad-tons-salmon-poke-bowl",
+      "venue_id": "usc-chad-tons",
+      "venue_name": "Chad Tons Family Cafe",
+      "name": "Salmon Poke Bowl",
+      "description": "Named a top-3 best seller by Chad Tons staff in USC Campus Dining's Nov 5, 2026 video.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Asian",
+        "Sushi",
+        "Noodles"
+      ],
+      "dietary_labels": [
+        "best_seller",
+        "dairy-free"
+      ],
+      "allergens_published": [
+        "fish",
+        "soy",
+        "sesame",
+        "wheat - sauce"
+      ],
+      "ingredients_published": [
+        "salmon",
+        "rice",
+        "edamame",
+        "corn",
+        "cucumber",
+        "sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 560,
+          "protein_g": 32,
+          "carbohydrates_g": 58,
+          "fat_g": 20,
+          "fiber_g": 5,
+          "sugar_g": 8,
+          "sodium_mg": 900,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.55; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": {
+        "source_type": "official_usc_video_menu",
+        "source_detail": "USC Campus Dining 'Get to Know Chad Tons' video, staff name salmon poke a top-3 best seller",
+        "evidence_date": "2026-11-05",
+        "within_last_year": true
+      },
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-chad-tons-salmon-poke-bowl"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-chad-tons-tuna-poke-bowl",
+      "venue_id": "usc-chad-tons",
+      "venue_name": "Chad Tons Family Cafe",
+      "name": "Tuna Poke Bowl",
+      "description": "Also named among the top sellers in the same Nov 2026 USC video.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Asian",
+        "Sushi",
+        "Noodles"
+      ],
+      "dietary_labels": [
+        "best_seller",
+        "dairy-free"
+      ],
+      "allergens_published": [
+        "fish",
+        "soy",
+        "sesame"
+      ],
+      "ingredients_published": [
+        "tuna",
+        "rice",
+        "edamame",
+        "cucumber",
+        "sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 520,
+          "protein_g": 34,
+          "carbohydrates_g": 56,
+          "fat_g": 16,
+          "fiber_g": 5,
+          "sugar_g": 7,
+          "sodium_mg": 880,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.55; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": {
+        "source_type": "official_usc_video_menu",
+        "source_detail": "USC Campus Dining 'Get to Know Chad Tons' video, Nov 5 2026",
+        "evidence_date": "2026-11-05",
+        "within_last_year": true
+      },
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-chad-tons-tuna-poke-bowl"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-chad-tons-taiyaki-fish-shaped-pastry",
+      "venue_id": "usc-chad-tons",
+      "venue_name": "Chad Tons Family Cafe",
+      "name": "Taiyaki (fish-shaped pastry)",
+      "description": "Shown being made in the Nov 2026 USC Campus Dining video of Chad Tons.",
+      "meal_periods": [
+        "snack",
+        "snack"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Asian",
+        "Sushi",
+        "Noodles"
+      ],
+      "dietary_labels": [
+        "dessert",
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "wheat",
+        "egg",
+        "milk"
+      ],
+      "ingredients_published": [
+        "wheat batter",
+        "sweet red bean or custard filling"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 220,
+          "protein_g": 5,
+          "carbohydrates_g": 38,
+          "fat_g": 5,
+          "fiber_g": 1,
+          "sugar_g": 16,
+          "sodium_mg": 150,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.55; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": {
+        "source_type": "official_usc_video_menu",
+        "source_detail": "USC Campus Dining 'Get to Know Chad Tons' video shows taiyaki on the griddle",
+        "evidence_date": "2026-11-05",
+        "within_last_year": true
+      },
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-chad-tons-taiyaki-fish-shaped-pastry"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-coffee-bean-sca-pastry-+-coffee-(small-bite-combo)",
+      "venue_id": "usc-coffee-bean-sca",
+      "venue_name": "Coffee Bean & Tea Leaf",
+      "name": "Pastry + Coffee (small bite combo)",
+      "description": "Pastry / small bite with coffee - low protein, included for completeness, not a diet recommendation staple.",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 8.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Tea"
+      ],
+      "dietary_labels": [
+        "cafe",
+        "snack",
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk",
+        "egg"
+      ],
+      "ingredients_published": [
+        "pastry (varies)",
+        "coffee"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 380,
+          "protein_g": 7,
+          "carbohydrates_g": 48,
+          "fat_g": 18,
+          "fiber_g": 2,
+          "sugar_g": 24,
+          "sodium_mg": 320,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-coffee-bean-sca-pastry-+-coffee-(small-bite-combo)"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-coffee-bean-sca-butter-croissant",
+      "venue_id": "usc-coffee-bean-sca",
+      "venue_name": "Coffee Bean & Tea Leaf",
+      "name": "Butter Croissant",
+      "description": "Standard Coffee Bean pastry case item.",
+      "meal_periods": [
+        "breakfast",
+        "snack"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Tea"
+      ],
+      "dietary_labels": [
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk",
+        "egg"
+      ],
+      "ingredients_published": [
+        "wheat flour",
+        "butter",
+        "yeast"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 300,
+          "protein_g": 5,
+          "carbohydrates_g": 38,
+          "fat_g": 14,
+          "fiber_g": 1,
+          "sugar_g": 5,
+          "sodium_mg": 320,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.45; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": {
+        "source_type": "official_chain_menu_or_app",
+        "source_detail": "Item is on the chain's official menu / app menu; nutrition follows the chain's published pattern where available",
+        "evidence_date": "2026-11-15",
+        "within_last_year": true
+      },
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-coffee-bean-sca-butter-croissant"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-law-school-cafe-salmon-rice-bowl",
+      "venue_id": "usc-law-school-cafe",
+      "venue_name": "Law School Cafe",
+      "name": "Salmon Rice Bowl",
+      "description": "The TikTok-famous Salmon Rice Bowl.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 14.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Bowls"
+      ],
+      "dietary_labels": [
+        "high_protein",
+        "popular",
+        "seafood"
+      ],
+      "allergens_published": [
+        "fish",
+        "soy",
+        "sesame"
+      ],
+      "ingredients_published": [
+        "salmon",
+        "rice",
+        "sauce (varies)",
+        "vegetables / seaweed (varies)"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 580,
+          "protein_g": 34,
+          "carbohydrates_g": 55,
+          "fat_g": 24,
+          "fiber_g": 3,
+          "sugar_g": 6,
+          "sodium_mg": 950,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-law-school-cafe-salmon-rice-bowl"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-law-school-cafe-chicken-pesto-panini",
+      "venue_id": "usc-law-school-cafe",
+      "venue_name": "Law School Cafe",
+      "name": "Chicken Pesto Panini",
+      "description": "Cafe sandwich pattern to sit alongside its famous Salmon Rice Bowl.",
+      "meal_periods": [
+        "breakfast",
+        "lunch"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Bowls"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [
+        "wheat",
+        "milk",
+        "tree nuts - pesto"
+      ],
+      "ingredients_published": [
+        "chicken",
+        "pesto",
+        "cheese",
+        "ciabatta"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 540,
+          "protein_g": 32,
+          "carbohydrates_g": 44,
+          "fat_g": 26,
+          "fiber_g": 2,
+          "sugar_g": 3,
+          "sodium_mg": 980,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.4; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-law-school-cafe-chicken-pesto-panini"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-literatea-toasted-cheese-melt",
+      "venue_id": "usc-literatea",
+      "venue_name": "Literatea",
+      "name": "Toasted Cheese Melt",
+      "description": "Toasted cheese melt sandwich.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 10.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Sandwiches",
+        "Tea"
+      ],
+      "dietary_labels": [
+        "comfort_food",
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk"
+      ],
+      "ingredients_published": [
+        "bread",
+        "cheese",
+        "butter"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 520,
+          "protein_g": 20,
+          "carbohydrates_g": 44,
+          "fat_g": 30,
+          "fiber_g": 2,
+          "sugar_g": 4,
+          "sodium_mg": 950,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-literatea-toasted-cheese-melt"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-literatea-rotating-soup-(cup)",
+      "venue_id": "usc-literatea",
+      "venue_name": "Literatea",
+      "name": "Rotating Soup (cup)",
+      "description": "Rotating soup - nutrition varies widely by soup, estimate for a vegetable/chicken soup.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 7.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Sandwiches",
+        "Tea"
+      ],
+      "dietary_labels": [
+        "low_calorie"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "soup base (varies)",
+        "vegetables",
+        "protein (varies)"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 220,
+          "protein_g": 10,
+          "carbohydrates_g": 28,
+          "fat_g": 8,
+          "fiber_g": 4,
+          "sugar_g": 5,
+          "sodium_mg": 900,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-literatea-rotating-soup-(cup)"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-panda-express-tcc-orange-chicken-with-chow-mein-(plate)",
+      "venue_id": "usc-panda-express-tcc",
+      "venue_name": "Panda Express (TCC)",
+      "name": "Orange Chicken with Chow Mein (plate)",
+      "description": "Classic fan favorite plate - high sugar/sodium, estimate from chain-published pattern.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Chinese",
+        "Fast Casual"
+      ],
+      "dietary_labels": [
+        "popular"
+      ],
+      "allergens_published": [
+        "wheat",
+        "soy",
+        "egg"
+      ],
+      "ingredients_published": [
+        "breaded chicken",
+        "orange sauce",
+        "chow mein noodles"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 920,
+          "protein_g": 32,
+          "carbohydrates_g": 98,
+          "fat_g": 42,
+          "fiber_g": 5,
+          "sugar_g": 28,
+          "sodium_mg": 1500,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-panda-express-tcc-orange-chicken-with-chow-mein-(plate)"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-panda-express-tcc-grilled-teriyaki-chicken-with-super-greens-(eatw",
+      "venue_id": "usc-panda-express-tcc",
+      "venue_name": "Panda Express (TCC)",
+      "name": "Grilled Teriyaki Chicken with Super Greens (EatWell-style bowl)",
+      "description": "Lighter EatWell-style build: grilled chicken + super greens instead of fried rice/chow mein.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Chinese",
+        "Fast Casual"
+      ],
+      "dietary_labels": [
+        "eatwell",
+        "high_protein",
+        "low_calorie"
+      ],
+      "allergens_published": [
+        "soy",
+        "wheat"
+      ],
+      "ingredients_published": [
+        "grilled chicken",
+        "super greens (kale, broccoli, cabbage)",
+        "teriyaki sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 420,
+          "protein_g": 38,
+          "carbohydrates_g": 22,
+          "fat_g": 18,
+          "fiber_g": 5,
+          "sugar_g": 12,
+          "sodium_mg": 1100,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-panda-express-tcc-grilled-teriyaki-chicken-with-super-greens-(eatw"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-panda-express-tcc-broccoli-beef",
+      "venue_id": "usc-panda-express-tcc",
+      "venue_name": "Panda Express (TCC)",
+      "name": "Broccoli Beef",
+      "description": "Panda Express chain staple served at the TCC location - chain published nutrition pattern.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Chinese",
+        "Fast Casual"
+      ],
+      "dietary_labels": [
+        "low_calorie"
+      ],
+      "allergens_published": [
+        "soy",
+        "wheat"
+      ],
+      "ingredients_published": [
+        "beef",
+        "broccoli",
+        "ginger soy sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 150,
+          "protein_g": 9,
+          "carbohydrates_g": 12,
+          "fat_g": 7,
+          "fiber_g": 3,
+          "sugar_g": 6,
+          "sodium_mg": 520,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.6; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": {
+        "source_type": "official_chain_menu_or_app",
+        "source_detail": "Item is on the chain's official menu / app menu; nutrition follows the chain's published pattern where available",
+        "evidence_date": "2026-11-15",
+        "within_last_year": true
+      },
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-panda-express-tcc-broccoli-beef"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-panda-express-tcc-kung-pao-chicken",
+      "venue_id": "usc-panda-express-tcc",
+      "venue_name": "Panda Express (TCC)",
+      "name": "Kung Pao Chicken",
+      "description": "Panda Express chain staple - chain published nutrition pattern.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Chinese",
+        "Fast Casual"
+      ],
+      "dietary_labels": [
+        "spicy"
+      ],
+      "allergens_published": [
+        "peanut",
+        "soy",
+        "wheat"
+      ],
+      "ingredients_published": [
+        "chicken",
+        "peanuts",
+        "zucchini",
+        "red bell peppers",
+        "chili peppers"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 290,
+          "protein_g": 14,
+          "carbohydrates_g": 14,
+          "fat_g": 19,
+          "fiber_g": 2,
+          "sugar_g": 6,
+          "sodium_mg": 970,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.6; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": {
+        "source_type": "official_chain_menu_or_app",
+        "source_detail": "Item is on the chain's official menu / app menu; nutrition follows the chain's published pattern where available",
+        "evidence_date": "2026-11-15",
+        "within_last_year": true
+      },
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-panda-express-tcc-kung-pao-chicken"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-popovich-cafe-pesto-chicken-on-ciabatta",
+      "venue_id": "usc-popovich-cafe",
+      "venue_name": "Popovich Caf\u00e9",
+      "name": "Pesto Chicken on Ciabatta",
+      "description": "Most popular item at Popovich per USC Hospitality.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Breakfast"
+      ],
+      "dietary_labels": [
+        "high_protein",
+        "popular"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk",
+        "tree_nut - pesto may contain, verify"
+      ],
+      "ingredients_published": [
+        "chicken",
+        "pesto",
+        "ciabatta",
+        "tomato / greens"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 580,
+          "protein_g": 36,
+          "carbohydrates_g": 46,
+          "fat_g": 27,
+          "fiber_g": 3,
+          "sugar_g": 4,
+          "sodium_mg": 1100,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-popovich-cafe-pesto-chicken-on-ciabatta"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-popovich-cafe-breakfast-burrito",
+      "venue_id": "usc-popovich-cafe",
+      "venue_name": "Popovich Caf\u00e9",
+      "name": "Breakfast Burrito",
+      "description": "Warm breakfast burrito.",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 10.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Breakfast"
+      ],
+      "dietary_labels": [
+        "breakfast"
+      ],
+      "allergens_published": [
+        "wheat",
+        "egg",
+        "milk"
+      ],
+      "ingredients_published": [
+        "flour tortilla",
+        "eggs",
+        "cheese",
+        "potatoes",
+        "breakfast protein (varies)"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 620,
+          "protein_g": 26,
+          "carbohydrates_g": 52,
+          "fat_g": 34,
+          "fiber_g": 3,
+          "sugar_g": 3,
+          "sodium_mg": 1150,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-popovich-cafe-breakfast-burrito"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-rosso-oros-bbq-chicken-pizza-(2-slices)",
+      "venue_id": "usc-rosso-oros",
+      "venue_name": "Rosso Oro's",
+      "name": "BBQ Chicken Pizza (2 slices)",
+      "description": "Fan-favorite BBQ Chicken pizza, 2-slice serving estimate.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 13.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Pizza",
+        "Italian"
+      ],
+      "dietary_labels": [
+        "popular"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk"
+      ],
+      "ingredients_published": [
+        "thin-crust dough",
+        "bbq sauce",
+        "chicken",
+        "mozzarella",
+        "red onion"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 560,
+          "protein_g": 30,
+          "carbohydrates_g": 62,
+          "fat_g": 20,
+          "fiber_g": 3,
+          "sugar_g": 14,
+          "sodium_mg": 1250,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-rosso-oros-bbq-chicken-pizza-(2-slices)"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-rosso-oros-cheese-pizza-(2-slices)",
+      "venue_id": "usc-rosso-oros",
+      "venue_name": "Rosso Oro's",
+      "name": "Cheese Pizza (2 slices)",
+      "description": "Classic cheese pizza, 2-slice estimate.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Pizza",
+        "Italian"
+      ],
+      "dietary_labels": [
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk"
+      ],
+      "ingredients_published": [
+        "thin-crust dough",
+        "tomato sauce",
+        "mozzarella"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 480,
+          "protein_g": 20,
+          "carbohydrates_g": 58,
+          "fat_g": 18,
+          "fiber_g": 3,
+          "sugar_g": 6,
+          "sodium_mg": 1050,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-rosso-oros-cheese-pizza-(2-slices)"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-seeds-marketplace-tossed-to-order-salad-with-chicken",
+      "venue_id": "usc-seeds-marketplace",
+      "venue_name": "Seeds Marketplace",
+      "name": "Tossed-to-Order Salad with Chicken",
+      "description": "Tossed-to-order salad - best diet-app build at Seeds.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Grab-and-Go",
+        "Salads",
+        "Sandwiches",
+        "Sushi"
+      ],
+      "dietary_labels": [
+        "eatwell",
+        "high_protein",
+        "low_calorie"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "salad greens",
+        "grilled chicken",
+        "vegetables",
+        "dressing of choice"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 420,
+          "protein_g": 36,
+          "carbohydrates_g": 20,
+          "fat_g": 21,
+          "fiber_g": 6,
+          "sugar_g": 6,
+          "sodium_mg": 750,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-seeds-marketplace-tossed-to-order-salad-with-chicken"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-seeds-marketplace-breakfast-burrito",
+      "venue_id": "usc-seeds-marketplace",
+      "venue_name": "Seeds Marketplace",
+      "name": "Breakfast Burrito",
+      "description": "Warm breakfast burrito - morning crowd favorite.",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 9.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Grab-and-Go",
+        "Salads",
+        "Sandwiches",
+        "Sushi"
+      ],
+      "dietary_labels": [
+        "breakfast"
+      ],
+      "allergens_published": [
+        "wheat",
+        "egg",
+        "milk"
+      ],
+      "ingredients_published": [
+        "flour tortilla",
+        "eggs",
+        "cheese",
+        "potatoes",
+        "breakfast protein (varies)"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 600,
+          "protein_g": 25,
+          "carbohydrates_g": 50,
+          "fat_g": 33,
+          "fiber_g": 3,
+          "sugar_g": 3,
+          "sodium_mg": 1100,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-seeds-marketplace-breakfast-burrito"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-seeds-marketplace-sushi-(grab-and-go-roll)",
+      "venue_id": "usc-seeds-marketplace",
+      "venue_name": "Seeds Marketplace",
+      "name": "Sushi (grab-and-go roll)",
+      "description": "Grab-and-go sushi.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Grab-and-Go",
+        "Salads",
+        "Sandwiches",
+        "Sushi"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "seafood"
+      ],
+      "allergens_published": [
+        "fish",
+        "soy",
+        "sesame"
+      ],
+      "ingredients_published": [
+        "sushi rice",
+        "nori",
+        "fish (varies)",
+        "avocado"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 400,
+          "protein_g": 18,
+          "carbohydrates_g": 56,
+          "fat_g": 11,
+          "fiber_g": 3,
+          "sugar_g": 7,
+          "sodium_mg": 750,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-seeds-marketplace-sushi-(grab-and-go-roll)"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-slice-shop-veggie-lasagna",
+      "venue_id": "usc-slice-shop",
+      "venue_name": "Slice Shop",
+      "name": "Veggie Lasagna",
+      "description": "Veggie lasagna - vegetarian option named by USC Hospitality.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Pizza",
+        "Italian"
+      ],
+      "dietary_labels": [
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "wheat",
+        "milk",
+        "egg"
+      ],
+      "ingredients_published": [
+        "lasagna noodles",
+        "vegetables",
+        "tomato sauce",
+        "cheese",
+        "bechamel"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 520,
+          "protein_g": 24,
+          "carbohydrates_g": 52,
+          "fat_g": 24,
+          "fiber_g": 5,
+          "sugar_g": 8,
+          "sodium_mg": 1050,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-slice-shop-veggie-lasagna"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-slice-shop-caesar-salad-with-chicken",
+      "venue_id": "usc-slice-shop",
+      "venue_name": "Slice Shop",
+      "name": "Caesar Salad with Chicken",
+      "description": "House-made Caesar - add chicken build assumed for protein, verify in store.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Pizza",
+        "Italian"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "milk",
+        "egg",
+        "wheat",
+        "fish - dressing may contain anchovy, verify"
+      ],
+      "ingredients_published": [
+        "romaine",
+        "chicken",
+        "parmesan",
+        "croutons",
+        "caesar dressing"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 480,
+          "protein_g": 34,
+          "carbohydrates_g": 18,
+          "fat_g": 30,
+          "fiber_g": 3,
+          "sugar_g": 3,
+          "sodium_mg": 1150,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-slice-shop-caesar-salad-with-chicken"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-taco-taco-build-your-own-chicken-bowl",
+      "venue_id": "usc-taco-taco",
+      "venue_name": "Taco-Taco",
+      "name": "Build-Your-Own Chicken Bowl",
+      "description": "BYO bowl with grilled chicken - customizable, nutrition depends on build.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Mexican",
+        "Tacos",
+        "Burritos"
+      ],
+      "dietary_labels": [
+        "customizable",
+        "dairy-free",
+        "high_protein"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "grilled chicken",
+        "rice",
+        "beans",
+        "salsa",
+        "lettuce",
+        "guacamole"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 620,
+          "protein_g": 40,
+          "carbohydrates_g": 62,
+          "fat_g": 22,
+          "fiber_g": 10,
+          "sugar_g": 4,
+          "sodium_mg": 1150,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-taco-taco-build-your-own-chicken-bowl"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-taco-taco-eatwell-guacamole-bowl",
+      "venue_id": "usc-taco-taco",
+      "venue_name": "Taco-Taco",
+      "name": "EatWell Guacamole Bowl",
+      "description": "USC-named EatWell lighter option.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Mexican",
+        "Tacos",
+        "Burritos"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "eatwell",
+        "high_fiber",
+        "vegan",
+        "vegetarian"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "guacamole",
+        "vegetables",
+        "greens / grains (varies)",
+        "salsa"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 420,
+          "protein_g": 10,
+          "carbohydrates_g": 38,
+          "fat_g": 26,
+          "fiber_g": 12,
+          "sugar_g": 5,
+          "sodium_mg": 650,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-taco-taco-eatwell-guacamole-bowl"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-the-upstairs-poke-bowl",
+      "venue_id": "usc-the-upstairs",
+      "venue_name": "The Upstairs",
+      "name": "Poke Bowl",
+      "description": "Fresh poke bowl.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 14.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Poke",
+        "Ramen",
+        "Boba",
+        "Coffee"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "high_protein",
+        "seafood"
+      ],
+      "allergens_published": [
+        "fish",
+        "soy",
+        "sesame"
+      ],
+      "ingredients_published": [
+        "sushi rice",
+        "raw fish (varies)",
+        "soy sauce",
+        "edamame",
+        "seaweed",
+        "vegetables"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 540,
+          "protein_g": 34,
+          "carbohydrates_g": 60,
+          "fat_g": 17,
+          "fiber_g": 4,
+          "sugar_g": 7,
+          "sodium_mg": 1250,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-the-upstairs-poke-bowl"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-the-upstairs-ramen-bowl",
+      "venue_id": "usc-the-upstairs",
+      "venue_name": "The Upstairs",
+      "name": "Ramen Bowl",
+      "description": "Warm ramen bowl.",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 14.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Poke",
+        "Ramen",
+        "Boba",
+        "Coffee"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "wheat",
+        "egg",
+        "soy"
+      ],
+      "ingredients_published": [
+        "ramen noodles",
+        "broth",
+        "protein (varies)",
+        "egg",
+        "vegetables"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 590,
+          "protein_g": 29,
+          "carbohydrates_g": 70,
+          "fat_g": 21,
+          "fiber_g": 4,
+          "sugar_g": 6,
+          "sodium_mg": 1850,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-the-upstairs-ramen-bowl"
+      ],
+      "lat": 34.02043,
+      "lng": -118.28643
+    },
+    {
+      "dish_id": "usc-trojan-grounds-grab-and-go-protein-item-+-latte-(combo)",
+      "venue_id": "usc-trojan-grounds",
+      "venue_name": "Trojan Grounds featuring illy",
+      "name": "Grab-and-Go Protein Item + Latte (combo)",
+      "description": "Representative grab-and-go food item with a latte - items rotate, verify in store. Included because Trojan Grounds is a Campus Center swipe location.",
+      "meal_periods": [
+        "breakfast",
+        "lunch"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Grab-and-Go"
+      ],
+      "dietary_labels": [
+        "cafe",
+        "late_night"
+      ],
+      "allergens_published": [
+        "milk"
+      ],
+      "ingredients_published": [
+        "grab-and-go item (varies)",
+        "milk",
+        "espresso"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 450,
+          "protein_g": 18,
+          "carbohydrates_g": 42,
+          "fat_g": 22,
+          "fiber_g": 2,
+          "sugar_g": 20,
+          "sodium_mg": 480,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-trojan-grounds-grab-and-go-protein-item-+-latte-(combo)"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-trojan-grounds-matcha-latte-illy-cafe",
+      "venue_id": "usc-trojan-grounds",
+      "venue_name": "Trojan Grounds featuring illy",
+      "name": "Matcha Latte (illy cafe)",
+      "description": "Trojan Grounds' listing names matcha among its drinks.",
+      "meal_periods": [
+        "breakfast",
+        "snack"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Coffee",
+        "Grab-and-Go"
+      ],
+      "dietary_labels": [
+        "beverage",
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "milk"
+      ],
+      "ingredients_published": [
+        "matcha",
+        "milk",
+        "sugar"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 190,
+          "protein_g": 6,
+          "carbohydrates_g": 28,
+          "fat_g": 6,
+          "fiber_g": 1,
+          "sugar_g": 24,
+          "sodium_mg": 80,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.45; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-trojan-grounds-matcha-latte-illy-cafe"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-tutor-hall-cafe-monsoon-kitchen-indian-bowl",
+      "venue_id": "usc-tutor-hall-cafe",
+      "venue_name": "Tutor Hall Caf\u00e9",
+      "name": "Monsoon Kitchen Indian Bowl",
+      "description": "Authentic Indian bowl from Monsoon Kitchen - dish rotates (curry + rice build assumed).",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 13.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Indian",
+        "Sandwiches",
+        "Salads"
+      ],
+      "dietary_labels": [
+        "high_protein",
+        "indian",
+        "popular"
+      ],
+      "allergens_published": [],
+      "ingredients_published": [
+        "rice",
+        "curry (varies - chicken or vegetarian)",
+        "vegetables",
+        "indian spices"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 620,
+          "protein_g": 32,
+          "carbohydrates_g": 68,
+          "fat_g": 24,
+          "fiber_g": 6,
+          "sugar_g": 6,
+          "sodium_mg": 1100,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-tutor-hall-cafe-monsoon-kitchen-indian-bowl"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-tutor-hall-cafe-sandwich-and-salad-bar-plate",
+      "venue_id": "usc-tutor-hall-cafe",
+      "venue_name": "Tutor Hall Caf\u00e9",
+      "name": "Sandwich and Salad Bar Plate",
+      "description": "Fresh sandwich + salad bar build.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "estimated",
+      "pricing_model": "estimated_retail",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "Cafe",
+        "Indian",
+        "Sandwiches",
+        "Salads"
+      ],
+      "dietary_labels": [
+        "customizable"
+      ],
+      "allergens_published": [
+        "wheat"
+      ],
+      "ingredients_published": [
+        "sandwich bread",
+        "protein / cheese (varies)",
+        "salad greens",
+        "vegetables"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 480,
+          "protein_g": 24,
+          "carbohydrates_g": 42,
+          "fat_g": 23,
+          "fiber_g": 5,
+          "sugar_g": 5,
+          "sodium_mg": 950,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "rotating / menu varies - verify same day",
+      "source_ids": [
+        "usc-complete:usc-tutor-hall-cafe-sandwich-and-salad-bar-plate"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-little-galen-home-style-chili-wednesday-special",
+      "venue_id": "usc-little-galen",
+      "venue_name": "Little Galen (Galen Athletic Pavilion dining)",
+      "name": "Home-Style Chili (Wednesday special)",
+      "description": "The Wednesday special USC's own page calls out.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Health-focused"
+      ],
+      "dietary_labels": [
+        "dairy-free",
+        "gluten-free",
+        "signature"
+      ],
+      "allergens_published": [
+        "none obvious"
+      ],
+      "ingredients_published": [
+        "grass-fed beef",
+        "beans",
+        "tomatoes",
+        "onions",
+        "spices"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 520,
+          "protein_g": 32,
+          "carbohydrates_g": 38,
+          "fat_g": 26,
+          "fiber_g": 9,
+          "sugar_g": 6,
+          "sodium_mg": 980,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-little-galen-home-style-chili-wednesday-special"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-little-galen-grass-fed-beef-burger",
+      "venue_id": "usc-little-galen",
+      "venue_name": "Little Galen (Galen Athletic Pavilion dining)",
+      "name": "Grass-Fed Beef Burger",
+      "description": "Built on the grass-fed beef USC advertises for this facility.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Health-focused"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [
+        "wheat"
+      ],
+      "ingredients_published": [
+        "grass-fed beef patty",
+        "lettuce",
+        "tomato",
+        "bun"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 640,
+          "protein_g": 36,
+          "carbohydrates_g": 40,
+          "fat_g": 36,
+          "fiber_g": 3,
+          "sugar_g": 5,
+          "sodium_mg": 900,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-little-galen-grass-fed-beef-burger"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    },
+    {
+      "dish_id": "usc-little-galen-grilled-chicken-sandwich",
+      "venue_id": "usc-little-galen",
+      "venue_name": "Little Galen (Galen Athletic Pavilion dining)",
+      "name": "Grilled Chicken Sandwich",
+      "description": "Antibiotic-free poultry, per USC's description of the facility.",
+      "meal_periods": [
+        "lunch"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "price_source": "USC dining - no USD price published; do not invent one",
+      "pricing_model": "meal_swipe_or_dining_dollars",
+      "payment_model": "meal_swipe_ayce",
+      "cuisines": [
+        "American",
+        "Health-focused"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "wheat",
+        "egg"
+      ],
+      "ingredients_published": [
+        "grilled chicken breast",
+        "lettuce",
+        "tomato",
+        "bun",
+        "sauce"
+      ],
+      "nutrition": {
+        "confidence": "estimated",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        },
+        "estimated": {
+          "serving": "1 serving",
+          "calories_kcal": 480,
+          "protein_g": 38,
+          "carbohydrates_g": 42,
+          "fat_g": 16,
+          "fiber_g": 3,
+          "sugar_g": 5,
+          "sodium_mg": 950,
+          "note": null
+        },
+        "estimation_note": "Source=estimated; confidence=0.5; not restaurant-verified medical nutrition."
+      },
+      "nutrition_source": "estimated",
+      "menu_evidence": null,
+      "availability": "menu item - verify same day",
+      "source_ids": [
+        "usc-complete:usc-little-galen-grilled-chicken-sandwich"
+      ],
+      "lat": 34.02235,
+      "lng": -118.28515
+    }
+  ]
+}

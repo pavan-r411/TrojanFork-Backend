@@ -1,0 +1,16 @@
+{
+  "mode": "usc_dining",
+  "date": "2026-11-15",
+  "profile": {
+    "goal": "balanced",
+    "dietary_preferences": [],
+    "allergies": [],
+    "disliked_ingredients": [],
+    "snacks": false
+  },
+  "context": {
+    "dining_hall": "All halls",
+    "meal_swipes_available": 3,
+    "include_ai_estimates": true
+  }
+}

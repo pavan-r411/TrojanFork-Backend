@@ -1,0 +1,19 @@
+{
+  "profile": {
+    "nutrition_goal": "balanced",
+    "dietary_preference": null,
+    "allergies": [],
+    "exclusions": [],
+    "prefer_high_protein": false
+  },
+  "situation": {
+    "mode": "usc_dining",
+    "meal_periods": ["breakfast", "lunch", "dinner"],
+    "lat": 34.0224,
+    "lng": -118.2851,
+    "menu_date": "2026-11-15",
+    "meal_swipes_remaining": 3,
+    "allow_estimated_nutrition": true
+  },
+  "locked": []
+}

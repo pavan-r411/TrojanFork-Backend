@@ -1,0 +1,20 @@
+{
+  "mode": "off_campus",
+  "date": "2026-11-15",
+  "profile": {
+    "goal": "balanced",
+    "dietary_preferences": [],
+    "allergies": [],
+    "disliked_ingredients": [],
+    "snacks": false
+  },
+  "context": {
+    "origin": {"lat": 34.0224, "lng": -118.2851, "label": "Tommy Trojan"},
+    "max_walk_m": 1609,
+    "per_meal_budget_cents": 1500,
+    "daily_budget_cents": 4200,
+    "meal_swipes_available": 0,
+    "include_unknown_prices": false,
+    "include_ai_estimates": true
+  }
+}

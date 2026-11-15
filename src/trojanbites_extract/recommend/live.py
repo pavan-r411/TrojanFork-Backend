@@ -396,18 +396,47 @@ def _curated_offcampus(body, skip=()):
         published_allergens=feed_allergens({'allergens':dish.get('allergens_published') or []})
         if not _diet_matches(labels,body.diet) or not _within_budget(body,price): continue
         if published_allergens & allergies or mentions(text,allergy_words) or mentions(text,dislikes): continue
-        published=(dish.get('nutrition') or {}).get('published') or {}
+        nut=dish.get('nutrition') or {}
+        published=(nut.get('published') or {}) if isinstance(nut.get('published'), dict) else {}
+        estimated=(nut.get('estimated') or {}) if isinstance(nut.get('estimated'), dict) else {}
+        # Prefer restaurant-published macros; estimated seed values stay labeled, never as published.
+        def _macro(key):
+            if published.get(key) is not None: return published.get(key)
+            return None
         cuisines=dish.get('cuisines') or venue.get('cuisines') or []
         diet=sorted(_normalize_diet_claims(labels))
-        hit=_hit(venue['name'],dish['name'],price=price,distance=distance,serving=published.get('serving'),cuisines=cuisines,
-            diet_claims=diet,nutrition={'calories':published.get('calories_kcal'),'protein_g':published.get('protein_g'),
-            'carbs_g':published.get('carbohydrates_g'),'fat_g':published.get('fat_g')})
+        hit=_hit(venue['name'],dish['name'],price=price,distance=distance,serving=published.get('serving') or estimated.get('serving'),cuisines=cuisines,
+            diet_claims=diet,nutrition={'calories':_macro('calories_kcal'),'protein_g':_macro('protein_g'),
+            'carbs_g':_macro('carbohydrates_g'),'fat_g':_macro('fat_g')})
+        if (
+            hit.published_calories_kcal is None
+            and hit.published_protein_g is None
+            and hit.published_carbohydrates_g is None
+            and hit.published_fat_g is None
+            and any(estimated.get(k) is not None for k in ('calories_kcal', 'protein_g', 'carbohydrates_g', 'fat_g'))
+        ):
+            # Seed estimates stay labeled — never treated as restaurant-published facts.
+            ranges = {}
+            if estimated.get('calories_kcal') is not None:
+                ranges['calories'] = {'low': estimated['calories_kcal'], 'high': estimated['calories_kcal']}
+            if estimated.get('protein_g') is not None:
+                ranges['protein_g'] = {'low': estimated['protein_g'], 'high': estimated['protein_g']}
+            if estimated.get('carbohydrates_g') is not None:
+                ranges['carbs_g'] = {'low': estimated['carbohydrates_g'], 'high': estimated['carbohydrates_g']}
+            if estimated.get('fat_g') is not None:
+                ranges['fat_g'] = {'low': estimated['fat_g'], 'high': estimated['fat_g']}
+            hit.ai_estimates = {
+                'ranges': ranges,
+                'assumed_serving': estimated.get('serving'),
+                'source': 'curated_seed_estimate',
+            }
         hits.append(hit)
         sources.append({'item_id':hit.item_id,'menu_url':venue.get('menu_url') or venue.get('website') or '','evidence':dish.get('description') or '',
             'diet_claims':diet,'meal_periods':list(dish.get('meal_periods') or []),'cuisines':list(cuisines),
             'allergens':sorted(published_allergens),'allergen_status':'published' if published_allergens else 'unverified',
             'branch':venue.get('branch'),'source_kind':'curated_snapshot','place_id':venue.get('place_id'),
-            'lat':venue.get('lat'),'lng':venue.get('lng'),'address':venue.get('address') or venue.get('formatted_address')})
+            'lat':venue.get('lat'),'lng':venue.get('lng'),'address':venue.get('address') or venue.get('formatted_address'),
+            'location_confirmed_at':None})
         info.setdefault(venue['name'],{'name':venue['name'],'distance_miles':round(distance,3),'website':venue.get('website'),
             'source':'saved_snapshot','status':'ok','dishes':0})['dishes']+=1
     return hits,sources,list(info.values())
