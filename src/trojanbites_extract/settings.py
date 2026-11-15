@@ -86,10 +86,15 @@ def load_extraction_config() -> dict[str, Any]:
 
 
 def require_anthropic_key() -> str:
-    key = get_settings().anthropic_api_key or os.getenv("ANTHROPIC_API_KEY")
+    key = (
+        get_settings().anthropic_api_key
+        or os.getenv("ANTHROPIC_API_KEY")
+        or os.getenv("CLAUDE_API_KEY")
+    )
     if not key:
         raise RuntimeError(
-            "ANTHROPIC_API_KEY missing. Copy .env.example to .env and add your key."
+            "ANTHROPIC_API_KEY missing. Copy .env.example to .env and add your key "
+            "(CLAUDE_API_KEY is also accepted)."
         )
     return key
 

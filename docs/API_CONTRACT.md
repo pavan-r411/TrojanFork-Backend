@@ -1,10 +1,13 @@
 # Trojan Fork — API Contract
 
-**Product:** Trojan Fork  
-**API version:** 0.2.0  
+**Product:** TrojanPlate  
+**Tagline:** Your goals. Your campus. Your plate.  
+**Product scope:** USC University Park Campus daily diet planner  
+**API version:** 0.5.0  
 **Base URL (local):** `http://127.0.0.1:8000`  
 **Interactive docs:** `http://127.0.0.1:8000/docs`  
 **OpenAPI JSON:** `http://127.0.0.1:8000/openapi.json`  
+**Judging:** [`JUDGING.md`](JUDGING.md) · **Demo:** `scripts/demo_usc.sh`  
 **Last updated:** 2026-11-14  
 
 ## Conventions
@@ -48,17 +51,95 @@
 
 ---
 
-## 2. Campuses
+## 1b. Product plan API (primary)
 
-### `GET /v1/campuses`
+### `POST /v1/plan/day`
 
-List configured universities/campuses.
+Build a full-day plan for `usc_dining`, `off_campus`, or `hybrid`.
+
+**Body:** `{ "profile": {...}, "situation": { "mode": "usc_dining"|"off_campus"|"hybrid", ... }, "locked": [] }`
+
+**Response includes:**
+- `periods[]` with ≤3 recommendations, `suggested_time`, `match_percent`, `walk_minutes_estimate`, `why[]`
+- `daily_targets` (estimated student needs when height/weight provided)
+- `daily_planned` (sum of known/estimated dish macros)
+- `spending` (swipes + cash / Dining Dollars)
+- Per card: `protein_g`, `calories_kcal`, `nutrition.confidence` (`confirmed`|`estimated`|`unavailable`)
+- Optional `situation.min_protein` hard filter
+- Dining-hall macros may be **estimated** heuristics (labeled); published values used when available
+
+**Hybrid:** main meals from USC dining (swipe/AYCE); snacks from curated off-campus (cash/Dollars).
+
+### `POST /v1/plan/swap`
+
+Lock one meal (`meal_period` + `dish_id`) and replan the rest of the day.  
+Returns `rebalance_delta` (`calories_kcal` / `protein_g` null when macros unknown).
+
+### `POST /v1/profile/targets`
+
+Estimated daily macro targets for Profile rings (`confidence: estimated|unavailable`).  
+Not dish nutrition.
+
+### `GET /v1/search?q=&mode=all|usc_dining|off_campus|hybrid&limit=`
+
+Free-text search over grounded snapshot dishes.
+
+### `GET /v1/menus/usc-dining` · `GET /v1/menus/off-campus`
+
+Snapshot catalogs used by the planner.
+
+### Frontend note
+
+This repository is **backend-only**. The mobile UI lives in a separate frontend app; use this contract + `/docs` to integrate.
+
+---
+
+## 1c. USC overview (judging / partners)
+
+### `GET /v1/usc/overview`
+
+USC pitch, AI guarantees, and snapshot catalog counts.
 
 **Response 200**
 
 ```json
 {
+  "product": "Trojan Fork",
+  "scope": "usc_upc",
+  "university": "University of Southern California",
+  "friction": "Trojans need budget-, diet-, and macro-aware food near UPC...",
+  "ai_guarantees": [
+    "Claude runs only in background ingestion jobs — never on the student request path.",
+    "Unknown calories/protein stay null; nutrition estimation is off."
+  ],
+  "catalog": {
+    "restaurants": 10,
+    "restaurants_in_dps_boundary": 10,
+    "available_menu_items": 40,
+    "hospitality_seeds": 3
+  },
+  "demo": {
+    "script": "scripts/demo_usc.sh",
+    "judging": "docs/JUDGING.md"
+  }
+}
+```
+
+---
+
+## 2. Campuses
+
+### `GET /v1/campuses`
+
+List configured universities/campuses. Product scope is USC; other packs may appear as future expansion.
+
+**Response 200**
+
+```json
+{
+  "product_scope": "usc_only",
   "default_campus_id": "usc_upc",
+  "judging_campus_id": "usc_upc",
   "count": 2,
   "campuses": [
     {

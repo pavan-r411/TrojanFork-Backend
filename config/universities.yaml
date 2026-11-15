@@ -1,8 +1,12 @@
-# Multi-university registry for Trojan Fork.
-# Core discovery/extraction/recommendation code must not hardcode USC.
+# Trojan Fork campus registry.
+# Hackathon / product scope: USC UPC only (see docs/JUDGING.md).
+# Extra campus packs may exist for future expansion; they are not the judging demo.
 
-product_name: Trojan Fork
+product_name: TrojanPlate
+product_scope: usc_only
 default_campus_id: usc_upc
+judging_campus_id: usc_upc
+tagline: "Your goals. Your campus. Your plate."
 
 # How close a user must be (miles) to auto-select a campus without confirmation
 auto_select_max_miles: 2.0
@@ -12,11 +16,14 @@ candidate_max_miles: 8.0
 universities:
   - university_id: usc
     name: University of Southern California
+    product_active: true
     campuses:
       - campus_id: usc_upc
         config: campuses/usc_upc.yaml
+  # Future expansion pack — not in USC hackathon product scope
   - university_id: ucla
     name: University of California, Los Angeles
+    product_active: false
     campuses:
       - campus_id: ucla_westwood
         config: campuses/ucla_westwood.yaml
