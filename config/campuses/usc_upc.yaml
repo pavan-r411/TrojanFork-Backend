@@ -32,7 +32,7 @@ discovery:
     - meal_takeaway
     - bakery
 
-# Seed / pilot menu sources for tonight's vertical slice
+# USC Hospitality / UPC seeds (permitted campus dining sources for ingest)
 seeds:
   - name: Everybody's Kitchen
     branch_name: EVK
@@ -40,6 +40,28 @@ seeds:
     lat: 34.0211
     lng: -118.2858
     website: https://hospitality.usc.edu/dining-hall-menus/
+    menu_urls:
+      - https://hospitality.usc.edu/dining-hall-menus/
+    cuisines: [american, campus_dining]
+    categories: [dining_hall]
+    source_type: campus_hospitality
+  - name: Parkside Restaurant & Grill
+    branch_name: Parkside
+    address: 3771 McClintock Ave, Los Angeles, CA 90089
+    lat: 34.0189
+    lng: -118.2901
+    website: https://hospitality.usc.edu/dining-hall-menus/
+    menu_urls:
+      - https://hospitality.usc.edu/dining-hall-menus/
+    cuisines: [american, campus_dining]
+    categories: [dining_hall]
+    source_type: campus_hospitality
+  - name: USC Village Dining Hall
+    branch_name: Village
+    address: 3201 S Hoover St, Los Angeles, CA 90089
+    lat: 34.0253
+    lng: -118.2846
+    website: https://hospitality.usc.edu/residential-dining/
     menu_urls:
       - https://hospitality.usc.edu/dining-hall-menus/
     cuisines: [american, campus_dining]

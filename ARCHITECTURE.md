@@ -1,121 +1,81 @@
-# Trojan Fork — Backend Architecture
+# TrojanPlate — Backend Architecture (USC)
 
-**Product:** Trojan Fork  
-**Last updated:** 2026-11-14  
-**Stack:** Python · FastAPI · SQLite · Claude (background extraction only)
+**Product:** TrojanPlate  
+**Tagline:** Your goals. Your campus. Your plate.  
+**Repo role:** Backend API only (frontend is a separate app)  
+**Hackathon scope:** USC University Park Campus — daily diet planning  
+**Stack:** Python · FastAPI · SQLite · dated menu snapshots
+
+Contract for frontend: [`docs/API_CONTRACT.md`](docs/API_CONTRACT.md)
 
 ---
 
 ## Design rules
 
-1. App requests **never** wait on full-campus LLM research. Return stored data fast; collect in background jobs.
-2. **Campus is first-class.** USC is config, not a hardcoded dependency. Switching campuses does not change core discovery/extraction/recommendation code.
-3. Official patrol boundaries ≠ food-discovery radius. Never present a radius as an official boundary.
-4. Unknown nutrition stays `null`. Estimation disabled for this pilot. Constraints are never silently relaxed.
+1. **Primary product = daily meal planning** with two modes sharing one profile + one engine.
+2. Recommendations use **verified menu snapshots** — never wait on live LLM for student requests.
+3. Unknown nutrition / allergens stay unavailable — never invented.
+4. Residential dining is **meal-swipe / AYCE**; do not price buffet components as purchases.
+5. Hard constraints always beat ranking preferences.
+6. Up to **three** recommendations per meal period; fewer is OK.
 
 ---
 
-## Architecture diagram
+## Architecture
 
 ```mermaid
 flowchart TB
-  subgraph Client["Trojan Fork app"]
-    LOC[User location / campus pick]
-    UI[Meals and restaurants UI]
+  subgraph FE [Separate frontend app]
+    Onboard[Profile onboarding]
+    Home[Two mode home]
+    DayView[Full day plan]
   end
 
-  subgraph API["FastAPI"]
-    RES["GET /v1/campuses/resolve"]
-    SEL["POST /v1/campuses/select"]
-    NEAR["GET /v1/restaurants/nearby"]
-    SUG["POST /v1/suggest"]
-    MEALS["GET /v1/meals"]
-    JOB["POST /v1/ingestion/jobs"]
-    JOBS["GET /v1/ingestion/jobs/{id}"]
-    H["GET /health /ready"]
+  subgraph API [This repo · FastAPI]
+    Plan["POST /v1/plan/day"]
+    Swap["POST /v1/plan/swap"]
+    Menus[Menu snapshot GETs]
   end
 
-  subgraph Resolve["Campus resolution"]
-    REG[config/universities.yaml]
-    CFG[campus YAML packs]
-    BND[GeoJSON or search_radius]
+  subgraph Data [Verified snapshots]
+    Halls[Village EVK Parkside]
+    Nearby[Curated off-campus]
   end
 
-  subgraph Core["Stored knowledge base"]
-    DB[(SQLite campus_id scoped)]
-    Q[Deterministic filters]
-  end
-
-  subgraph Jobs["Background ingestion"]
-    SEED[Campus seeds / fixtures]
-    PLACES[Places adapter]
-    FETCH[Safe fetch]
-    EXT[Deterministic + Claude]
-    VAL[Validate]
-  end
-
-  LOC --> RES
-  LOC --> SEL
-  RES --> REG
-  SEL --> CFG
-  CFG --> BND
-  UI --> NEAR
-  UI --> SUG
-  UI --> MEALS
-  SUG --> Q
-  NEAR --> Q
-  MEALS --> Q
-  Q --> DB
-  SUG --> JOB
-  JOB --> Jobs
-  SEED --> EXT
-  PLACES --> DB
-  FETCH --> EXT --> VAL --> DB
-  H --> API
+  Onboard --> Plan
+  Home --> Plan
+  Plan --> Halls
+  Plan --> Nearby
+  Plan --> DayView
+  DayView --> Swap
+  Swap --> Plan
+  Menus --> Halls
+  Menus --> Nearby
 ```
 
 ---
 
-## Campus packs
+## Modes
 
-| Campus | Boundary | Notes |
+| Mode | Data | Payment / budget |
 |---|---|---|
-| `usc_upc` | Official DPS patrol GeoJSON | First integration |
-| `ucla_westwood` | Configurable `search_radius` (not official) | Second-campus pipeline test |
-
-Add another university by dropping a YAML under `config/campuses/` and registering it in `config/universities.yaml`.
+| `usc_dining` | Village, EVK, Parkside snapshot | Meal swipes / Dining Dollars |
+| `off_campus` | Curated nearby restaurants | Per-meal + daily cash; default 0.3 mi |
 
 ---
 
-## HTTP API
-
-```bash
-uvicorn trojanbites_extract.api.app:app --reload --port 8000
-```
+## Product HTTP API
 
 | Method | Path | Purpose |
 |---|---|---|
-| `GET` | `/health` `/ready` | Health + campus list |
-| `GET` | `/v1/campuses` | Configured universities/campuses |
-| `GET` | `/v1/campuses/resolve` | Resolve from lat/lng |
-| `POST` | `/v1/campuses/select` | Manual campus confirmation |
-| `GET` | `/v1/restaurants` | Campus-scoped catalog |
-| `GET` | `/v1/restaurants/nearby` | Nearby within campus |
-| `GET` | `/v1/restaurants/{id}` | Detail + menu + macros |
-| `GET` | `/v1/meals` `/v1/search/dishes` | Filtered dish search |
-| `POST` | `/v1/suggest` `/v1/recommendations` | Nearby + meals (+ optional job) |
-| `POST` | `/v1/ingestion/jobs` | Start campus collection |
-| `GET` | `/v1/ingestion/jobs/{id}` | Job status |
+| `GET` | `/health` | Health |
+| `GET` | `/v1/usc/overview` | Pitch + catalog stats |
+| `POST` | `/v1/plan/day` | Full-day plan (≤3 recs per period) |
+| `POST` | `/v1/plan/swap` | Swap a meal; replan remainder |
+| `GET` | `/v1/menus/usc-dining` | Dining snapshot |
+| `GET` | `/v1/menus/off-campus` | Off-campus curated set |
 
-Docs: http://127.0.0.1:8000/docs
-
----
-
-## Pipeline
-
-Location → Campus resolution → Geographic discovery → Restaurant matching → Menu-source discovery → Permitted retrieval → Parsing/OCR → Claude extraction → Validation → Storage → Search/recommendations
-
-Adapters are replaceable: Places, web search, HTML/PDF/OCR, Claude, optional routing.
+Legacy catalog endpoints (`/v1/suggest`, `/v1/meals`, …) remain as helpers.
 
 ---
 
@@ -123,16 +83,13 @@ Adapters are replaceable: Places, web search, HTML/PDF/OCR, Claude, optional rou
 
 | Path | Role |
 |---|---|
-| `config/universities.yaml` | Multi-uni registry |
-| `config/campuses/*.yaml` | Per-campus packs |
-| `boundaries/` | Official GeoJSON boundaries |
-| `data/pilot/` | USC Claude pilot input |
-| `data/trojanbites.db` | Runtime SQLite |
-| `exports/` | Generated JSON/MD |
-| `STATUS.md` | Implemented / tested / deployed / blocked |
+| `data/menus/usc_dining/` | Dated residential dining snapshots |
+| `data/menus/off_campus/` | Curated walkable restaurant menus |
+| `data/pilot/` | Original pilot source for off-campus curation |
+| `boundaries/` | DPS UPC GeoJSON |
 
 ---
 
 ## Bottom line
 
-Trojan Fork backend is a **multi-campus stored catalog** with **location→campus resolution**, **background ingestion jobs**, and **deterministic recommendations**. USC is the first pack; UCLA proves the same code path with a second config.
+This backend turns **USC dining hall and nearby restaurant menus** into a **personalized daily plate plan API** for a separate TrojanPlate frontend.

@@ -1,0 +1,3164 @@
+{
+  "metadata": {
+    "product": "TrojanPlate",
+    "mode": "off_campus",
+    "version": "0.1-hackathon",
+    "curated_from": "data/pilot/usc_restaurants.json",
+    "demo_pin": {
+      "label": "Tommy Trojan / central UPC",
+      "lat": 34.0224,
+      "lng": -118.2851
+    },
+    "default_max_miles": 0.3,
+    "distance_metric": "haversine_miles_straight_line",
+    "record_policy": "Verified pilot records only; null = unknown; no invented prices or nutrition."
+  },
+  "venues": [
+    {
+      "venue_id": "tb-r-003",
+      "name": "Panda Express",
+      "branch": "Ronald Tutor Campus Center (USC)",
+      "lat": 34.0203,
+      "lng": -118.2863,
+      "distance_miles_from_tommy_trojan": 0.161,
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/panda-express/",
+      "menu_url": "https://www.pandaexpress.com/nutritioninformation",
+      "source_ids": [
+        "src-11",
+        "src-12",
+        "src-06"
+      ],
+      "venue_type": "off_campus_restaurant",
+      "payment_model": "cash_card"
+    },
+    {
+      "venue_id": "tb-r-007",
+      "name": "Sweetgreen",
+      "branch": "USC Village",
+      "lat": 34.0256,
+      "lng": -118.2852,
+      "distance_miles_from_tommy_trojan": 0.221,
+      "cuisines": [
+        "Salads",
+        "Bowls"
+      ],
+      "website": "https://www.uscvillage.com/store/sweetgreen",
+      "menu_url": "https://www.sweetgreen.com/menu",
+      "source_ids": [
+        "src-25",
+        "src-27",
+        "src-28",
+        "src-29"
+      ],
+      "venue_type": "off_campus_restaurant",
+      "payment_model": "cash_card"
+    },
+    {
+      "venue_id": "tb-r-001",
+      "name": "Rosso Oro's Pizzeria",
+      "branch": "USC Hotel / University Gardens",
+      "lat": 34.0203,
+      "lng": -118.2809,
+      "distance_miles_from_tommy_trojan": 0.281,
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/rosso-oros/",
+      "menu_url": "https://hospitality.usc.edu/wp-content/uploads/2026/06/Rosso-Oros-Pizzeria-Menu-Poster-.Nuvola.pdf",
+      "source_ids": [
+        "src-07",
+        "src-08",
+        "src-06"
+      ],
+      "venue_type": "off_campus_restaurant",
+      "payment_model": "cash_card"
+    },
+    {
+      "venue_id": "tb-r-002",
+      "name": "McKay's",
+      "branch": "USC Hotel",
+      "lat": 34.0195,
+      "lng": -118.2813,
+      "distance_miles_from_tommy_trojan": 0.296,
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "website": "https://hospitality.usc.edu/dining-locations/mckays/",
+      "menu_url": "https://hospitality.usc.edu/wp-content/uploads/2025/08/McKays-Breakfast-Menu.pdf",
+      "source_ids": [
+        "src-09",
+        "src-10",
+        "src-06"
+      ],
+      "venue_type": "off_campus_restaurant",
+      "payment_model": "cash_card"
+    }
+  ],
+  "dishes": [
+    {
+      "dish_id": "tb-i-0107",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Chow Mein",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "12 oz",
+          "calories_kcal": 520,
+          "protein_g": 14,
+          "carbohydrates_g": 89,
+          "fat_g": 12,
+          "fiber_g": 5,
+          "sugar_g": 11,
+          "sodium_mg": 1040,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0108",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Chow Fun",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "12 oz",
+          "calories_kcal": 580,
+          "protein_g": 13,
+          "carbohydrates_g": 103,
+          "fat_g": 13,
+          "fiber_g": 1,
+          "sugar_g": 8,
+          "sodium_mg": 1570,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0109",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Fried Rice",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "12 oz",
+          "calories_kcal": 610,
+          "protein_g": 15,
+          "carbohydrates_g": 109,
+          "fat_g": 13,
+          "fiber_g": 3,
+          "sugar_g": 2,
+          "sodium_mg": 810,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0110",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "White Steamed Rice",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "12 oz",
+          "calories_kcal": 570,
+          "protein_g": 11,
+          "carbohydrates_g": 129,
+          "fat_g": 0,
+          "fiber_g": 0,
+          "sugar_g": 0,
+          "sodium_mg": 0,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0111",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Quinoa Fried Rice",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "12 oz",
+          "calories_kcal": 600,
+          "protein_g": 15,
+          "carbohydrates_g": 91,
+          "fat_g": 19,
+          "fiber_g": 4,
+          "sugar_g": 1,
+          "sodium_mg": 740,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0112",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Super Greens (side)",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "10 oz",
+          "calories_kcal": 180,
+          "protein_g": 8,
+          "carbohydrates_g": 17,
+          "fat_g": 9,
+          "fiber_g": 8,
+          "sugar_g": 8,
+          "sodium_mg": 660,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0113",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Eggplant Tofu",
+      "description": null,
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "6.1 oz",
+          "calories_kcal": 310,
+          "protein_g": 8,
+          "carbohydrates_g": 23,
+          "fat_g": 21,
+          "fiber_g": 4,
+          "sugar_g": 15,
+          "sodium_mg": 350,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0114",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Super Greens (entree)",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "3.5 oz",
+          "calories_kcal": 45,
+          "protein_g": 3,
+          "carbohydrates_g": 5,
+          "fat_g": 2,
+          "fiber_g": 3,
+          "sugar_g": 2,
+          "sodium_mg": 130,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0115",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Black Pepper Chicken",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "6.3 oz",
+          "calories_kcal": 200,
+          "protein_g": 15,
+          "carbohydrates_g": 9,
+          "fat_g": 12,
+          "fiber_g": 1,
+          "sugar_g": 3,
+          "sodium_mg": 1070,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0116",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Kung Pao Chicken",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "6.7 oz",
+          "calories_kcal": 270,
+          "protein_g": 20,
+          "carbohydrates_g": 16,
+          "fat_g": 14,
+          "fiber_g": 2,
+          "sugar_g": 7,
+          "sodium_mg": 1300,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0117",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Grilled Teriyaki Chicken",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "6.1 oz",
+          "calories_kcal": 280,
+          "protein_g": 38,
+          "carbohydrates_g": 13,
+          "fat_g": 9,
+          "fiber_g": 0,
+          "sugar_g": 9,
+          "sodium_mg": 610,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0118",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Mushroom Chicken",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "5.7 oz",
+          "calories_kcal": 180,
+          "protein_g": 13,
+          "carbohydrates_g": 12,
+          "fat_g": 9,
+          "fiber_g": 1,
+          "sugar_g": 5,
+          "sodium_mg": 820,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0119",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "The Original Orange Chicken",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "6.2 oz",
+          "calories_kcal": 560,
+          "protein_g": 19,
+          "carbohydrates_g": 63,
+          "fat_g": 25,
+          "fiber_g": 1,
+          "sugar_g": 24,
+          "sodium_mg": 1000,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0120",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Honey Sesame Chicken Breast",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "6.2 oz",
+          "calories_kcal": 420,
+          "protein_g": 16,
+          "carbohydrates_g": 44,
+          "fat_g": 20,
+          "fiber_g": 2,
+          "sugar_g": 19,
+          "sodium_mg": 540,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0121",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "String Bean Chicken Breast",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "5.6 oz",
+          "calories_kcal": 210,
+          "protein_g": 15,
+          "carbohydrates_g": 15,
+          "fat_g": 10,
+          "fiber_g": 3,
+          "sugar_g": 7,
+          "sodium_mg": 600,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0122",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "SweetFire Chicken Breast",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "5.8 oz",
+          "calories_kcal": 360,
+          "protein_g": 15,
+          "carbohydrates_g": 40,
+          "fat_g": 15,
+          "fiber_g": 2,
+          "sugar_g": 19,
+          "sodium_mg": 370,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0123",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Beijing Beef",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "5.6 oz",
+          "calories_kcal": 480,
+          "protein_g": 14,
+          "carbohydrates_g": 46,
+          "fat_g": 27,
+          "fiber_g": 2,
+          "sugar_g": 21,
+          "sodium_mg": 600,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0124",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Broccoli Beef",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "6.3 oz",
+          "calories_kcal": 190,
+          "protein_g": 17,
+          "carbohydrates_g": 14,
+          "fat_g": 7,
+          "fiber_g": 2,
+          "sugar_g": 7,
+          "sodium_mg": 600,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0125",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Black Pepper Sirloin Steak",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "5.9 oz",
+          "calories_kcal": 200,
+          "protein_g": 17,
+          "carbohydrates_g": 15,
+          "fat_g": 8,
+          "fiber_g": 1,
+          "sugar_g": 8,
+          "sodium_mg": 560,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0126",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Honey Walnut Shrimp",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "4.4 oz",
+          "calories_kcal": 340,
+          "protein_g": 13,
+          "carbohydrates_g": 28,
+          "fat_g": 20,
+          "fiber_g": 1,
+          "sugar_g": 6,
+          "sodium_mg": 790,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0127",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Chicken Egg Roll",
+      "description": null,
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "1 roll (2.75 oz)",
+          "calories_kcal": 200,
+          "protein_g": 6,
+          "carbohydrates_g": 20,
+          "fat_g": 10,
+          "fiber_g": 2,
+          "sugar_g": 2,
+          "sodium_mg": 340,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0128",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Chicken Potsticker",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "3 pcs (3.3 oz)",
+          "calories_kcal": 160,
+          "protein_g": 6,
+          "carbohydrates_g": 20,
+          "fat_g": 6,
+          "fiber_g": 1,
+          "sugar_g": 2,
+          "sodium_mg": 250,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0129",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Cream Cheese Rangoon",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "3 pcs (2.4 oz)",
+          "calories_kcal": 190,
+          "protein_g": 5,
+          "carbohydrates_g": 24,
+          "fat_g": 8,
+          "fiber_g": 2,
+          "sugar_g": 1,
+          "sodium_mg": 180,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0130",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Vegetable Spring Roll",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "2 rolls (3.5 oz)",
+          "calories_kcal": 240,
+          "protein_g": 4,
+          "carbohydrates_g": 24,
+          "fat_g": 14,
+          "fiber_g": 2,
+          "sugar_g": 0,
+          "sodium_mg": 560,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0131",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Hot & Sour Soup (cup)",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "12.2 oz",
+          "calories_kcal": 140,
+          "protein_g": 9,
+          "carbohydrates_g": 16,
+          "fat_g": 4,
+          "fiber_g": 1,
+          "sugar_g": 4,
+          "sodium_mg": 1000,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0132",
+      "venue_id": "tb-r-003",
+      "venue_name": "Panda Express",
+      "name": "Hot & Sour Soup (bowl)",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Chinese-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "17.4 oz",
+          "calories_kcal": 170,
+          "protein_g": 10,
+          "carbohydrates_g": 20,
+          "fat_g": 6,
+          "fiber_g": 1,
+          "sugar_g": 6,
+          "sodium_mg": 1260,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-12"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2863
+    },
+    {
+      "dish_id": "tb-i-0162",
+      "venue_id": "tb-r-007",
+      "venue_name": "Sweetgreen",
+      "name": "Harvest Bowl",
+      "description": "Roasted chicken, sweet potatoes, apples, goat cheese, almonds, wild rice, kale, balsamic vinaigrette",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Salads",
+        "Bowls"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [
+        "milk",
+        "meat",
+        "tree nuts"
+      ],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "1 bowl as listed",
+          "calories_kcal": 740,
+          "protein_g": 32,
+          "carbohydrates_g": 60,
+          "fat_g": 41,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": "src-29 lists 760 kcal / 40 g protein / 42 g fat / 60 g carbs"
+        }
+      },
+      "source_ids": [
+        "src-28"
+      ],
+      "lat": 34.0256,
+      "lng": -118.2852
+    },
+    {
+      "dish_id": "tb-i-0163",
+      "venue_id": "tb-r-007",
+      "venue_name": "Sweetgreen",
+      "name": "Crispy Rice Bowl",
+      "description": "Blackened chicken, carrots, cabbage, cucumber, cilantro, almonds, crispy rice, wild rice, arugula, spicy cashew",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Salads",
+        "Bowls"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [
+        "meat",
+        "tree nuts",
+        "sesame"
+      ],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "1 bowl as listed",
+          "calories_kcal": 640,
+          "protein_g": 28,
+          "carbohydrates_g": 61,
+          "fat_g": 30,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": "src-29 lists 680 kcal / 33 g protein / 31 g fat / 61 g carbs"
+        }
+      },
+      "source_ids": [
+        "src-28"
+      ],
+      "lat": 34.0256,
+      "lng": -118.2852
+    },
+    {
+      "dish_id": "tb-i-0164",
+      "venue_id": "tb-r-007",
+      "venue_name": "Sweetgreen",
+      "name": "Chicken Pesto Parm",
+      "description": "Roasted chicken, spicy broccoli, tomatoes, parmesan, garlic breadcrumbs, quinoa, spinach, hot sauce, pesto vinaigrette",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Salads",
+        "Bowls"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [
+        "wheat",
+        "meat",
+        "milk"
+      ],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "1 bowl as listed",
+          "calories_kcal": 525,
+          "protein_g": 35,
+          "carbohydrates_g": 38,
+          "fat_g": 23,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-28"
+      ],
+      "lat": 34.0256,
+      "lng": -118.2852
+    },
+    {
+      "dish_id": "tb-i-0165",
+      "venue_id": "tb-r-007",
+      "venue_name": "Sweetgreen",
+      "name": "Chicken Avocado Ranch",
+      "description": "Blackened chicken, avocado mash, pickled onions, apples, garlic breadcrumbs, umami rice, romaine, green goddess ranch",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Salads",
+        "Bowls"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [
+        "meat",
+        "milk",
+        "eggs",
+        "wheat"
+      ],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "1 bowl as listed",
+          "calories_kcal": 715,
+          "protein_g": 27,
+          "carbohydrates_g": 56,
+          "fat_g": 42,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-28"
+      ],
+      "lat": 34.0256,
+      "lng": -118.2852
+    },
+    {
+      "dish_id": "tb-i-0166",
+      "venue_id": "tb-r-007",
+      "venue_name": "Sweetgreen",
+      "name": "Shroomami",
+      "description": "Roasted tofu, portobello mix, cucumber, basil, cabbage, almonds, wild rice, kale, miso sesame ginger",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Salads",
+        "Bowls"
+      ],
+      "dietary_labels": [
+        "'v' marker shown on sweetgreen's page (meaning not confirmed)"
+      ],
+      "allergens_published": [
+        "soybeans",
+        "sesame",
+        "tree nuts"
+      ],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "1 bowl as listed",
+          "calories_kcal": 635,
+          "protein_g": 18,
+          "carbohydrates_g": 50,
+          "fat_g": 42,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": "src-29 lists 665 kcal / 20 g protein / 45 g fat / 51 g carbs"
+        }
+      },
+      "source_ids": [
+        "src-28"
+      ],
+      "lat": 34.0256,
+      "lng": -118.2852
+    },
+    {
+      "dish_id": "tb-i-0167",
+      "venue_id": "tb-r-007",
+      "venue_name": "Sweetgreen",
+      "name": "Omega Glow",
+      "description": "Miso-glazed salmon, romaine, umami rice, corn salsa, carrots, cabbage, cilantro, almonds, miso sesame ginger",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Salads",
+        "Bowls"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [
+        "soybeans",
+        "wheat",
+        "fish",
+        "tree nuts",
+        "sesame"
+      ],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "1 bowl as listed",
+          "calories_kcal": 750,
+          "protein_g": 32,
+          "carbohydrates_g": 52,
+          "fat_g": 45,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-28"
+      ],
+      "lat": 34.0256,
+      "lng": -118.2852
+    },
+    {
+      "dish_id": "tb-i-0168",
+      "venue_id": "tb-r-007",
+      "venue_name": "Sweetgreen",
+      "name": "Steak Honey Crunch",
+      "description": "Caramelized garlic steak, romaine, quinoa, pickled onions, tomatoes, garlic breadcrumbs, hot honey mustard",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Salads",
+        "Bowls"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [
+        "meat",
+        "wheat"
+      ],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "1 bowl as listed",
+          "calories_kcal": 625,
+          "protein_g": 33,
+          "carbohydrates_g": 48,
+          "fat_g": 33,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-28"
+      ],
+      "lat": 34.0256,
+      "lng": -118.2852
+    },
+    {
+      "dish_id": "tb-i-0169",
+      "venue_id": "tb-r-007",
+      "venue_name": "Sweetgreen",
+      "name": "Kale Caesar",
+      "description": "Kale, romaine, roasted chicken, breadcrumbs, parmesan crisps, lemon, Caesar dressing",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Salads",
+        "Bowls"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [
+        "milk",
+        "eggs",
+        "fish",
+        "meat",
+        "wheat"
+      ],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "confirmed",
+        "published": {
+          "serving": "1 bowl as listed",
+          "calories_kcal": 545,
+          "protein_g": 41,
+          "carbohydrates_g": 18,
+          "fat_g": 35,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-28"
+      ],
+      "lat": 34.0256,
+      "lng": -118.2852
+    },
+    {
+      "dish_id": "tb-i-0001",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Fresh Mozzarella slice",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 2.9,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0002",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Pepperoni slice",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 3.75,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0003",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Loaded slice",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 4.1,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0004",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Caprese slice",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 3.75,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0005",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Side Caesar or House Salad",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0006",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Caesar Salad",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 16.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0007",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Cobb Salad",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 19.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0008",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Antipasto Salad",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 16.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0009",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Fresh Mozzarella pie",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 23.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0010",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Pepperoni pie",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 30.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0011",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Loaded pie",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 33.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0012",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Caprese pie",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 30.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0013",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Spaghetti & Meatballs",
+      "description": "Served with garlic bread",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 17.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0014",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Grilled Chicken Fettuccine Alfredo",
+      "description": "Served with garlic bread",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 17.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0015",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Chicken Parmesan sandwich",
+      "description": "Served with potato chips",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0016",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Cold Italian Sub",
+      "description": "Served with potato chips",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 12.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0017",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Wings",
+      "description": "Original Hot or BBQ; blue cheese or ranch",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0018",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Pizza Combo",
+      "description": "Slice of pizza, house salad, fountain drink",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 11.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0019",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Wings Combo",
+      "description": "6 wings, dressing, fries, fountain drink",
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 18.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0020",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "French Fries",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 6.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0021",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Bag of potato chips",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 3.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0022",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Freshly baked cookie",
+      "description": null,
+      "meal_periods": [
+        "snack"
+      ],
+      "price_amount": 3.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0023",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Fountain drink",
+      "description": null,
+      "meal_periods": [
+        "snack"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0024",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Bottled water",
+      "description": null,
+      "meal_periods": [
+        "snack"
+      ],
+      "price_amount": 5.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0025",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Sparkling water",
+      "description": null,
+      "meal_periods": [
+        "snack"
+      ],
+      "price_amount": 5.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0026",
+      "venue_id": "tb-r-001",
+      "venue_name": "Rosso Oro's Pizzeria",
+      "name": "Soda can",
+      "description": null,
+      "meal_periods": [
+        "snack"
+      ],
+      "price_amount": 4.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "Pizza",
+        "Italian-American"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-08"
+      ],
+      "lat": 34.0203,
+      "lng": -118.2809
+    },
+    {
+      "dish_id": "tb-i-0027",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Breakfast Buffet",
+      "description": "Continental, yogurt & cereal station, coffee/tea/juice, plus one a la carte item",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": null,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0028",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Avocado Toast",
+      "description": "Smashed avocado, garlic aioli, cherry tomatoes, edamame, furikake, grilled sesame bread",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 16.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [
+        "avocado",
+        "garlic aioli",
+        "cherry tomatoes",
+        "edamame",
+        "furikake",
+        "sesame bread"
+      ],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0029",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Sausage Burrito",
+      "description": "Scrambled eggs, chicken apple sausage, cheddar, hash browns, flour tortilla, salsa",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 16.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [
+        "eggs",
+        "chicken apple sausage",
+        "cheddar",
+        "hash browns",
+        "flour tortilla",
+        "salsa"
+      ],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0030",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Salmon and Lox",
+      "description": "Hard-boiled egg, capers, red onion, tomato, toasted bagel with cream cheese",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 19.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [
+        "salmon lox",
+        "egg",
+        "capers",
+        "red onion",
+        "tomato",
+        "bagel",
+        "cream cheese"
+      ],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0031",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "American Breakfast",
+      "description": "Two cage-free eggs, chicken apple sausage or bacon, potatoes, toast or English muffin",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 23.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0032",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Omelet",
+      "description": "Choose 3 fillings (ham, bacon, chicken apple sausage, onion, mushrooms); with potatoes",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 23.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0033",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Buttermilk Pancakes",
+      "description": "Stack of 3, maple syrup, powdered sugar",
+      "meal_periods": [
+        "breakfast"
+      ],
+      "price_amount": 14.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0034",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Brewed Illy coffee",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 4.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0035",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Dammann herbal tea",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 4.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0036",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Espresso",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 4.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0037",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Cappuccino",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 6.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0038",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Latte",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 7.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0039",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Macchiato",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 6.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0040",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Hot chocolate",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 5.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0041",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Milk",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 4.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    },
+    {
+      "dish_id": "tb-i-0042",
+      "venue_id": "tb-r-002",
+      "venue_name": "McKay's",
+      "name": "Assorted juice",
+      "description": null,
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "price_amount": 5.0,
+      "currency": "USD",
+      "price_basis": "menu_price_excludes_tax_and_fees",
+      "cuisines": [
+        "American",
+        "Breakfast"
+      ],
+      "dietary_labels": [],
+      "allergens_published": [],
+      "ingredients_published": [],
+      "nutrition": {
+        "confidence": "unavailable",
+        "published": {
+          "serving": null,
+          "calories_kcal": null,
+          "protein_g": null,
+          "carbohydrates_g": null,
+          "fat_g": null,
+          "fiber_g": null,
+          "sugar_g": null,
+          "sodium_mg": null,
+          "note": null
+        }
+      },
+      "source_ids": [
+        "src-10"
+      ],
+      "lat": 34.0195,
+      "lng": -118.2813
+    }
+  ]
+}

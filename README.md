@@ -1,10 +1,15 @@
-# Trojan Fork Backend
+# TrojanPlate Backend
 
-Multi-university restaurant / menu / nutrition extraction + recommendation API.
+**Your goals. Your campus. Your plate.**
 
-- Architecture: [`ARCHITECTURE.md`](ARCHITECTURE.md)
-- Extraction blueprint: [`extraction_framework.md`](extraction_framework.md)
-- Status (implemented / tested / deployed / blocked): [`STATUS.md`](STATUS.md)
+Backend API for TrojanPlate — an AI-powered **daily diet planner** for USC students. This repo is **API-only**; wire it to a separate frontend.
+
+| Doc | Why |
+|---|---|
+| [`docs/API_CONTRACT.md`](docs/API_CONTRACT.md) | Frontend integration contract |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | Backend architecture |
+| [`docs/JUDGING.md`](docs/JUDGING.md) | Hackathon criteria map |
+| [`docs/PRODUCT.md`](docs/PRODUCT.md) | Product scope |
 
 ## Setup
 
@@ -13,35 +18,43 @@ cd TrojanFork-Backend
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
-cp .env.example .env   # add keys when available
-```
-
-## Quick start
-
-```bash
-trojanbites init-db
-trojanbites import-pilot --skip-move
-trojanbites ingest-campus usc_upc --sync
-trojanbites ingest-campus ucla_westwood --sync
-
-trojanbites resolve-campus --lat 34.0224 --lng -118.2851
-trojanbites query --campus ucla_westwood --budget-max 12 --diet vegetarian
-
 uvicorn trojanbites_extract.api.app:app --reload --port 8000
 ```
 
-Open http://127.0.0.1:8000/docs
+OpenAPI: http://127.0.0.1:8000/docs
 
-## Key API
+```bash
+./scripts/demo_usc.sh
+curl -s -X POST http://127.0.0.1:8000/v1/plan/day \
+  -H 'Content-Type: application/json' \
+  -d @data/menus/examples/plan_day_usc.json | python3 -m json.tool
+```
+
+## Integrate from the frontend
+
+CORS is open for the pilot. Primary calls:
 
 | Endpoint | Use |
 |---|---|
-| `GET /v1/campuses/resolve?lat=&lng=` | Detect campus |
-| `POST /v1/campuses/select` | Confirm campus |
-| `GET /v1/restaurants/nearby` | Nearby restaurants |
-| `POST /v1/suggest` | Recommendations + optional background job |
-| `POST /v1/ingestion/jobs` | Start campus collection |
+| `POST /v1/plan/day` | Full-day plan (`usc_dining` or `off_campus`) |
+| `POST /v1/plan/swap` | Lock a meal and replan the rest of the day |
+| `GET /v1/menus/usc-dining` | Dining-hall snapshot |
+| `GET /v1/menus/off-campus` | Curated nearby dishes |
 | `GET /health` | Readiness |
+
+Example bodies: `data/menus/examples/`.
+
+## Modes
+
+1. **USC Dining** — Village, EVK, Parkside (meal-swipe / AYCE).  
+2. **Off-Campus** — curated nearby menus, cuisine + cash budget (default 0.3 mi).
+
+## Honesty
+
+- Dated verified snapshots — no invented dishes  
+- Unknown nutrition stays unavailable  
+- Allergies are hard filters  
+- Claude live extract is optional background stretch  
 
 ## Tests
 
@@ -49,9 +62,4 @@ Open http://127.0.0.1:8000/docs
 pytest -q
 ```
 
-## Notes
-
-- Missing calories stay `null` (estimation off).
-- Menu prices exclude tax/fees.
-- Distance is straight-line miles unless Routes API is added later.
-- Do not commit `.env`.
+Do not commit `.env`.
