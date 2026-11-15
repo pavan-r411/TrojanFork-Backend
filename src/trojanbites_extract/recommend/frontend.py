@@ -254,7 +254,17 @@ def _recommendation(meal, rank, source, body, timestamp, images, unmapped, user_
         location_confirmed_at=source.get('location_confirmed_at') or (timestamp if source.get('lat') is not None else None),
         truck=bool(source.get('is_food_truck')),
     )
-    venue={'id':meal['restaurant_id'],'name':meal['restaurant_name'],'type':'dining_hall' if body.mode=='usc_dining' else 'restaurant',
+    venue_type=source.get('venue_type')
+    if venue_type=='usc_retail' or source.get('payment_model')=='dining_dollars_or_cash':
+        kind_venue='restaurant'
+        payment_label='USC retail — Dining Dollars or cash; confirm price on site'
+    elif body.mode=='usc_dining' or venue_type=='usc_dining_hall':
+        kind_venue='dining_hall'
+        payment_label='Dining hall entry (meal swipe / AYCE)'
+    else:
+        kind_venue='restaurant'
+        payment_label='Published menu price; tax/fees excluded'
+    venue={'id':meal['restaurant_id'],'name':meal['restaurant_name'],'type':kind_venue,
            'place_id':source.get('place_id'),'lat':source.get('lat'),'lng':source.get('lng'),'address':source.get('address')}
     label=f"{source['station']} station" if source.get('station') else source.get('branch')
     if label: venue['location_label']=label
@@ -266,7 +276,7 @@ def _recommendation(meal, rank, source, body, timestamp, images, unmapped, user_
         'published_price_cents':round(meal['price_amount']*100) if meal['price_amount'] is not None else None,
         'price_status':'estimated' if estimated_price else 'published' if price is not None else 'unknown',
         'price_range_cents':{k:round(v*100) for k,v in estimated_price.items()} if estimated_price else None,
-        'payment_label':'Dining hall entry' if body.mode=='usc_dining' else 'Published menu price; tax/fees excluded',
+        'payment_label':payment_label,
         'walking_meters':meters,'walking_minutes':max(1,round(meters/_WALK_METERS_PER_MINUTE)) if meters is not None else None,
         'distance_metric':'haversine_miles_straight_line',
         'directions_url':directions.get('url'),

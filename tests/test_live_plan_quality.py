@@ -186,3 +186,32 @@ def test_brunch_days_leave_dishes_for_lunch_when_the_pool_is_small(usc):
     assert breakfast and lunch and dinner
     titles=[card['meal_title'] for slot in data['slots'] for card in slot['recommendations']]
     assert len(titles)==len(set(titles)) and 'Cheese Pizza' not in titles
+
+
+def test_campus_all_halls_includes_seeded_usc_retail(usc):
+    """restaurants_usc_complete.json retail (Panda, Bowls, …) must appear on the campus tab."""
+    data=frontend.daily_plan(frontend.PlanRequest(
+        mode='usc_dining',date=date(2026,11,15),
+        context={'dining_hall':'All halls','origin':{'lat':34.0258,'lng':-118.2854},'max_walk_m':1609}))
+    cards=[card for slot in data['slots'] for card in slot['recommendations']]
+    assert cards
+    assert any(card['source']['kind']=='curated_snapshot' for card in cards)
+    assert any('saved campus menus' in note or 'USC Hospitality' in note for note in data['warnings'])
+    # Specific-hall filter stays hall-focused (no retail flood).
+    parkside=frontend.daily_plan(frontend.PlanRequest(
+        mode='usc_dining',date=date(2026,11,15),context={'dining_hall':'parkside'}))
+    assert all(card['source']['kind']=='usc_official_feed'
+               for slot in parkside['slots'] for card in slot['recommendations'])
+
+
+def test_off_campus_seed_supplement_loads_complete_dataset(monkeypatch):
+    offcampus(monkeypatch,live_snapshot_supplement=True)
+    data=plan(per_meal_budget_cents=2500,include_unknown_prices=True,max_walk_m=1609)
+    assert data['diversity']['eligible_restaurants'] and data['diversity']['eligible_restaurants']>=1
+    assert any(slot['recommendations'] for slot in data['slots'])
+    # Seed file splits cleanly: off-campus snapshot has no usc_dining halls.
+    from trojanbites_extract.plan.menus import load_off_campus_menu, load_usc_dining_menu
+    off=load_off_campus_menu(); usc=load_usc_dining_menu()
+    assert all(v.get('dataset_category')=='off_campus' for v in off['venues'])
+    assert all(v.get('dataset_category')=='usc_dining' for v in usc['venues'])
+    assert len(off['venues'])>=70 and len(usc['venues'])>=20

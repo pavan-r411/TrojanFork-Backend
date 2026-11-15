@@ -1,7 +1,11 @@
 """Official USC feed / Places → restaurant sites → OpenAI.
 
-USC Dining reads the official dated feed (cached in memory for a few minutes).
-Off-campus menus are fetched live; TrojanPlate's saved nearby menus are added only
+USC Dining reads the official dated feed (cached in memory for a few minutes) and
+supplements with TrojanPlate's saved USC Hospitality retail/restaurant seed
+(``restaurants_usc_complete.json`` → usc_dining snapshot) so campus mode is not
+limited to the three residential halls.
+
+Off-campus menus are fetched live; TrojanPlate's saved nearby menus are added
 as a clearly labeled supplement when ``live_snapshot_supplement`` is enabled.
 """
 from __future__ import annotations
@@ -232,6 +236,17 @@ def _usc(body):
         rows.sort(key=lambda row:-_entree_score(row[0].item_name))
         return [hit for hit,_ in rows],[source for _,source in rows],notes
     hits,sources,notes=_collect(list(halls.items()),hall)
+    # Seeded USC Hospitality retail/restaurants (and hall fallback) from restaurants_usc_complete.json.
+    extra_hits,extra_sources,extra_venues=_curated_usc(
+        body,{_venue_key(h.restaurant_name) for h in hits},residential_fallback=not hits)
+    if extra_hits:
+        hits.extend(extra_hits);sources.extend(extra_sources)
+        retail=sum(1 for v in extra_venues if v.get('venue_type')=='usc_retail' or 'retail' in str(v.get('name') or '').lower()
+                   or v.get('venue_type') not in {None,'usc_dining_hall'})
+        notes.append(
+            f"Added {len(extra_venues)} USC Hospitality location{'s' if len(extra_venues)!=1 else ''} "
+            f"from TrojanPlate's saved campus menus"
+            f"{'' if not retail else ' (includes campus retail)'}; confirm today's hours and availability.")
     if allergies and hits:
         notes.append(f"Dishes USC tags with {', '.join(sorted(allergies))} are hidden. Cross-contact is possible and some items are not analyzed; confirm with dining staff.")
     if unmapped and hits:
@@ -373,33 +388,38 @@ def _within_budget(body, price) -> bool:
     return price<=body.budget_max
 
 
-def _curated_offcampus(body, skip=()):
-    """TrojanPlate's saved, source-verified nearby menus. Used only as a labeled supplement."""
-    from trojanbites_extract.plan.menus import load_off_campus_menu
-    try: data=load_off_campus_menu()
-    except (OSError,ValueError): return [],[],[]
+def _curated_hits(data, body, skip=(), *, require_radius=True, venue_ok=None, period=None,
+                  allergy_synonyms=True, source_label='saved_snapshot'):
+    """Shared loader for TrojanPlate curated snapshots (off-campus or USC seed)."""
     allergies,_=canonical_allergies(body.preferences.allergies)
-    allergy_words=allergy_text_terms(body.preferences.allergies,include_synonyms=True)
+    allergy_words=allergy_text_terms(body.preferences.allergies,include_synonyms=allergy_synonyms)
     dislikes=stems(body.preferences.excluded_ingredients)
+    period=(period or getattr(body,'meal_period',None) or '').lower() or None
     venues,hits,sources,info={},[],[],{}
     for venue in data.get('venues') or []:
         if venue.get('lat') is None or venue.get('lng') is None or not venue.get('name'): continue
-        distance=haversine_miles(body.lat,body.lng,venue['lat'],venue['lng'])
-        if distance<=body.radius_miles and _venue_key(venue['name']) not in skip: venues[venue.get('venue_id')]=(venue,distance)
+        if venue_ok and not venue_ok(venue): continue
+        if _venue_key(venue['name']) in skip: continue
+        distance=haversine_miles(body.lat,body.lng,venue['lat'],venue['lng']) if body.lat is not None and body.lng is not None else None
+        if require_radius and distance is not None and distance>body.radius_miles: continue
+        venues[venue.get('venue_id')]=(venue,distance)
     for dish in data.get('dishes') or []:
         entry=venues.get(dish.get('venue_id'))
         if not entry or not dish.get('name'): continue
         venue,distance=entry
+        periods=[str(p).lower() for p in (dish.get('meal_periods') or [])]
+        if period and periods and period not in periods and not (period in {'breakfast','lunch'} and 'brunch' in periods):
+            continue
         labels={str(x).lower() for x in dish.get('dietary_labels') or []}
         price=dish.get('price_amount')
         text=f"{dish['name']} {dish.get('description') or ''}"
         published_allergens=feed_allergens({'allergens':dish.get('allergens_published') or []})
-        if not _diet_matches(labels,body.diet) or not _within_budget(body,price): continue
+        if not _diet_matches(labels,body.diet): continue
+        if require_radius and not _within_budget(body,price): continue
         if published_allergens & allergies or mentions(text,allergy_words) or mentions(text,dislikes): continue
         nut=dish.get('nutrition') or {}
         published=(nut.get('published') or {}) if isinstance(nut.get('published'), dict) else {}
         estimated=(nut.get('estimated') or {}) if isinstance(nut.get('estimated'), dict) else {}
-        # Prefer restaurant-published macros; estimated seed values stay labeled, never as published.
         def _macro(key):
             if published.get(key) is not None: return published.get(key)
             return None
@@ -415,7 +435,6 @@ def _curated_offcampus(body, skip=()):
             and hit.published_fat_g is None
             and any(estimated.get(k) is not None for k in ('calories_kcal', 'protein_g', 'carbohydrates_g', 'fat_g'))
         ):
-            # Seed estimates stay labeled — never treated as restaurant-published facts.
             ranges = {}
             if estimated.get('calories_kcal') is not None:
                 ranges['calories'] = {'low': estimated['calories_kcal'], 'high': estimated['calories_kcal']}
@@ -431,15 +450,64 @@ def _curated_offcampus(body, skip=()):
                 'source': 'curated_seed_estimate',
             }
         hits.append(hit)
+        payment=venue.get('payment_model') or dish.get('payment_model')
         sources.append({'item_id':hit.item_id,'menu_url':venue.get('menu_url') or venue.get('website') or '','evidence':dish.get('description') or '',
-            'diet_claims':diet,'meal_periods':list(dish.get('meal_periods') or []),'cuisines':list(cuisines),
+            'diet_claims':diet,'meal_periods':periods,'cuisines':list(cuisines),
             'allergens':sorted(published_allergens),'allergen_status':'published' if published_allergens else 'unverified',
             'branch':venue.get('branch'),'source_kind':'curated_snapshot','place_id':venue.get('place_id'),
             'lat':venue.get('lat'),'lng':venue.get('lng'),'address':venue.get('address') or venue.get('formatted_address'),
-            'location_confirmed_at':None})
-        info.setdefault(venue['name'],{'name':venue['name'],'distance_miles':round(distance,3),'website':venue.get('website'),
-            'source':'saved_snapshot','status':'ok','dishes':0})['dishes']+=1
+            'location_confirmed_at':None,'payment_model':payment,
+            'venue_type':venue.get('venue_type'),'usc_subcategory':venue.get('usc_subcategory')})
+        info.setdefault(venue['name'],{'name':venue['name'],'distance_miles':None if distance is None else round(distance,3),
+            'website':venue.get('website'),'source':source_label,'status':'ok','dishes':0,
+            'venue_type':venue.get('venue_type')})['dishes']+=1
     return hits,sources,list(info.values())
+
+
+def _curated_offcampus(body, skip=()):
+    """TrojanPlate's saved nearby menus — labeled supplement for the off-campus tab."""
+    from trojanbites_extract.plan.menus import load_off_campus_menu
+    try: data=load_off_campus_menu()
+    except (OSError,ValueError): return [],[],[]
+    return _curated_hits(data,body,skip,require_radius=True,source_label='saved_snapshot')
+
+
+def _curated_usc(body, skip=(), *, residential_fallback=False):
+    """Saved USC Hospitality seed (retail + halls) for the campus tab.
+
+    Live residential feeds stay primary. Curated retail/restaurants always
+    supplement. Curated residential dishes are used only when the live hall
+    feed returned nothing for this period (``residential_fallback``).
+    """
+    from trojanbites_extract.plan.menus import load_usc_dining_menu
+    try: data=load_usc_dining_menu()
+    except (OSError,ValueError,FileNotFoundError): return [],[],[]
+    selected=' '.join((body.dining_hall or 'all halls').strip().lower().split()) or 'all halls'
+    selected={'any':'all halls','any dining hall':'all halls','all':'all halls','everybodys kitchen':'evk',
+              'everybody’s kitchen':'evk',"everybody's kitchen":'evk','evk dining hall':'evk',
+              'parkside dining hall':'parkside','parkside residential':'parkside','village':'university-village',
+              'university village':'university-village','usc village':'university-village'}.get(selected,selected)
+    hall_names={
+        'evk':("everybody's kitchen","evk"),
+        'parkside':('parkside',),
+        'university-village':('usc village dining','university village dining','usc village'),
+    }
+    def venue_ok(venue):
+        subcategory=str(venue.get('usc_subcategory') or '')
+        vtype=str(venue.get('venue_type') or '')
+        is_residential=subcategory=='residential_dining_hall' or vtype=='usc_dining_hall'
+        name=_venue_key(venue.get('name') or '')
+        if selected=='all halls':
+            return (not is_residential) or residential_fallback
+        if selected not in hall_names:
+            return not is_residential
+        # Specific hall: only that hall's curated row (fallback) — never other halls' retail flood.
+        if is_residential:
+            return residential_fallback and any(token in name for token in hall_names[selected])
+        # Retail stays available under All halls only so a single-hall filter stays hall-focused.
+        return False
+    return _curated_hits(data,body,skip,require_radius=False,venue_ok=venue_ok,period=body.meal_period,
+                         allergy_synonyms=False,source_label='usc_seed_snapshot')
 
 
 def _place_photo(photo_name):

@@ -127,10 +127,23 @@ def convert(src: dict) -> tuple[dict, dict]:
         contact = rest.get("contact") or {}
         address = loc.get("formatted_address")
         distance = round(haversine_miles(pin_lat, pin_lng, lat, lng), 3)
+        usc_spec = rest.get("usc_dining_specific") or {}
+        subcategory = rest.get("usc_subcategory") or ""
+        ayce = bool(usc_spec.get("all_you_care_to_eat")) or subcategory == "residential_dining_hall"
+        # Only residential AYCE halls burn a meal swipe; USC retail/restaurants are cash / Dining Dollars.
+        if category == "usc_dining" and ayce:
+            payment_model = "meal_swipe_ayce"
+            venue_type = "usc_dining_hall"
+        elif category == "usc_dining":
+            payment_model = "dining_dollars_or_cash"
+            venue_type = "usc_retail"
+        else:
+            payment_model = "cash_card"
+            venue_type = "off_campus_restaurant"
         venue = {
             "venue_id": vid,
             "name": name,
-            "branch": loc.get("building") or rest.get("usc_subcategory"),
+            "branch": loc.get("building") or subcategory or None,
             "lat": lat,
             "lng": lng,
             "address": address,
@@ -141,8 +154,9 @@ def convert(src: dict) -> tuple[dict, dict]:
             "website": contact.get("website") or contact.get("menu_url"),
             "menu_url": contact.get("menu_url") or contact.get("website"),
             "source_ids": [f"usc-complete:{vid}"],
-            "venue_type": "usc_dining_hall" if category == "usc_dining" else "off_campus_restaurant",
-            "payment_model": "meal_swipe_ayce" if category == "usc_dining" else "cash_card",
+            "venue_type": venue_type,
+            "payment_model": payment_model,
+            "usc_subcategory": subcategory or None,
             "hours": rest.get("opening_hours"),
             "dataset_category": category,
             "coords_provisional": coords_provisional,

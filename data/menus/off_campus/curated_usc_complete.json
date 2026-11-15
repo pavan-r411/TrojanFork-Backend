@@ -4,7 +4,7 @@
     "imported_from": "restaurants_usc_complete.json",
     "dataset_version": "0.6.0-hackathon-complete-single-file",
     "generated_at": "2026-11-15T02:30:00-08:00",
-    "imported_at": "2026-11-15T09:58:35.239163+00:00",
+    "imported_at": "2026-11-15T10:37:21.018394+00:00",
     "demo_pin": {
       "label": "USC University Park Campus - Tutor Campus Center (reference point)",
       "lat": 34.02235,
@@ -49,6 +49,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -123,6 +124,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -196,6 +198,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -268,6 +271,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -343,6 +347,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -425,6 +430,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -498,6 +504,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -566,6 +573,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -639,6 +647,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -712,6 +721,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -785,6 +795,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -858,6 +869,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -932,6 +944,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1005,6 +1018,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1078,6 +1092,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1152,6 +1167,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1225,6 +1241,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1299,6 +1316,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1373,6 +1391,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1446,6 +1465,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1519,6 +1539,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1592,6 +1613,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1665,6 +1687,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1739,6 +1762,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1813,6 +1837,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1886,6 +1911,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -1959,6 +1985,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2031,6 +2058,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2106,6 +2134,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2180,6 +2209,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2253,6 +2283,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2327,6 +2358,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2401,6 +2433,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2469,6 +2502,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2543,6 +2577,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2611,6 +2646,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2683,6 +2719,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2757,6 +2794,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2830,6 +2868,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2903,6 +2942,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -2976,6 +3016,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3049,6 +3090,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3117,6 +3159,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3191,6 +3234,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3265,6 +3309,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3338,6 +3383,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3411,6 +3457,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3484,6 +3531,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3558,6 +3606,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3633,6 +3682,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3707,6 +3757,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3782,6 +3833,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3856,6 +3908,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -3931,6 +3984,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4005,6 +4059,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4079,6 +4134,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4149,6 +4205,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4218,6 +4275,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4291,6 +4349,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4365,6 +4424,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4439,6 +4499,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4513,6 +4574,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4586,6 +4648,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4660,6 +4723,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4734,6 +4798,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4808,6 +4873,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4882,6 +4948,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -4955,6 +5022,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -5019,6 +5087,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -5093,6 +5162,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -5167,6 +5237,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -5240,6 +5311,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -5315,6 +5387,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -5389,6 +5462,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -5462,6 +5536,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -5525,6 +5600,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {
@@ -5599,6 +5675,7 @@
       ],
       "venue_type": "off_campus_restaurant",
       "payment_model": "cash_card",
+      "usc_subcategory": null,
       "hours": {
         "timezone": "America/Los_Angeles",
         "weekly": {

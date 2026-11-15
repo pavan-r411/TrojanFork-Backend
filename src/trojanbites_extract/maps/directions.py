@@ -20,17 +20,20 @@ def walking_directions_url(
     lat: float | None = None,
     lng: float | None = None,
     address: str | None = None,
+    name: str | None = None,
 ) -> str | None:
     """Return a walking directions URL, or None when destination is missing.
 
-    Prefer verified coordinates, then a complete address, then place_id alone.
-    When origin is omitted, Google Maps chooses the starting location.
+    Prefer verified coordinates, then a complete address, then place name near USC,
+    then place_id alone. When origin is omitted, Google Maps chooses the starting location.
     """
     destination = None
     if lat is not None and lng is not None:
         destination = f"{lat},{lng}"
     elif address and str(address).strip():
         destination = str(address).strip()
+    elif name and str(name).strip():
+        destination = f"{str(name).strip()}, University of Southern California, Los Angeles, CA"
     elif place_id:
         # Place ID alone is accepted by destination_place_id; still need a destination string.
         destination = str(place_id).strip()
@@ -68,6 +71,7 @@ def build_directions(
         lat=lat,
         lng=lng,
         address=address,
+        name=name,
     )
     if truck and not location_confirmed_at:
         return {
