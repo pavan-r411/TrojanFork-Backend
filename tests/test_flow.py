@@ -150,6 +150,7 @@ def test_text_request_can_add_but_never_remove_restrictions():
     ('allergic to peanuts and shellfish', {'allergies': {'peanuts', 'shellfish'}}),
     ('vegan high protein under $12', {'diet': 'vegan', 'per_meal_usd': 12}),
     ('under 700 calories', {'max_kcal': 700}),
+    ("I'm vegan and allergic to tree nuts, cheap dinner within 0.2 miles", {'allergies': {'tree nuts'}, 'diet': 'vegan', 'max_miles': 0.2}),
 ])
 def test_rule_parser_examples(text, expect):
     parsed = parse.parse_rules(text)
@@ -157,6 +158,7 @@ def test_rule_parser_examples(text, expect):
         got = parsed.get(key)
         assert (set(got) >= value) if isinstance(value, set) else got == value, (key, parsed)
     assert parsed.get('per_meal_usd') != 70 or 'calories' not in text
+    assert not ({'cheap', 'dinner', 'lunch', 'nearby'} & set(parsed.get('allergies', [])))
 
 
 def test_randomised_profiles_never_violate_a_hard_rule():

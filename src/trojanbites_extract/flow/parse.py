@@ -24,7 +24,7 @@ def _num(text: str) -> float:
     return float(text.replace(',', ''))
 
 
-_STOP = re.compile(r"\b(?:want|need|within|under|below|for|and i|but|with|please|near|on|at|that|which|i want|i need|from|around|over|less|more|dinner|lunch|breakfast|snack)\b")
+_STOP = re.compile(r"\b(?:want|need|within|under|below|for|and i|but|with|please|near|on|at|that|which|i want|i need|from|around|over|less|more|dinner|lunch|breakfast|snack|cheap|cheapest|inexpensive|close|closest|nearest|nearby|quick|healthy|healthiest|high|tonight|today|tomorrow)\b")
 
 
 def _list_items(phrase: str) -> list[str]:
