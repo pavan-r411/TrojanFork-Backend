@@ -9,7 +9,15 @@ import yaml
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-ROOT = Path(__file__).resolve().parents[2]
+def _project_root() -> Path:
+    # Installed serverless packages live under _vendor, while config stays in
+    # the deployment root. Locate the project assets independently of imports.
+    candidates = [Path.cwd(), *Path(__file__).resolve().parents]
+    return next((path for path in candidates if (path / "config" / "extraction.yaml").is_file()),
+                Path(__file__).resolve().parents[2])
+
+
+ROOT = _project_root()
 
 
 class Settings(BaseSettings):

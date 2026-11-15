@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from contextlib import asynccontextmanager
 from dataclasses import asdict
 from typing import Any, Literal
@@ -44,8 +45,11 @@ async def lifespan(_app: FastAPI):
         get_settings.cache_clear()
     except Exception:
         pass
-    init_db()
-    tag_existing_pilot_as_usc()
+    # Live recommendations do not need the legacy catalog database.
+    # Vercel application files are read-only; initialize legacy storage lazily.
+    if os.getenv("VERCEL") != "1":
+        init_db()
+        tag_existing_pilot_as_usc()
     yield
 
 

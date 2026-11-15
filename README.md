@@ -208,8 +208,9 @@ Set backend environment variables before deployment:
 - `PROVIDER_RECORDS_ENABLED=false`
 - `DATABASE_URL=sqlite:////tmp/trojanplate.db`
 
-The SQLite setting is required because startup initializes the legacy catalog schema,
-even though live recommendations do not use it. `/tmp` is ephemeral and is not user
+On Vercel, startup skips legacy catalog database initialization. Live recommendations
+do not use that database. The SQLite setting only supports legacy endpoints that
+initialize it lazily. `/tmp` is ephemeral and is not user
 persistence. Do not run ingestion jobs or rely on local provider-record files on Vercel.
 The separately deployed frontend is not included in this backend checkout.
 Check `/health` and `/docs` after deployment, then test `/v1/live/plan` against the
