@@ -689,6 +689,9 @@ def frontend_daily_plan(body: PlanRequest) -> dict[str, Any]:
     except LiveDiscoveryError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
 
+from trojanbites_extract.flow.routes import router as flow_router
+app.include_router(flow_router)
+
 # The frontend and API share an origin; no backend URL is embedded in browser code.
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
