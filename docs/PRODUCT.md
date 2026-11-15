@@ -23,7 +23,7 @@ TrojanPlate recommends what USC students can actually eat today — from dining 
 - Curated off-campus dishes ≤0.3 mi  
 - Day plan with ≤3 recommendations per period + explanations  
 - Meal swap / replan  
-- Public mobile demo UI  
+- Backend API ready for separate frontend integration  
 
 ## Out of scope for Sunday
 

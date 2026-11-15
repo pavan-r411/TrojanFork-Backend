@@ -110,11 +110,7 @@ def test_allergy_hard_filter():
         assert "sesame" not in allergens
 
 
-def test_api_plan_and_frontend():
-    r = client.get("/")
-    assert r.status_code == 200
-    assert "TrojanPlate" in r.text
-
+def test_api_plan_endpoints():
     r = client.get("/health")
     assert r.status_code == 200
     assert r.json()["product"] == "TrojanPlate"
@@ -135,3 +131,4 @@ def test_api_plan_and_frontend():
     assert ov.status_code == 200
     assert ov.json()["product"] == "TrojanPlate"
     assert ov.json()["catalog"]["usc_dining_dishes"] >= 1
+    assert "ui" not in ov.json().get("demo", {})

@@ -2,97 +2,80 @@
 
 **Product:** TrojanPlate  
 **Tagline:** Your goals. Your campus. Your plate.  
+**Repo role:** Backend API only (frontend is a separate app)  
 **Hackathon scope:** USC University Park Campus — daily diet planning  
-**Last updated:** 2026-11-14  
-**Stack:** Python · FastAPI · SQLite · dated menu snapshots · Claude (background extract only, stretch)
+**Stack:** Python · FastAPI · SQLite · dated menu snapshots
 
-Judging: [`docs/JUDGING.md`](docs/JUDGING.md) · Adoption: [`docs/ADOPTION.md`](docs/ADOPTION.md) · Roadmap alignment: product is **diet planning**, not generic restaurant discovery.
+Contract for frontend: [`docs/API_CONTRACT.md`](docs/API_CONTRACT.md)
 
 ---
 
 ## Design rules
 
 1. **Primary product = daily meal planning** with two modes sharing one profile + one engine.
-2. App requests never wait on live LLM research. Recommendations use **verified menu snapshots**.
-3. Unknown nutrition / allergens stay `null` or labeled unavailable — never invented.
-4. Residential dining is **meal-swipe / all-you-care-to-eat**; do not price buffet components as separate purchases.
-5. Hard constraints (allergies, exclusions, hard budget, distance) always beat ranking preferences.
-6. Show **up to three** recommendations per meal period; fewer is OK — never pad with invented dishes.
+2. Recommendations use **verified menu snapshots** — never wait on live LLM for student requests.
+3. Unknown nutrition / allergens stay unavailable — never invented.
+4. Residential dining is **meal-swipe / AYCE**; do not price buffet components as purchases.
+5. Hard constraints always beat ranking preferences.
+6. Up to **three** recommendations per meal period; fewer is OK.
 
 ---
 
-## Product architecture
+## Architecture
 
 ```mermaid
 flowchart TB
-  subgraph UI [TrojanPlate mobile web]
+  subgraph FE [Separate frontend app]
     Onboard[Profile onboarding]
     Home[Two mode home]
-    USCMode[USC Dining Planner]
-    OffMode[Off-Campus Planner]
     DayView[Full day plan]
   end
 
-  subgraph API [FastAPI]
-    Profile[Profile in request]
+  subgraph API [This repo · FastAPI]
     Plan["POST /v1/plan/day"]
     Swap["POST /v1/plan/swap"]
-    Static[Static frontend]
+    Menus[Menu snapshot GETs]
   end
 
   subgraph Data [Verified snapshots]
-    Halls[Village EVK Parkside by date]
-    Nearby[Curated off-campus menus]
+    Halls[Village EVK Parkside]
+    Nearby[Curated off-campus]
   end
 
-  Onboard --> Profile
-  Home --> USCMode
-  Home --> OffMode
-  USCMode --> Plan
-  OffMode --> Plan
+  Onboard --> Plan
+  Home --> Plan
   Plan --> Halls
   Plan --> Nearby
   Plan --> DayView
   DayView --> Swap
   Swap --> Plan
-  Static --> UI
+  Menus --> Halls
+  Menus --> Nearby
 ```
 
 ---
 
 ## Modes
 
-| Mode | Data | Payment / budget | Distance |
-|---|---|---|---|
-| `usc_dining` | Village, EVK, Parkside snapshot | Meal swipes / Dining Dollars (visit-level) | Campus halls |
-| `off_campus` | Curated nearby restaurants | Per-meal + daily cash budget | Default 0.3 mi straight-line |
+| Mode | Data | Payment / budget |
+|---|---|---|
+| `usc_dining` | Village, EVK, Parkside snapshot | Meal swipes / Dining Dollars |
+| `off_campus` | Curated nearby restaurants | Per-meal + daily cash; default 0.3 mi |
 
 ---
 
-## Planning engine
-
-1. Load student profile + today’s situation (mode, periods, budget/swipes, location, cuisines).
-2. Select catalog for the mode.
-3. Hard-filter: allergies/exclusions, diet, meal period, budget, distance.
-4. Rank: nutrition fit (known macros only), cuisine, cost/swipe fit, convenience, variety.
-5. Emit ≤3 options per period with `why[]` and confidence labels.
-6. On swap/select: lock chosen meals; replan remaining periods and remaining budget/swipes.
-
----
-
-## HTTP API (product)
+## Product HTTP API
 
 | Method | Path | Purpose |
 |---|---|---|
-| `GET` | `/` | Mobile-first TrojanPlate UI |
 | `GET` | `/health` | Health |
 | `GET` | `/v1/usc/overview` | Pitch + catalog stats |
 | `POST` | `/v1/plan/day` | Full-day plan (≤3 recs per period) |
 | `POST` | `/v1/plan/swap` | Swap a meal; replan remainder |
-| `GET` | `/v1/menus/usc-dining` | Dining snapshot metadata + dishes |
-| `GET` | `/v1/menus/off-campus` | Curated off-campus dishes |
+| `GET` | `/v1/menus/usc-dining` | Dining snapshot |
+| `GET` | `/v1/menus/off-campus` | Off-campus curated set |
 
-Legacy catalog endpoints (`/v1/suggest`, `/v1/meals`, …) remain for low-level filters.
+Legacy catalog endpoints (`/v1/suggest`, `/v1/meals`, …) remain as helpers.
 
 ---
 
@@ -102,12 +85,11 @@ Legacy catalog endpoints (`/v1/suggest`, `/v1/meals`, …) remain for low-level 
 |---|---|
 | `data/menus/usc_dining/` | Dated residential dining snapshots |
 | `data/menus/off_campus/` | Curated walkable restaurant menus |
-| `data/pilot/` | Original Claude pilot (source for off-campus curation) |
-| `frontend/` | Mobile-first demo UI |
-| `boundaries/` | DPS UPC GeoJSON (geographic honesty) |
+| `data/pilot/` | Original pilot source for off-campus curation |
+| `boundaries/` | DPS UPC GeoJSON |
 
 ---
 
 ## Bottom line
 
-TrojanPlate turns **USC dining hall and nearby restaurant menus** into a **personalized daily plate plan** — grounded data, honest uncertainty, and a plan that updates when students swap meals.
+This backend turns **USC dining hall and nearby restaurant menus** into a **personalized daily plate plan API** for a separate TrojanPlate frontend.

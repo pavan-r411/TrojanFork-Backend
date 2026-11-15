@@ -69,9 +69,9 @@ Lock one meal (`meal_period` + `dish_id`) and replan the rest of the day.
 
 Snapshot catalogs used by the planner.
 
-### UI
+### Frontend note
 
-`GET /` — mobile-first TrojanPlate demo.
+This repository is **backend-only**. The mobile UI lives in a separate frontend app; use this contract + `/docs` to integrate.
 
 ---
 

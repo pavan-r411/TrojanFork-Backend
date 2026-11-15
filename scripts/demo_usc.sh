@@ -5,9 +5,9 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 BASE="${BASE_URL:-http://127.0.0.1:8000}"
 
-echo "== TrojanPlate · USC demo =="
-echo "UI:  $BASE/"
-echo "API: $BASE"
+echo "== TrojanPlate · USC backend demo =="
+echo "API:  $BASE"
+echo "Docs: $BASE/docs"
 echo
 
 if ! curl -sf "$BASE/health" >/dev/null; then
@@ -33,4 +33,4 @@ curl -s -X POST "$BASE/v1/plan/day" \
   -H 'Content-Type: application/json' \
   -d @"$ROOT/data/menus/examples/plan_day_off_campus.json" | python3 -m json.tool
 echo
-echo "Open $BASE/ for the mobile UI"
+echo "Open $BASE/docs for OpenAPI · integrate via docs/API_CONTRACT.md"

@@ -4,11 +4,11 @@
 
 ## Links to fill
 
-- [x] Public demo URL (HTTPS): https://lili-sparing-aliya.ngrok-free.dev/ (ngrok; keep uvicorn+ngrok running for judges, or deploy via `render.yaml`)  
-- [x] GitHub: https://github.com/pavan-r411/TrojanFork-Backend/tree/murali-krishna  
-- [ ] Demo video ≤ 3 minutes  
+- [ ] Public demo URL — frontend app + this API (backend: deploy via `render.yaml` / ngrok)  
+- [x] Backend GitHub: https://github.com/pavan-r411/TrojanFork-Backend/tree/murali-krishna  
+- [ ] Demo video ≤ 3 minutes (record from the frontend)  
 - [x] Pitch deck source: [`PITCH_SLIDES.md`](PITCH_SLIDES.md) — export to PDF / Google Slides  
-- [ ] Screenshot of working UI  
+- [ ] Screenshot of working frontend UI  
 
 ## Suggested description (short)
 
@@ -26,4 +26,4 @@ TrojanPlate is an AI-powered daily diet planner for USC students. It learns goal
 
 ## Tech stack
 
-Python, FastAPI, dated menu snapshots, deterministic plan engine, mobile-first web UI.
+Python, FastAPI, dated menu snapshots, deterministic plan engine (frontend is a separate app).

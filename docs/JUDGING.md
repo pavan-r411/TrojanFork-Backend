@@ -39,7 +39,7 @@ Trojans juggle meal swipes, dining-hall menus, nearby restaurants, budget, diet,
 
 | Claim | Evidence |
 |---|---|
-| Deployable | FastAPI + snapshot JSON + static mobile UI |
+| Deployable | FastAPI + snapshot JSON; separate frontend integrates via API |
 | Partners | USC Hospitality menus, SG pilot path (`docs/ADOPTION.md`) |
 | Honest scope | Dated snapshots labeled; live scrape is stretch |
 
@@ -47,7 +47,7 @@ Trojans juggle meal swipes, dining-hall menus, nearby restaurants, budget, diet,
 
 | Claim | Evidence |
 |---|---|
-| Mobile-first | `/` TrojanPlate UI — onboarding → modes → day plan |
+| Mobile-first | Backend powers a separate TrojanPlate frontend via plan APIs |
 | Clear choices | ≤3 recommendations per meal with `why` text |
 | Uncertainty UX | Confidence labels; fewer than 3 when constraints bite |
 

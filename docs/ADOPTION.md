@@ -7,7 +7,7 @@
 1. Uses Hospitality dining menus and a small verified nearby set — not invented dishes.  
 2. Meal-swipe / AYCE modeled correctly (no fake buffet item prices).  
 3. Unknown nutrition and allergens labeled honestly.  
-4. FastAPI + snapshot JSON — easy for SG / IT to host.
+4. FastAPI + snapshot JSON — easy for SG / IT to host; frontend is separate.
 
 ## Partners
 
@@ -32,4 +32,4 @@ pip install -e .
 uvicorn trojanbites_extract.api.app:app --host 0.0.0.0 --port 8000
 ```
 
-Open `/` for TrojanPlate. Optional: `INGEST_API_TOKEN` for paid collection jobs.
+Open `/docs` for OpenAPI. Point the frontend at this API. Optional: `INGEST_API_TOKEN` for paid collection jobs.

@@ -15,7 +15,7 @@
 | Off-campus curated set | 4 venues / 76 dishes ≤0.3 mi of Tommy Trojan |
 | Profile + day plan API | `POST /v1/plan/day` |
 | Meal swap / replan | `POST /v1/plan/swap` |
-| Mobile-first UI | `/` onboarding → modes → day plan |
+| Backend-only API | Frontend is a separate app; CORS open for pilot |
 | AYCE / swipe modeling | No fake per-dish dining-hall prices |
 | Honest nutrition | Unavailable labeled; estimation off |
 
@@ -23,7 +23,7 @@
 
 ## Tests
 
-Run `pytest -q` — includes plan engine + frontend smoke.
+Run `pytest -q` — includes plan engine + API smoke.
 
 ---
 
@@ -32,7 +32,7 @@ Run `pytest -q` — includes plan engine + frontend smoke.
 | Item | Status |
 |---|---|
 | Local demo | `uvicorn trojanbites_extract.api.app:app --port 8000` |
-| Public HTTPS (tunnel) | `https://lili-sparing-aliya.ngrok-free.dev/` (live while local server + ngrok run) |
+| Public HTTPS (tunnel) | ngrok → API only (e.g. `/health`, `/v1/plan/day`); UI is separate |
 | Permanent host | `render.yaml` / `Procfile` ready — connect Render/Fly to GitHub for stable URL |
 | GitHub | https://github.com/pavan-r411/TrojanFork-Backend/tree/murali-krishna |
 

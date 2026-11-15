@@ -6,8 +6,6 @@ from typing import Any, Literal
 
 from fastapi import FastAPI, Header, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from trojanbites_extract.campus.registry import list_campuses, load_campus, load_universities_registry
@@ -25,11 +23,9 @@ from trojanbites_extract.query.filters import (
     filter_meals,
     nearby_restaurants,
 )
-from trojanbites_extract.settings import ROOT, get_settings, load_extraction_config
+from trojanbites_extract.settings import get_settings, load_extraction_config
 from trojanbites_extract.store.db import init_db, session_scope
 from trojanbites_extract.store.models import MenuItem, Restaurant
-
-FRONTEND_DIR = ROOT / "frontend"
 
 
 @asynccontextmanager
@@ -42,14 +38,15 @@ async def lifespan(_app: FastAPI):
 app = FastAPI(
     title="TrojanPlate API",
     description=(
-        "TrojanPlate — Your goals. Your campus. Your plate. "
-        "USC daily diet planner: residential dining halls + walkable off-campus menus. "
+        "TrojanPlate backend API — Your goals. Your campus. Your plate. "
+        "USC daily diet planner for a separate frontend: residential dining halls + "
+        "walkable off-campus menus. "
         "POST /v1/plan/day returns up to three recommendations per meal; "
         "POST /v1/plan/swap replans the rest of the day. "
         "Unknown nutrition stays null; never invent dishes. "
-        "Judging: docs/JUDGING.md · UI: /"
+        "Contract: docs/API_CONTRACT.md · Judging: docs/JUDGING.md"
     ),
-    version="0.4.0",
+    version="0.4.1",
     lifespan=lifespan,
 )
 
@@ -60,17 +57,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-if FRONTEND_DIR.is_dir():
-    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="static")
-
-
-@app.get("/")
-def trojanplate_home() -> FileResponse:
-    index = FRONTEND_DIR / "index.html"
-    if not index.exists():
-        raise HTTPException(status_code=404, detail="frontend_missing")
-    return FileResponse(index)
 
 
 class HealthOut(BaseModel):
@@ -173,9 +159,10 @@ def usc_overview() -> dict[str, Any]:
             "hospitality_seeds": len(usc.seeds),
         },
         "demo": {
-            "ui": "/",
+            "docs": "/docs",
             "plan": "POST /v1/plan/day",
             "swap": "POST /v1/plan/swap",
+            "contract": "docs/API_CONTRACT.md",
             "script": "scripts/demo_usc.sh",
             "judging": "docs/JUDGING.md",
             "adoption": "docs/ADOPTION.md",
