@@ -1,0 +1,51 @@
+# Curated official / campus sources for the hackathon pilot.
+# Replace or extend URLs with branch-specific official menus as you confirm them.
+# Do not invent menus — only list sources you intend to fetch.
+
+restaurants:
+  - seed_id: usc_evk
+    name: Everybody's Kitchen
+    branch_name: EVK
+    address: "920 W 37th Pl, Los Angeles, CA 90089"
+    cuisines: [campus_dining]
+    categories: [dining_hall]
+    website: https://hospitality.usc.edu/dining-hall-menus/
+    menu_links:
+      - url: https://hospitality.usc.edu/dining-hall-menus/
+        label: USC Hospitality dining menus
+        priority_tier: 1
+    notes: Residential dining; all-you-care-to-eat; no per-dish retail prices expected.
+
+  - seed_id: usc_village_dining
+    name: USC Village Dining Hall
+    branch_name: Village
+    address: "3201 S Hoover St, Los Angeles, CA 90007"
+    cuisines: [campus_dining]
+    categories: [dining_hall]
+    website: https://hospitality.usc.edu/dining-hall-menus/
+    menu_links:
+      - url: https://hospitality.usc.edu/dining-hall-menus/
+        label: USC Hospitality dining menus
+        priority_tier: 1
+
+  - seed_id: usc_parkside
+    name: Parkside Residential Dining Hall
+    branch_name: Parkside
+    address: "3775 McClintock Ave, Los Angeles, CA 90089"
+    cuisines: [campus_dining]
+    categories: [dining_hall]
+    website: https://hospitality.usc.edu/dining-hall-menus/
+    menu_links:
+      - url: https://hospitality.usc.edu/dining-hall-menus/
+        label: USC Hospitality dining menus
+        priority_tier: 1
+
+  # Off-campus placeholders — add real official menu URLs before extraction.
+  # Example shape only; leave menu_links empty until verified.
+  - seed_id: placeholder_add_official_urls
+    name: PLACEHOLDER — replace with real nearby restaurants
+    branch_name: null
+    address: null
+    enabled: false
+    menu_links: []
+    notes: Disable once real curated restaurants are added.

@@ -1,0 +1,22 @@
+# Multi-university registry for Trojan Fork.
+# Core discovery/extraction/recommendation code must not hardcode USC.
+
+product_name: Trojan Fork
+default_campus_id: usc_upc
+
+# How close a user must be (miles) to auto-select a campus without confirmation
+auto_select_max_miles: 2.0
+# Show campuses within this range as candidates for confirmation
+candidate_max_miles: 8.0
+
+universities:
+  - university_id: usc
+    name: University of Southern California
+    campuses:
+      - campus_id: usc_upc
+        config: campuses/usc_upc.yaml
+  - university_id: ucla
+    name: University of California, Los Angeles
+    campuses:
+      - campus_id: ucla_westwood
+        config: campuses/ucla_westwood.yaml

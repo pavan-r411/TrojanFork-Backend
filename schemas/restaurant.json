@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trojanbites.local/schemas/restaurant.json",
+  "title": "Restaurant",
+  "type": "object",
+  "required": ["restaurant_id", "name", "boundary", "business_status"],
+  "properties": {
+    "restaurant_id": { "type": "string" },
+    "provider_refs": { "type": "object" },
+    "name": { "type": "string" },
+    "branch_name": { "type": ["string", "null"] },
+    "address": { "type": "object" },
+    "coordinates": { "type": ["object", "null"] },
+    "boundary": {
+      "type": "object",
+      "required": ["status", "boundary_id", "boundary_version"],
+      "properties": {
+        "status": { "enum": ["inside", "boundary", "outside", "unknown"] },
+        "boundary_id": { "type": "string" },
+        "boundary_version": { "type": "string" },
+        "near_uncertain_edge": { "type": "boolean" }
+      }
+    },
+    "categories": { "type": "array", "items": { "type": "string" } },
+    "cuisines": { "type": "array", "items": { "type": "string" } },
+    "website": { "type": ["string", "null"] },
+    "menu_links": { "type": "array" },
+    "business_status": {
+      "enum": ["operational", "closed_temporarily", "closed_permanently", "unknown"]
+    },
+    "hours": { "type": ["object", "null"] },
+    "service": { "type": "object" },
+    "sources": { "type": "array" },
+    "export_restrictions": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

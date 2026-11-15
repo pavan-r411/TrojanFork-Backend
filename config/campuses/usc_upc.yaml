@@ -1,0 +1,49 @@
+campus_id: usc_upc
+university_id: usc
+display_name: USC University Park Campus
+short_name: USC UPC
+city: Los Angeles
+region: CA
+country: US
+
+# Campus center (approx Tommy Trojan / central UPC)
+center:
+  lat: 34.0224
+  lng: -118.2851
+
+# Official patrol/service boundary (NOT the same as Clery geography)
+boundary:
+  type: official_patrol
+  boundary_id: usc_upc_dps
+  boundary_version: v2025-01
+  source_url: https://dps.usc.edu/patrol/
+  notes: >
+    USC DPS University Park Campus Patrol Area.
+    Distinct from HSC patrol area and Clery geography.
+
+# Food discovery / walk preferences (product UX — not an official boundary)
+discovery:
+  default_walk_miles: 0.3
+  max_walk_miles: 1.0
+  places_tile_radius_m: 500
+  included_types:
+    - restaurant
+    - cafe
+    - meal_takeaway
+    - bakery
+
+# Seed / pilot menu sources for tonight's vertical slice
+seeds:
+  - name: Everybody's Kitchen
+    branch_name: EVK
+    address: 642 W 34th St, Los Angeles, CA 90089
+    lat: 34.0211
+    lng: -118.2858
+    website: https://hospitality.usc.edu/dining-hall-menus/
+    menu_urls:
+      - https://hospitality.usc.edu/dining-hall-menus/
+    cuisines: [american, campus_dining]
+    categories: [dining_hall]
+    source_type: campus_hospitality
+
+timezone: America/Los_Angeles

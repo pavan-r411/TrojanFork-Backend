@@ -1,0 +1,42 @@
+campus_id: usc_upc
+boundary_id: usc_upc_dps
+boundary_version: v2025-01
+product_name: Trojan Fork
+
+places:
+  included_types:
+    - restaurant
+    - cafe
+    - meal_takeaway
+    - bakery
+  tile_radius_m: 500
+  max_result_count: 20
+
+fetch:
+  connect_timeout_s: 15
+  read_timeout_s: 30
+  max_bytes: 15728640
+  max_retries: 3
+  user_agent: TrojanBitesExtract/0.1 (+https://github.com/local/TrojanFork-Backend)
+
+nutrition_estimation:
+  enabled: false
+
+claude:
+  prompt_version: extract_menu_v1
+  max_repair_retries: 2
+  max_evidence_chars_per_chunk: 12000
+
+boundary:
+  edge_epsilon_m: 15
+
+export:
+  omit_fields:
+    - runtime_google_display
+  output_dir: exports
+
+adapters:
+  web_search: none
+
+refresh:
+  skip_unchanged_hash: true

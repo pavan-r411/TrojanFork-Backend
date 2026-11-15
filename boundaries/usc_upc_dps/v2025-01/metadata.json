@@ -1,0 +1,12 @@
+{
+  "boundary_id": "usc_upc_dps",
+  "version": "v2025-01",
+  "source_url": "https://dps.usc.edu/patrol/",
+  "source_pdf": "https://dps.usc.edu/wp-content/uploads/2025/01/UPC-Patrol-Area.pdf",
+  "source_retrieved_at": "2026-11-14",
+  "construction_method": "street_intersection_ring_from_official_narrative",
+  "approximation": true,
+  "approximation_notes": "Vertices placed near named street intersections from the official DPS UPC patrol narrative. Segments are straight lines between corners (not surveyed cadastral edges). Re-geocode corners with Geocoding API and QA against the official PDF before production use.",
+  "excludes": ["usc_hsc_dps", "clery_upc"],
+  "edge_epsilon_m_default": 15
+}

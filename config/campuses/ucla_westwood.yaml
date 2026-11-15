@@ -1,0 +1,49 @@
+campus_id: ucla_westwood
+university_id: ucla
+display_name: UCLA Westwood Campus
+short_name: UCLA
+city: Los Angeles
+region: CA
+country: US
+
+# Approx Royce Hall / central Westwood campus
+center:
+  lat: 34.0689
+  lng: -118.4452
+
+# No verified official patrol polygon in this pilot.
+# Use a labeled search radius — NEVER present as an official campus boundary.
+boundary:
+  type: search_radius
+  radius_miles: 1.0
+  official: false
+  approximation: true
+  notes: >
+    Configurable food-discovery radius only. Not an official UCLA DPS/Clery boundary.
+    Replace with a verified GeoJSON boundary when available.
+
+discovery:
+  default_walk_miles: 0.3
+  max_walk_miles: 1.0
+  places_tile_radius_m: 500
+  included_types:
+    - restaurant
+    - cafe
+    - meal_takeaway
+    - bakery
+
+# Fixture seeds for second-campus pipeline test (clearly labeled fixtures)
+seeds:
+  - name: UCLA Dining Fixture Café
+    branch_name: Fixture
+    address: 308 Westwood Plaza, Los Angeles, CA 90095
+    lat: 34.0705
+    lng: -118.4441
+    website: null
+    menu_urls: []
+    cuisines: [american, campus_dining]
+    categories: [fixture]
+    source_type: fixture
+    fixture_menu_path: tests/fixtures/ucla_sample_menu.html
+
+timezone: America/Los_Angeles

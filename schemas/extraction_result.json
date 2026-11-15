@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trojanbites.local/schemas/extraction_result.json",
+  "title": "ExtractionResult",
+  "type": "object",
+  "required": ["menu_items", "conflicts", "ambiguities"],
+  "properties": {
+    "menu_items": {
+      "type": "array",
+      "items": { "$ref": "menu_item.json" }
+    },
+    "conflicts": { "type": "array", "items": { "type": "string" } },
+    "ambiguities": { "type": "array", "items": { "type": "string" } },
+    "_review_signals": { "type": "object" }
+  },
+  "additionalProperties": true
+}

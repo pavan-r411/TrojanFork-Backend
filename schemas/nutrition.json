@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trojanbites.local/schemas/nutrition.json",
+  "title": "Nutrition",
+  "type": "object",
+  "required": ["nutrition_id", "item_id", "variant_id", "evidence_status", "serving_basis", "published"],
+  "properties": {
+    "nutrition_id": { "type": "string" },
+    "item_id": { "type": "string" },
+    "variant_id": { "type": "string" },
+    "evidence_status": { "enum": ["restaurant_published", "estimated", "unknown"] },
+    "serving_basis": { "type": ["string", "null"] },
+    "published": {
+      "type": "object",
+      "properties": {
+        "calories_kcal": { "type": ["number", "null"], "minimum": 0 },
+        "protein_g": { "type": ["number", "null"], "minimum": 0 },
+        "carbohydrates_g": { "type": ["number", "null"], "minimum": 0 },
+        "fat_g": { "type": ["number", "null"], "minimum": 0 },
+        "fiber_g": { "type": ["number", "null"], "minimum": 0 },
+        "sugar_g": { "type": ["number", "null"], "minimum": 0 },
+        "sodium_mg": { "type": ["number", "null"], "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "estimated": {
+      "type": ["object", "null"],
+      "properties": {
+        "calories_kcal": { "type": ["number", "null"] },
+        "protein_g": { "type": ["number", "null"] },
+        "carbohydrates_g": { "type": ["number", "null"] },
+        "fat_g": { "type": ["number", "null"] },
+        "fiber_g": { "type": ["number", "null"] },
+        "sugar_g": { "type": ["number", "null"] },
+        "sodium_mg": { "type": ["number", "null"] },
+        "method": { "type": "string" },
+        "assumptions": { "type": "array", "items": { "type": "string" } },
+        "references": { "type": "array", "items": { "type": "string" } },
+        "uncertainty_notes": { "type": "string" }
+      }
+    },
+    "field_sources": { "type": "object" }
+  },
+  "additionalProperties": true
+}
