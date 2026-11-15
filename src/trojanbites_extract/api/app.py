@@ -30,6 +30,16 @@ from trojanbites_extract.store.models import MenuItem, Restaurant
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
+    # Ensure .env overrides empty shell exports (common with GOOGLE_MAPS_API_KEY=)
+    try:
+        from dotenv import load_dotenv
+
+        from trojanbites_extract.settings import ROOT, get_settings
+
+        load_dotenv(ROOT / ".env", override=True)
+        get_settings.cache_clear()
+    except Exception:
+        pass
     init_db()
     tag_existing_pilot_as_usc()
     yield
