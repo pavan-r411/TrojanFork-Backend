@@ -193,3 +193,25 @@ Maps and OpenAI response bodies are now saved locally for debugging, enabled by 
 Request headers, keys and request prompts are not recorded. Configured secret values and sensitive key/token fields are redacted from response bodies. The folder is Git-ignored and is not served by the frontend; new files have owner-only permissions. Records are debug history, not a menu cache or recommendation source. They can contain generated meal details and personalized explanations. No automatic retention/deletion is configured; files remain until you remove them.
 
 Set `PROVIDER_RECORDS_ENABLED=false` in backend `.env` and restart to stop recording. `PROVIDER_RECORDS_DIR` optionally changes the directory (relative paths resolve under the backend). Existing past responses cannot be recovered; recording starts with new requests after the running server reloads/restarts. Requests that fail before receiving any HTTP response have no response body to record. Recording failures do not break meal requests. Automated tests disable recording outside dedicated temporary-file tests.
+
+
+## Vercel deployment
+
+Import this repository with the FastAPI preset and root directory `./`.
+`pyproject.toml` declares the nested FastAPI entry point for Vercel.
+Keep the existing Python project dependency installation enabled.
+
+Set backend environment variables before deployment:
+
+- `OPENAI_API_KEY` and `GOOGLE_MAPS_API_KEY`: server-side secrets.
+- `OPENAI_MODEL=gpt-4.1-mini`
+- `PROVIDER_RECORDS_ENABLED=false`
+- `DATABASE_URL=sqlite:////tmp/trojanplate.db`
+
+The SQLite setting is required because startup initializes the legacy catalog schema,
+even though live recommendations do not use it. `/tmp` is ephemeral and is not user
+persistence. Do not run ingestion jobs or rely on local provider-record files on Vercel.
+The separately deployed frontend is not included in this backend checkout.
+Check `/health` and `/docs` after deployment, then test `/v1/live/plan` against the
+function duration available on your Vercel plan. A successful build alone does not
+verify external provider calls or request duration.
