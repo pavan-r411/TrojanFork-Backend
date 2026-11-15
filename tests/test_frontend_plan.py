@@ -68,6 +68,22 @@ def test_daily_variety_reserves_distinct_dishes_and_requires_breakfast_evidence(
     assert all(item['id'] in {'0','1'} for item in data['slots'][0]['recommendations'])
 
 
+def test_inferred_breakfast_is_not_capped_at_one_by_later_slot_reserves(monkeypatch):
+    """Breakfast-named unlabeled dishes used to count as lunch/dinner inventory and
+    the reserve formula then capped breakfast at 1 even with 3+ breakfast options."""
+    from dataclasses import replace
+    names=['Acai Bowl','Egg Sandwich','Pancakes','Caesar Salad','Burrito Bowl','Pasta']
+    meals=[replace(hit(),item_id=str(i),restaurant_id=f'r{i}',restaurant_name=f'Restaurant {i}',item_name=names[i]) for i in range(6)]
+    sources=[{'item_id':str(i),'menu_url':'https://venue.test/menu','meal_periods':[]} for i in range(6)]
+    monkeypatch.setattr(frontend,'_offcampus',lambda body:(meals,sources,[]))
+    monkeypatch.setattr(frontend,'select_meals',lambda hits,*a:RecommendationResult(provider='openai',status='completed',meals=[asdict(x) for x in hits[:3]]))
+    data=frontend.daily_plan(frontend.PlanRequest(mode='off_campus',date=date(2026,11,14),context={'origin':{'lat':34.02,'lng':-118.28}}))
+    breakfast=data['slots'][0]['recommendations']
+    assert len(breakfast)==3, breakfast
+    assert {r['meal_title'] for r in breakfast}=={'Acai Bowl','Egg Sandwich','Pancakes'}
+    assert all(slot['recommendations'] for slot in data['slots'][1:])
+
+
 def test_single_candidate_is_not_repeated_or_presented_as_breakfast(monkeypatch):
     monkeypatch.setattr(frontend,'_offcampus',lambda body:([hit()],[{'item_id':'food','menu_url':'https://venue.test/menu'}],[]))
     monkeypatch.setattr(frontend,'select_meals',lambda hits,*a:RecommendationResult(provider='openai',status='completed',meals=[asdict(x) for x in hits]))

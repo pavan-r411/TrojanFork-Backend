@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field
 
 from trojanbites_extract.campus.registry import list_campuses, load_campus, load_universities_registry
 from trojanbites_extract.campus.resolve import resolve_campus
+from trojanbites_extract.campus.zones import classify_location, zone_service_payload
 from trojanbites_extract.jobs.ingestion import (
     create_ingestion_job,
     get_job,
@@ -272,6 +273,38 @@ def api_plan_swap(body: PlanSwapBody) -> dict[str, Any]:
 def api_profile_targets(body: PlanProfile) -> dict[str, Any]:
     """Estimated daily macro targets for Profile / nutrition rings (not dish macros)."""
     return estimate_daily_targets(body.model_dump())
+
+
+@app.get("/v1/location/zone")
+def api_location_zone(
+    lat: float = Query(..., ge=-90, le=90),
+    lng: float = Query(..., ge=-180, le=180),
+    campus_id: str = Query("usc_upc"),
+) -> dict[str, Any]:
+    """Classify a live GPS point for off-campus recommendations.
+
+    Live student location may drive Off-Campus plans only inside the USC DPS
+    patrol area. USC Dining (on-campus) does not use this gate.
+    """
+    campus = load_campus(campus_id)
+    zone = classify_location(lat, lng, campus)
+    payload = zone_service_payload(zone)
+    in_dps = zone.dps_status in {"inside", "boundary"}
+    payload.update(
+        {
+            "campus_id": campus.campus_id,
+            "lat": lat,
+            "lng": lng,
+            "allowed_for_live_location": in_dps,
+            "applies_to": "off_campus",
+            "note": (
+                "Live location can personalize Off-Campus recommendations inside the USC DPS patrol area."
+                if in_dps
+                else "Live location is outside the USC DPS patrol area. Use a campus landmark for Off-Campus, or switch to USC Dining."
+            ),
+        }
+    )
+    return payload
 
 
 @app.get("/v1/search")
