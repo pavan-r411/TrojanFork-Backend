@@ -23,6 +23,8 @@ class DiscoveryCandidate:
     business_status: str | None = None
     lat: float | None = None  # Places coords: cache ≤30d; NEVER use for PiP
     lng: float | None = None
+    photo_name: str | None = None  # Places photo resource name; resolved server-side only
+    photo_credit: str | None = None  # required author attribution for that photo
 
 
 class DiscoveryAdapter(Protocol):

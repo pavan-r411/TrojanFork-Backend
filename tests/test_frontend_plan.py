@@ -25,6 +25,7 @@ def test_offcampus_discovered_once_and_matches_ui_contract(monkeypatch):
     assert len(calls)==1
     assert len(data['slots'])==3
     assert data['slots'][1]['recommendations'][0]['nutrition']['calories'] is None
+    assert data['slots'][1]['recommendations'][0]['nutrition']['display_status'] == 'Nutrition unavailable'
     assert data['slots'][1]['recommendations'][0]['price_cents']==1100
     assert data['slots'][0]['selected_recommendation_id'] is None
     assert data['data_mode']=='live'

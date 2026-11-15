@@ -1,0 +1,15 @@
+{
+  "boundary_id": "usc_upc_campus",
+  "version": "v2025-01",
+  "source_url": "https://planning.lacity.gov/EIR/USC/SpecificPlans/USC%20Specific%20Plan%20(as%20approved%20by%20City%20Council).pdf",
+  "supporting_sources": [
+    "https://fpm.usc.edu/wp-content/uploads/2023/06/RFQ-Contractors-060123_FINAL.pdf",
+    "https://dps.usc.edu/patrol/"
+  ],
+  "source_retrieved_at": "2026-11-15",
+  "construction_method": "street_ring_from_specific_plan_and_fpm_narrative",
+  "approximation": true,
+  "approximation_notes": "Academic/core University Park Campus ring approximating the LA City USC UPC Specific Plan / FPM narrative (Vermont–Exposition–Figueroa/Flower–Jefferson). USC Village commercial area north of Jefferson is intentionally OUTSIDE this polygon so Village retail restaurants are owned by the off-campus DPS pipeline. Residential dining halls (EVK, Parkside, Village Dining Hall) remain teammate-owned via campus_hospitality seeds regardless of edge geometry. Re-digitize against official Specific Plan Map 1 before production.",
+  "excludes": ["usc_village_commercial", "usc_hsc", "clery_only_fragments"],
+  "edge_epsilon_m_default": 15
+}

@@ -64,6 +64,8 @@ class MealHit:
     serving_label: str | None = None
     nutrition_evidence_status: str = 'unknown'
     ai_estimates: dict | None = None
+    cuisines: list[str] = field(default_factory=list)
+    diet_claims: list[str] = field(default_factory=list)
     price_note: str = "menu_price_excludes_tax_and_fees"
     distance_metric: str = "haversine_miles_straight_line"
 

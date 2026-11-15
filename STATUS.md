@@ -1,29 +1,38 @@
 # TrojanPlate — Status (USC hackathon)
 
-**Date:** 2026-11-14  
+**Date:** 2026-11-15  
 **Product:** TrojanPlate — daily diet planner for USC  
-**Judging:** [`docs/JUDGING.md`](docs/JUDGING.md)
+**Judging:** [`docs/JUDGING.md`](docs/JUDGING.md)  
+**Readiness:** [`docs/DEPLOYMENT_READINESS.md`](docs/DEPLOYMENT_READINESS.md) · **Demo:** [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md)
 
 ---
 
-## Implemented
+## Implemented (pilot E2E)
 
 | Capability | Notes |
 |---|---|
-| Product pivot | Day planner (not discovery-first) |
-| USC Dining snapshot | Village, EVK, Parkside dated `2026-11-14` |
-| Off-campus curated set | 4 venues / 76 dishes ≤0.3 mi of Tommy Trojan |
-| Profile + day plan API | `POST /v1/plan/day` |
-| Meal swap / replan | `POST /v1/plan/swap` |
-| Backend-only API | Frontend is a separate app; CORS open for pilot |
+| Sign-in (optional) | Bearer sessions; PBKDF2 passwords; owned profile + day plans |
+| Live plan UI | `/ui/` → `POST /v1/live/plan` |
+| Preferences + budget + campus/off-campus | Profile onboarding + dining limits |
+| Variety | ≤3 picks / slot across kitchens when inventory allows |
+| Swap preview + undo | Client preview deltas; undo last swap |
+| Directions | **Get directions** walking Maps URLs (Place ID / coords / address) |
+| Empty states | Structured `empty_state` reason codes + recovery actions |
+| Breakfast fix | Inferred breakfast-by-name; see `docs/BREAKFAST_FAILURE.md` |
+| Honest nutrition | `null` unknowns; **Nutrition unavailable** / AI-estimated labels |
+| Persistence | localStorage always; server plans when signed in |
+| Off-campus DPS job | Background Places + Gemini ingestion (teammate boundary split) |
 | AYCE / swipe modeling | No fake per-dish dining-hall prices |
-| Honest nutrition | Unavailable labeled; estimation off |
+| Health | `/health`, `/ready` |
 
 ---
 
 ## Tests
 
-Run `pytest -q` — includes plan engine + API smoke.
+```bash
+cd TrojanFork-Backend && .venv/bin/python -m pytest -q   # 110 passed (2026-11-15)
+cd TrojanFork-Frontend && npm test                       # nutrition + live-plan + Chrome smoke
+```
 
 ---
 
@@ -31,18 +40,14 @@ Run `pytest -q` — includes plan engine + API smoke.
 
 | Item | Status |
 |---|---|
-| Local demo | `uvicorn trojanbites_extract.api.app:app --port 8000` |
-| Public HTTPS (tunnel) | ngrok → API only (e.g. `/health`, `/v1/plan/day`); UI is separate |
-| Permanent host | `render.yaml` / `Procfile` ready — connect Render/Fly to GitHub for stable URL |
-| GitHub | https://github.com/pavan-r411/TrojanFork-Backend/tree/murali-krishna |
+| Local demo | `uvicorn … --port 8000` → http://127.0.0.1:8000/ui/ |
+| Permanent host | `render.yaml` ready — **not verified live in this pass** |
+| Public HTTPS | Pending authorized Render/Fly/ngrok publish |
 
 ---
 
-## P0 remaining for Sunday
+## Remaining
 
-- [x] Public HTTPS URL (ngrok tunnel; replace with Render for stability)  
-- [x] Pitch slides markdown — [`docs/PITCH_SLIDES.md`](docs/PITCH_SLIDES.md)  
-- [x] Devpost checklist — [`docs/DEVPOST.md`](docs/DEVPOST.md)  
-- [x] Push latest branch to GitHub  
-- [ ] Record ≤3 min demo video from the live UI  
-- [ ] Export slides to PDF / Google Slides + screenshot  
+- [ ] Publish + verify production HTTPS URL end-to-end with live keys  
+- [ ] Record ≤3 min demo video  
+- [ ] Tighten CORS and paid-call rate limits for public production  

@@ -36,7 +36,19 @@ export:
   output_dir: exports
 
 adapters:
-  web_search: none
+  web_search: gemini_google_search
+  menu_extract: gemini
+  menu_extract_fallback: deterministic_claude
+
+gemini:
+  prompt_version: extract_menu_v1
+  menu_find_with_google_search: true
+
+off_campus_dps:
+  enabled: true
+  default_campus_id: usc_upc
+  # Small pilot batch; raise after verifying DB records + source refs
+  default_batch_limit: 5
 
 refresh:
   skip_unchanged_hash: true

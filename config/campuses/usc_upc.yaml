@@ -11,7 +11,7 @@ center:
   lat: 34.0224
   lng: -118.2851
 
-# Official patrol/service boundary (NOT the same as Clery geography)
+# Official DPS patrol/service boundary (NOT the same as Clery geography)
 boundary:
   type: official_patrol
   boundary_id: usc_upc_dps
@@ -20,6 +20,28 @@ boundary:
   notes: >
     USC DPS University Park Campus Patrol Area.
     Distinct from HSC patrol area and Clery geography.
+
+# Academic / University Park Campus core (teammate on-campus dining ownership).
+# Intentionally excludes USC Village commercial so Village retail is off-campus.
+campus_boundary:
+  boundary_id: usc_upc_campus
+  boundary_version: v2025-01
+  source_url: https://planning.lacity.gov/EIR/USC/SpecificPlans/USC%20Specific%20Plan%20(as%20approved%20by%20City%20Council).pdf
+  notes: >
+    Approximate UPC academic core from LA City Specific Plan / FPM narrative.
+    USC Village commercial is outside this polygon (off-campus DPS pipeline).
+    EVK / Parkside / Village Dining Hall remain teammate-owned via hospitality seeds.
+
+# Dual-boundary aliases used by the off-campus DPS job
+patrol_boundary:
+  boundary_id: usc_upc_dps
+  boundary_version: v2025-01
+  source_url: https://dps.usc.edu/patrol/
+
+pipeline_ownership:
+  on_campus_teammate: campus_hospitality_dining
+  off_campus: outside_campus_core_inside_dps
+  village_as_off_campus: true
 
 # Food discovery / walk preferences (product UX — not an official boundary)
 discovery:
@@ -31,8 +53,16 @@ discovery:
     - cafe
     - meal_takeaway
     - bakery
+  off_campus_dps:
+    batch_limit: 5
+    max_places_tiles: 12
+    max_geocode_per_run: 40
+    max_menu_urls_per_restaurant: 3
+    max_llm_usd_per_run: 2.0
+    skip_teammate_hospitality: true
 
 # USC Hospitality / UPC seeds (permitted campus dining sources for ingest)
+# Owned by the on-campus teammate pipeline — off-campus DPS job skips these.
 seeds:
   - name: Everybody's Kitchen
     branch_name: EVK

@@ -51,9 +51,10 @@ def fetch_page(url: str, *, transport=None) -> Page:
             _,_,raw=_read(robots,client)
             rules=RobotFileParser();rules.parse(raw.decode(errors='replace').splitlines())
             if not rules.can_fetch(USER_AGENT,url):
-                raise ValueError('Menu retrieval disallowed by robots.txt')
+                raise ValueError('Menu retrieval disallowed by the site robots.txt')
         except httpx.HTTPStatusError as exc:
-            if exc.response.status_code not in {404,410}:
+            # RFC 9309: a 4xx answer means no robots policy is published; 5xx means assume disallowed.
+            if not 400<=exc.response.status_code<500:
                 raise ValueError('Unable to check robots.txt') from exc
         final,kind,raw=_read(url,client)
         if kind.startswith('application/pdf'):

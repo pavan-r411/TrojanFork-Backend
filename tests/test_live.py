@@ -8,8 +8,8 @@ from trojanbites_extract.recommend import live, web
 from trojanbites_extract.recommend.service import RecommendationResult
 
 
-def request(mode='off_campus',**kwargs):
-    return live.LiveRequest(mode=mode,date='2026-11-14',lat=34.0224,lng=-118.2851,meal_period='lunch',**kwargs)
+def request(mode='off_campus', meal_period='lunch', **kwargs):
+    return live.LiveRequest(mode=mode,date='2026-11-14',lat=34.0224,lng=-118.2851,meal_period=meal_period,**kwargs)
 
 
 @pytest.fixture(autouse=True)
@@ -29,7 +29,38 @@ def test_usc_exact_date_period_and_no_catalog(monkeypatch):
     assert result['suggested_meals'][0]['item_name']=='Tofu Bowl'
     assert result['suggested_meals'][0]['published_calories_kcal'] is None
     page['date']='20261113'
+    live.clear_feed_cache()
     assert not live.live_suggest(request('usc_dining',dining_hall='evk'))['suggested_meals']
+
+
+def test_usc_empty_breakfast_falls_back_to_brunch():
+    meals = [
+        {'name': 'Breakfast', 'stations': [{'menu': []}]},
+        {'name': 'Brunch', 'stations': [{'menu': [{'item': 'Eggs'}]}]},
+        {'name': 'Lunch', 'stations': [{'menu': []}]},
+        {'name': 'Dinner', 'stations': [{'menu': [{'item': 'Pasta'}]}]},
+    ]
+    assert live._usc_meal_periods('breakfast', meals) == ['brunch']
+    assert live._usc_meal_periods('lunch', meals) == ['brunch']
+    assert live._usc_meal_periods('dinner', meals) == ['dinner']
+    meals[0]['stations'][0]['menu'] = [{'item': 'Oatmeal'}]
+    assert live._usc_meal_periods('breakfast', meals) == ['breakfast']
+
+
+def test_usc_brunch_fallback_returns_dishes(monkeypatch):
+    page = {
+        'date': '20261114',
+        'meals': [
+            {'name': 'Breakfast', 'stations': [{'menu': []}]},
+            {'name': 'Brunch', 'stations': [{'menu': [{'item': 'Avocado Toast', 'preferences': []}]}]},
+            {'name': 'Lunch', 'stations': [{'menu': []}]},
+            {'name': 'Dinner', 'stations': [{'menu': [{'item': 'Dinner Bowl', 'preferences': []}]}]},
+        ],
+    }
+    monkeypatch.setattr(live, 'fetch_page', lambda url: web.Page(url, json.dumps(page), []))
+    breakfast = live.live_suggest(request('usc_dining', dining_hall='evk', meal_period='breakfast'))
+    assert breakfast['suggested_meals'][0]['item_name'] == 'Avocado Toast'
+    assert any('Brunch' in w for w in breakfast.get('warnings', []))
 
 
 def test_invalid_hall_and_missing_location():
@@ -85,9 +116,15 @@ def test_number_requires_item_specific_source_and_label():
     assert live._number(f,f.quote,'Tofu Bowl','price') is None
 
 
-def test_restrictions_skip_all_discovery(monkeypatch):
-    monkeypatch.setattr(live,'_offcampus',lambda *_:pytest.fail('Network should not be called'))
+def test_allergies_hide_only_dishes_with_evidence(monkeypatch):
+    setup_offcampus(monkeypatch)
     body=request();body.preferences.allergies=['peanut']
+    data=live.live_suggest(body)
+    assert data['suggested_meals'][0]['item_name']=='Tofu Bowl'
+    assert any('unverified' in warning for warning in data['warnings'])
+    body=request();body.preferences.allergies=['soy']  # "tofu" in the dish text is evidence of soy
+    assert not live.live_suggest(body)['suggested_meals']
+    body=request();body.preferences.excluded_ingredients=['bowls']
     assert not live.live_suggest(body)['suggested_meals']
 
 

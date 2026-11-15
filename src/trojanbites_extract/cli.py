@@ -14,6 +14,10 @@ from trojanbites_extract.campus.resolve import resolve_campus
 from trojanbites_extract.campus.registry import list_campuses
 from trojanbites_extract.import_pilot import ensure_pilot_files_in_place, import_pilot_json
 from trojanbites_extract.jobs.ingestion import create_ingestion_job, get_job, tag_existing_pilot_as_usc
+from trojanbites_extract.jobs.off_campus_dps import (
+    create_off_campus_dps_job,
+    get_off_campus_job,
+)
 from trojanbites_extract.pipeline import discover_places, ingest_seeds, run_restaurant
 from trojanbites_extract.query.filters import MealQuery, filter_meals, nearby_restaurants
 from trojanbites_extract.settings import get_settings
@@ -81,6 +85,21 @@ def main(argv: list[str] | None = None) -> int:
     p_ingest = sub.add_parser("ingest-campus", help="Run campus vertical-slice ingestion job")
     p_ingest.add_argument("campus_id")
     p_ingest.add_argument("--sync", action="store_true", help="Run synchronously")
+
+    p_off = sub.add_parser(
+        "ingest-off-campus-dps",
+        help="Discover+ingest restaurants outside campus core but inside DPS patrol",
+    )
+    p_off.add_argument("--campus", default="usc_upc")
+    p_off.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Max off-campus restaurants to process (default from campus config)",
+    )
+    p_off.add_argument("--async", dest="run_async", action="store_true", help="Run in background thread")
+    p_off.add_argument("--force", action="store_true", help="Start a new job even if today's exists")
+    p_off.add_argument("--job-id", default=None, help="Print status for an existing job id")
 
     p_list = sub.add_parser("list-restaurants", help="List restaurants in DB")
 
@@ -155,6 +174,20 @@ def main(argv: list[str] | None = None) -> int:
             out = get_job(out["job_id"]) or out
         print(json.dumps(out, indent=2))
         return 0
+
+    if args.cmd == "ingest-off-campus-dps":
+        if args.job_id:
+            out = get_off_campus_job(args.job_id)
+            print(json.dumps(out or {"error": "job_not_found"}, indent=2))
+            return 0 if out else 1
+        out = create_off_campus_dps_job(
+            args.campus,
+            batch_limit=args.limit,
+            run_async=args.run_async,
+            force=args.force,
+        )
+        print(json.dumps(out, indent=2))
+        return 0 if (out or {}).get("status") in {"completed", "partial", "queued", "running"} else 1
 
     if args.cmd == "ingest-seeds":
         ids = ingest_seeds(geocode=args.geocode)

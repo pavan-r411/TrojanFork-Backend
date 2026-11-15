@@ -29,6 +29,7 @@ from trojanbites_extract.query.filters import (
 from trojanbites_extract.recommend.live import LiveRequest, LiveDiscoveryError, live_suggest
 from trojanbites_extract.recommend.service import UserPreferences, select_meals
 from trojanbites_extract.settings import get_settings, load_extraction_config
+from trojanbites_extract.auth.routes import router as accounts_router
 from trojanbites_extract.store.db import init_db, session_scope
 from trojanbites_extract.store.models import MenuItem, Restaurant
 
@@ -63,7 +64,7 @@ app = FastAPI(
         "Contract: docs/API_CONTRACT.md"
 
     ),
-    version="0.5.0",
+    version="0.6.0",
     lifespan=lifespan,
 )
 
@@ -74,6 +75,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.include_router(accounts_router)
 
 
 class HealthOut(BaseModel):

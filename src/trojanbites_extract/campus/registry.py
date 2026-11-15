@@ -25,10 +25,17 @@ class CampusConfig:
     boundary_official: bool
     boundary_notes: str | None
     boundary_source_url: str | None
-    default_walk_miles: float
-    max_walk_miles: float
-    places_tile_radius_m: float
-    included_types: list[str]
+    campus_boundary_id: str | None = None
+    campus_boundary_version: str | None = None
+    campus_boundary_source_url: str | None = None
+    patrol_boundary_id: str | None = None
+    patrol_boundary_version: str | None = None
+    village_as_off_campus: bool = True
+    default_walk_miles: float = 0.3
+    max_walk_miles: float = 1.0
+    places_tile_radius_m: float = 500.0
+    included_types: list[str] = field(default_factory=lambda: ["restaurant"])
+    off_campus_discovery: dict[str, Any] = field(default_factory=dict)
     seeds: list[dict[str, Any]] = field(default_factory=list)
     timezone: str = "America/Los_Angeles"
     raw: dict[str, Any] = field(default_factory=dict, repr=False)
@@ -52,6 +59,9 @@ def load_universities_registry() -> dict[str, Any]:
 def _parse_campus(data: dict[str, Any]) -> CampusConfig:
     center = data.get("center") or {}
     boundary = data.get("boundary") or {}
+    campus_boundary = data.get("campus_boundary") or {}
+    patrol_boundary = data.get("patrol_boundary") or {}
+    ownership = data.get("pipeline_ownership") or {}
     discovery = data.get("discovery") or {}
     return CampusConfig(
         campus_id=data["campus_id"],
@@ -71,10 +81,18 @@ def _parse_campus(data: dict[str, Any]) -> CampusConfig:
         boundary_official=bool(boundary.get("official", boundary.get("type") == "official_patrol")),
         boundary_notes=boundary.get("notes"),
         boundary_source_url=boundary.get("source_url"),
+        campus_boundary_id=campus_boundary.get("boundary_id"),
+        campus_boundary_version=campus_boundary.get("boundary_version"),
+        campus_boundary_source_url=campus_boundary.get("source_url"),
+        patrol_boundary_id=patrol_boundary.get("boundary_id") or boundary.get("boundary_id"),
+        patrol_boundary_version=patrol_boundary.get("boundary_version")
+        or boundary.get("boundary_version"),
+        village_as_off_campus=bool(ownership.get("village_as_off_campus", True)),
         default_walk_miles=float(discovery.get("default_walk_miles", 0.3)),
         max_walk_miles=float(discovery.get("max_walk_miles", 1.0)),
         places_tile_radius_m=float(discovery.get("places_tile_radius_m", 500)),
         included_types=list(discovery.get("included_types") or ["restaurant"]),
+        off_campus_discovery=dict(discovery.get("off_campus_dps") or {}),
         seeds=list(data.get("seeds") or []),
         timezone=data.get("timezone") or "America/Los_Angeles",
         raw=data,

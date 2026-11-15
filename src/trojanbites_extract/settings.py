@@ -25,6 +25,8 @@ class Settings(BaseSettings):
         env_file=str(ROOT / ".env"),
         env_file_encoding="utf-8",
         extra="ignore",
+        # Empty shell exports like OPENAI_API_KEY= must not block .env values.
+        env_ignore_empty=True,
     )
 
     provider_records_enabled: bool = False
@@ -37,8 +39,13 @@ class Settings(BaseSettings):
     recommendation_provider: str = 'openai'
     openai_api_key: str | None = None
     openai_model: str = 'gpt-4.1-mini'
-    openai_timeout_s: float = Field(8.0, gt=0, le=30)
+    openai_timeout_s: float = Field(12.0, gt=0, le=30)
     recommendation_candidate_limit: int = Field(30, ge=1, le=100)
+    # Live plan behaviour (see docs/API_CONTRACT.md → /v1/live/plan)
+    live_snapshot_supplement: bool = True   # add TrojanPlate's saved nearby menus, labeled, when in range
+    live_restaurant_limit: int = Field(6, ge=1, le=10)   # nearest restaurant sites read per off-campus plan
+    places_photos_enabled: bool = True      # venue photo for off-campus cards (one Places Photo call per venue shown)
+    session_ttl_hours: int = Field(168, ge=1, le=2160)
 
     anthropic_api_key: str | None = None
     anthropic_model: str = "claude-sonnet-4-5-20250929"
@@ -83,7 +90,17 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
-    return Settings()
+    settings = Settings()
+    # Accept common aliases when OPENAI_API_KEY is unset/empty.
+    if not settings.openai_api_key:
+        alias = (os.getenv("OPENAI_API_KEY") or os.getenv("CHAT_GPT_API_KEY") or "").strip()
+        if alias:
+            object.__setattr__(settings, "openai_api_key", alias)
+    if not settings.anthropic_api_key:
+        alias = (os.getenv("ANTHROPIC_API_KEY") or os.getenv("CLAUDE_API_KEY") or "").strip()
+        if alias:
+            object.__setattr__(settings, "anthropic_api_key", alias)
+    return settings
 
 
 @lru_cache

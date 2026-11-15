@@ -633,3 +633,24 @@ Response includes `data_mode: live`, `retrieved_at`, `suggested_meals`, `persona
 `POST /v1/live/plan` accepts `{mode, date, profile, context}`. `profile` supports goal, dietary_preferences, allergies, disliked_ingredients, snacks, targets, remaining. `context` supports origin `{lat,lng}`, max_walk_m, per_meal_budget_cents, daily_budget_cents, meal_swipes_available, dining_hall. Response is the frontend `DailyPlan` type with source-attributed recommendations for breakfast/lunch/dinner and optional snack. Off-campus retrieval/extraction runs once within the request. Selections and locks are managed in the browser, and do not imply consumption. No user database is accessed.
 
 The frontend is served at `/ui/`. It uses `/v1/live/plan`, not the legacy catalog `/v1/suggest`. Nutrition targets and eaten logs are session-local in the browser, with no calls to the previously proposed server `/api/nutrition/daily` or `/api/meals/log` routes. These routes are not implemented. No demo data is used in live mode.
+
+### `/v1/live/plan` behaviour update (2026-11-15) — supersedes earlier notes where they differ
+
+**Allergies and dislikes no longer clear the plan.** A dish is hidden only when published evidence says so; everything else is returned with a label.
+
+| Mode | Evidence used | What happens |
+|---|---|---|
+| `usc_dining` | USC's official per-dish allergen tags (dairy, eggs, fish, shellfish, soy, wheat/gluten, sesame, peanuts, tree nuts, pork) | Dishes tagged with a listed allergen are hidden. `allergen_information_status` is `listed by USC: …`, `none listed by USC`, or `not analyzed by USC`; `allergens` carries the tag list. Allergies outside USC's vocabulary are matched against dish names only and reported in `restrictions.allergies_label_only`. |
+| `off_campus` | The dish's own published text | Dishes whose name/description names the allergen (or a common synonym, e.g. "cheese" for dairy) are hidden. All others keep `allergen_information_status: "unverified"` and a plan warning. |
+
+Disliked ingredients are matched against dish names (and off-campus descriptions) in both modes. The legacy `/v1/suggest` catalog endpoint still fails closed.
+
+**USC Dining** reads `hospitality.usc.edu/wp-json/hsp-api/v1/get-res-dining-menus/{hall}` once per hall (10-minute in-memory cache). Station headers, service notices, condiments/toppings and the registration-only Allergen Awareness Zone are not offered as meals. The feed publishes **no calories or macros** (item keys are `item`, `dietary_preferences`, `allergens`, `preferences`), so dining-hall nutrition is AI-estimated; if USC adds macros to the feed they are parsed and take precedence automatically. `source.status` is `verified` for the dated official feed; `venue.location_label` carries the station; `walking_meters`/`walking_minutes` are straight-line estimates from `context.origin` to the hall.
+
+**Off-campus** checks up to `LIVE_RESTAURANT_LIMIT` (default 6) nearest restaurant websites in parallel. One unreadable site, a failed extraction or a Places outage no longer fails the request. `sources_checked[]` reports every venue: `{name, distance_miles, website, source: live|saved_snapshot, status, dishes, detail?}` with `status` one of `ok`, `no_website`, `not_checked`, `menu_unreachable`, `extraction_failed`, `no_readable_dishes`, `no_dishes_matched_filters`. robots.txt handling follows RFC 9309 (a 4xx robots response means no policy is published).
+
+With `LIVE_SNAPSHOT_SUPPLEMENT=true` (default) TrojanPlate's saved nearby menus (`data/menus/off_campus/curated_upc_0_3mi.json`) within the walking radius are added for venues the live pass did not read. Those cards have `source.kind: "curated_snapshot"`, `source.status: "stale"` and a plan warning; they supply published nutrition (Panda Express, Sweetgreen) and breakfast menus (McKay's, Panda Express) where the origin is in range. Set it to `false` for live-only behaviour.
+
+**Estimates.** Prices are estimated before ranking only for unpriced dishes (budget gating). Nutrition is estimated once per plan for the dishes actually recommended, so every card and the browser's daily totals have numbers; published values are never replaced.
+
+**New recommendation fields:** `cuisine` + `cuisine_status` (`published` from Places/saved data, `inferred` when the estimator recognises the dish style, else `unknown`), `image_url` + `image_credit` (Places venue photo for live off-campus venues, resolved server-side so the API key never reaches the browser; `PLACES_PHOTOS_ENABLED=false` turns it off; dining halls have none), `allergens`, `source.kind`, `venue.location_label`. Top level: `restrictions`, `sources_checked`.

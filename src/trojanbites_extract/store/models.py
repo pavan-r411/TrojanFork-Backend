@@ -211,6 +211,59 @@ class JobState(Base):
     )
 
 
+class User(Base):
+    """Account. Passwords are stored only as PBKDF2 hashes."""
+
+    __tablename__ = "users"
+
+    user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    email: Mapped[str] = mapped_column(String(320), unique=True, index=True)
+    password_hash: Mapped[str] = mapped_column(String(256))
+    display_name: Mapped[Optional[str]] = mapped_column(String(80))
+    profile_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
+    )
+
+    sessions: Mapped[list[AuthSession]] = relationship(back_populates="user")
+    plans: Mapped[list[SavedDayPlan]] = relationship(back_populates="user")
+
+
+class AuthSession(Base):
+    """Bearer session. Only the SHA-256 of the token is stored."""
+
+    __tablename__ = "auth_sessions"
+
+    session_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    user_id: Mapped[str] = mapped_column(String(64), ForeignKey("users.user_id"), index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    expires_at: Mapped[datetime] = mapped_column(DateTime, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    revoked_at: Mapped[Optional[datetime]] = mapped_column(DateTime)
+
+    user: Mapped[User] = relationship(back_populates="sessions")
+
+
+class SavedDayPlan(Base):
+    """A user's saved day plan. Reads and writes are scoped to user_id."""
+
+    __tablename__ = "saved_day_plans"
+    __table_args__ = (UniqueConstraint("user_id", "plan_date", "mode"),)
+
+    plan_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    user_id: Mapped[str] = mapped_column(String(64), ForeignKey("users.user_id"), index=True)
+    plan_date: Mapped[str] = mapped_column(String(10), index=True)
+    mode: Mapped[str] = mapped_column(String(32))
+    plan_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
+    )
+
+    user: Mapped[User] = relationship(back_populates="plans")
+
+
 class IngestionJob(Base):
     """Campus-scoped collection job with resumable/idempotent semantics."""
 

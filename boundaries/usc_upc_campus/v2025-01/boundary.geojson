@@ -1,0 +1,28 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "boundary_id": "usc_upc_campus",
+        "version": "v2025-01",
+        "name": "USC University Park Campus academic core (excludes Village commercial)",
+        "approximation": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-118.29160, 34.01820],
+            [-118.28240, 34.01820],
+            [-118.28090, 34.01820],
+            [-118.28090, 34.02280],
+            [-118.28240, 34.02500],
+            [-118.29160, 34.02500],
+            [-118.29160, 34.01820]
+          ]
+        ]
+      }
+    }
+  ]
+}

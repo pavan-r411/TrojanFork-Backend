@@ -34,6 +34,7 @@ class PlacesDiscoveryAdapter:
                 "places.location",
                 "places.businessStatus",
                 "places.websiteUri",
+                "places.photos",
             ]
         )
         headers = {
@@ -66,6 +67,8 @@ class PlacesDiscoveryAdapter:
                     seen.add(pid)
                     loc = place.get("location") or {}
                     name = (place.get("displayName") or {}).get("text")
+                    photo = next((ph for ph in place.get("photos") or [] if isinstance(ph, dict) and ph.get("name")), {})
+                    credit = next((a.get("displayName") for a in photo.get("authorAttributions") or [] if isinstance(a, dict) and a.get("displayName")), None)
                     out.append(
                         DiscoveryCandidate(
                             provider="google_places",
@@ -78,6 +81,8 @@ class PlacesDiscoveryAdapter:
                             business_status=place.get("businessStatus"),
                             lat=loc.get("latitude"),
                             lng=loc.get("longitude"),
+                            photo_name=photo.get("name"),
+                            photo_credit=credit,
                         )
                     )
         return out
