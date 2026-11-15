@@ -20,3 +20,6 @@ exports/**
 htmlcov/
 # Local Maps/OpenAI debug responses
 data/provider_records/
+
+# Raw scraped dataset bundle (third-party images); keep local, do not publish
+usc_restaurants_dataset_bundle.zip
