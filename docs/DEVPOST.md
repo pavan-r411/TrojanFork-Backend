@@ -4,10 +4,10 @@
 
 ## Links to fill
 
-- [ ] Public demo URL (HTTPS) — root `/` is the mobile UI  
-- [ ] GitHub: https://github.com/pavan-r411/TrojanFork-Backend/tree/murali-krishna  
+- [x] Public demo URL (HTTPS): https://lili-sparing-aliya.ngrok-free.dev/ (ngrok; keep uvicorn+ngrok running for judges, or deploy via `render.yaml`)  
+- [x] GitHub: https://github.com/pavan-r411/TrojanFork-Backend/tree/murali-krishna  
 - [ ] Demo video ≤ 3 minutes  
-- [ ] Pitch deck PDF / Google Slides  
+- [x] Pitch deck source: [`PITCH_SLIDES.md`](PITCH_SLIDES.md) — export to PDF / Google Slides  
 - [ ] Screenshot of working UI  
 
 ## Suggested description (short)
