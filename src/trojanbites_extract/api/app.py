@@ -7,6 +7,7 @@ from typing import Any, Literal
 
 from fastapi import FastAPI, Header, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from pydantic import BaseModel, Field
 
 from trojanbites_extract.campus.registry import list_campuses, load_campus, load_universities_registry
@@ -69,6 +70,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+app.add_middleware(GZipMiddleware, minimum_size=1024)   # a full menu of options is large but compresses about 10 to 1
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -721,6 +723,9 @@ def frontend_daily_plan(body: PlanRequest) -> dict[str, Any]:
         return daily_plan(body)
     except LiveDiscoveryError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+from trojanbites_extract.flow.routes import router as flow_router
+app.include_router(flow_router)
 
 # The frontend and API share an origin; no backend URL is embedded in browser code.
 from fastapi.staticfiles import StaticFiles
