@@ -10,10 +10,24 @@ def test_health():
     r = client.get("/health")
     assert r.status_code == 200
     body = r.json()
-    assert body["product"] == "Trojan Fork"
+    assert body["product"] == "TrojanPlate"
     assert "usc_upc" in body["campuses"]
     assert "ucla_westwood" in body["campuses"]
     assert body["ready"] is True
+
+
+def test_usc_overview_for_judging():
+    r = client.get("/v1/usc/overview")
+    assert r.status_code == 200
+    body = r.json()
+    assert body["product"] == "TrojanPlate"
+    assert body["scope"] == "usc_upc"
+    assert body["campus"]["campus_id"] == "usc_upc"
+    assert body["campus"]["boundary"]["official"] is True
+    assert "catalog" in body
+    assert body["catalog"]["usc_dining_dishes"] >= 1
+    assert "ai_guarantees" in body
+    assert len(body["ai_guarantees"]) >= 3
 
 
 def test_resolve_usc():

@@ -2,10 +2,12 @@ from __future__ import annotations
 
 from contextlib import asynccontextmanager
 from dataclasses import asdict
-from typing import Any
+from typing import Any, Literal
 
 from fastapi import FastAPI, Header, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from trojanbites_extract.campus.registry import list_campuses, load_campus, load_universities_registry
@@ -15,15 +17,19 @@ from trojanbites_extract.jobs.ingestion import (
     get_job,
     tag_existing_pilot_as_usc,
 )
+from trojanbites_extract.plan.engine import plan_day, swap_meal
+from trojanbites_extract.plan.menus import load_off_campus_menu, load_usc_dining_menu
 from trojanbites_extract.query.filters import (
     DEFAULT_MAX_DISTANCE_MILES,
     MealQuery,
     filter_meals,
     nearby_restaurants,
 )
-from trojanbites_extract.settings import get_settings, load_extraction_config
+from trojanbites_extract.settings import ROOT, get_settings, load_extraction_config
 from trojanbites_extract.store.db import init_db, session_scope
 from trojanbites_extract.store.models import MenuItem, Restaurant
+
+FRONTEND_DIR = ROOT / "frontend"
 
 
 @asynccontextmanager
@@ -34,13 +40,16 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(
-    title="Trojan Fork API",
+    title="TrojanPlate API",
     description=(
-        "Multi-university food discovery API. "
-        "Location resolves campus; suggestions use stored catalogs. "
-        "LLM extraction runs in background jobs only."
+        "TrojanPlate — Your goals. Your campus. Your plate. "
+        "USC daily diet planner: residential dining halls + walkable off-campus menus. "
+        "POST /v1/plan/day returns up to three recommendations per meal; "
+        "POST /v1/plan/swap replans the rest of the day. "
+        "Unknown nutrition stays null; never invent dishes. "
+        "Judging: docs/JUDGING.md · UI: /"
     ),
-    version="0.2.0",
+    version="0.4.0",
     lifespan=lifespan,
 )
 
@@ -51,6 +60,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if FRONTEND_DIR.is_dir():
+    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="static")
+
+
+@app.get("/")
+def trojanplate_home() -> FileResponse:
+    index = FRONTEND_DIR / "index.html"
+    if not index.exists():
+        raise HTTPException(status_code=404, detail="frontend_missing")
+    return FileResponse(index)
 
 
 class HealthOut(BaseModel):
@@ -68,7 +88,7 @@ def health() -> HealthOut:
     campuses = [c.campus_id for c in list_campuses()]
     return HealthOut(
         status="ok",
-        product=cfg.get("product_name", "Trojan Fork"),
+        product=cfg.get("product_name", "TrojanPlate"),
         database_url=get_settings().database_url,
         campuses=campuses,
         ready=True,
@@ -103,9 +123,164 @@ def campuses() -> dict[str, Any]:
             }
         )
     return {
+        "product_scope": reg.get("product_scope", "usc_only"),
         "default_campus_id": reg.get("default_campus_id"),
+        "judging_campus_id": reg.get("judging_campus_id", "usc_upc"),
         "count": len(items),
         "campuses": items,
+    }
+
+
+@app.get("/v1/usc/overview")
+def usc_overview() -> dict[str, Any]:
+    """USC pitch + snapshot stats for judges and campus partners."""
+    usc = load_campus("usc_upc")
+    dining = load_usc_dining_menu()
+    off = load_off_campus_menu()
+    return {
+        "product": "TrojanPlate",
+        "tagline": "Your goals. Your campus. Your plate.",
+        "scope": "usc_upc",
+        "university": "University of Southern California",
+        "campus": {
+            "campus_id": usc.campus_id,
+            "display_name": usc.display_name,
+            "center": {"lat": usc.center_lat, "lng": usc.center_lng},
+            "default_walk_miles": usc.default_walk_miles,
+            "boundary": {
+                "type": usc.boundary_type,
+                "official": usc.boundary_official,
+                "boundary_id": usc.boundary_id,
+                "source_url": usc.boundary_source_url,
+                "notes": usc.boundary_notes,
+            },
+        },
+        "friction": (
+            "Trojans need a full-day diet plan from dining halls or nearby restaurants "
+            "that respects goals, diet, budget, and walkability — without invented nutrition."
+        ),
+        "ai_guarantees": [
+            "Day plans use verified menu snapshots — never fabricated dishes.",
+            "Unknown calories/protein stay unavailable; nutrition estimation is off.",
+            "Allergies and hard budgets always beat ranking preferences.",
+            "Residential dining is meal-swipe / AYCE — no fake per-dish prices.",
+        ],
+        "catalog": {
+            "usc_dining_dishes": len(dining.get("dishes") or []),
+            "usc_dining_venues": len(dining.get("venues") or []),
+            "off_campus_dishes": len(off.get("dishes") or []),
+            "off_campus_venues": len(off.get("venues") or []),
+            "hospitality_seeds": len(usc.seeds),
+        },
+        "demo": {
+            "ui": "/",
+            "plan": "POST /v1/plan/day",
+            "swap": "POST /v1/plan/swap",
+            "script": "scripts/demo_usc.sh",
+            "judging": "docs/JUDGING.md",
+            "adoption": "docs/ADOPTION.md",
+        },
+        "adoption_partners": [
+            "USC Student Government",
+            "USC Hospitality",
+            "DPS boundary reference (public patrol materials)",
+        ],
+    }
+
+
+class PlanProfile(BaseModel):
+    nutrition_goal: str = "balanced"
+    dietary_preference: str | None = None
+    allergies: list[str] = Field(default_factory=list)
+    exclusions: list[str] = Field(default_factory=list)
+    preferred_foods: list[str] = Field(default_factory=list)
+    prefer_high_protein: bool = False
+    age_range: str | None = None
+    activity_level: str | None = None
+    height_cm: float | None = None
+    weight_kg: float | None = None
+    goal_weight_kg: float | None = None
+
+
+class PlanSituation(BaseModel):
+    mode: Literal["usc_dining", "off_campus"]
+    meal_periods: list[str] = Field(default_factory=lambda: ["breakfast", "lunch", "dinner"])
+    lat: float | None = 34.0224
+    lng: float | None = -118.2851
+    max_miles: float = Field(DEFAULT_MAX_DISTANCE_MILES, ge=0.05, le=5.0)
+    preferred_cuisines: list[str] = Field(default_factory=list)
+    budget_per_meal: float | None = None
+    budget_daily: float | None = None
+    meal_swipes_remaining: int | None = None
+    dining_dollars_remaining: float | None = None
+    include_snacks: bool = False
+    menu_date: str | None = None
+    ranking_priority: str = "balanced"
+
+
+class LockedMeal(BaseModel):
+    meal_period: str
+    dish_id: str
+    status: Literal["selected", "eaten", "locked"] = "selected"
+
+
+class PlanDayBody(BaseModel):
+    profile: PlanProfile = Field(default_factory=PlanProfile)
+    situation: PlanSituation
+    locked: list[LockedMeal] = Field(default_factory=list)
+
+
+class PlanSwapBody(BaseModel):
+    profile: PlanProfile = Field(default_factory=PlanProfile)
+    situation: PlanSituation
+    locked: list[LockedMeal] = Field(default_factory=list)
+    meal_period: str
+    dish_id: str
+    status: Literal["selected", "eaten", "locked"] = "selected"
+
+
+@app.post("/v1/plan/day")
+def api_plan_day(body: PlanDayBody) -> dict[str, Any]:
+    return plan_day(
+        body.profile.model_dump(),
+        body.situation.model_dump(),
+        [m.model_dump() for m in body.locked],
+    )
+
+
+@app.post("/v1/plan/swap")
+def api_plan_swap(body: PlanSwapBody) -> dict[str, Any]:
+    return swap_meal(
+        body.profile.model_dump(),
+        body.situation.model_dump(),
+        [m.model_dump() for m in body.locked],
+        meal_period=body.meal_period,  # type: ignore[arg-type]
+        dish_id=body.dish_id,
+        status=body.status,
+    )
+
+
+@app.get("/v1/menus/usc-dining")
+def menus_usc_dining(menu_date: str | None = None) -> dict[str, Any]:
+    data = load_usc_dining_menu(menu_date)
+    return {
+        "metadata": data.get("metadata"),
+        "path": data.get("_path"),
+        "venues": data.get("venues"),
+        "dish_count": len(data.get("dishes") or []),
+        "dishes": data.get("dishes"),
+    }
+
+
+@app.get("/v1/menus/off-campus")
+def menus_off_campus() -> dict[str, Any]:
+    data = load_off_campus_menu()
+    return {
+        "metadata": data.get("metadata"),
+        "path": data.get("_path"),
+        "venues": data.get("venues"),
+        "dish_count": len(data.get("dishes") or []),
+        "dishes": data.get("dishes"),
     }
 
 

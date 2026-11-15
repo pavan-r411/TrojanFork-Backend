@@ -1,0 +1,16 @@
+{
+  "profile": {
+    "nutrition_goal": "training_muscle",
+    "dietary_preference": "vegetarian",
+    "allergies": [],
+    "exclusions": [],
+    "prefer_high_protein": true
+  },
+  "situation": {
+    "mode": "usc_dining",
+    "meal_periods": ["breakfast", "lunch", "dinner"],
+    "meal_swipes_remaining": 3,
+    "include_snacks": false
+  },
+  "locked": []
+}

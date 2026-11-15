@@ -1,0 +1,21 @@
+{
+  "profile": {
+    "nutrition_goal": "balanced",
+    "dietary_preference": "vegetarian",
+    "allergies": [],
+    "exclusions": [],
+    "prefer_high_protein": false
+  },
+  "situation": {
+    "mode": "off_campus",
+    "meal_periods": ["breakfast", "lunch", "dinner"],
+    "lat": 34.0224,
+    "lng": -118.2851,
+    "max_miles": 0.3,
+    "budget_per_meal": 12,
+    "budget_daily": 30,
+    "preferred_cuisines": ["Mediterranean", "Italian", "American"],
+    "include_snacks": false
+  },
+  "locked": []
+}

@@ -1,7 +1,7 @@
 campus_id: usc_upc
 boundary_id: usc_upc_dps
 boundary_version: v2025-01
-product_name: Trojan Fork
+product_name: TrojanPlate
 
 places:
   included_types:
