@@ -388,13 +388,20 @@ def _within_budget(body, price) -> bool:
     return price<=body.budget_max
 
 
-def _curated_hits(data, body, skip=(), *, require_radius=True, venue_ok=None, period=None,
+def _curated_hits(data, body, skip=(), *, require_radius=True, venue_ok=None, period=...,
                   allergy_synonyms=True, source_label='saved_snapshot'):
-    """Shared loader for TrojanPlate curated snapshots (off-campus or USC seed)."""
+    """Shared loader for TrojanPlate curated snapshots (off-campus or USC seed).
+
+    ``period=...`` (default) uses the request meal period. ``period=None`` means
+    keep every meal period — required for daily off-campus plans that discover once.
+    """
     allergies,_=canonical_allergies(body.preferences.allergies)
     allergy_words=allergy_text_terms(body.preferences.allergies,include_synonyms=allergy_synonyms)
     dislikes=stems(body.preferences.excluded_ingredients)
-    period=(period or getattr(body,'meal_period',None) or '').lower() or None
+    if period is ...:
+        period=(getattr(body,'meal_period',None) or '').lower() or None
+    elif period is not None:
+        period=str(period).lower() or None
     venues,hits,sources,info={},[],[],{}
     for venue in data.get('venues') or []:
         if venue.get('lat') is None or venue.get('lng') is None or not venue.get('name'): continue
@@ -464,12 +471,17 @@ def _curated_hits(data, body, skip=(), *, require_radius=True, venue_ok=None, pe
     return hits,sources,list(info.values())
 
 
-def _curated_offcampus(body, skip=()):
-    """TrojanPlate's saved nearby menus — labeled supplement for the off-campus tab."""
+def _curated_offcampus(body, skip=(), *, period=...):
+    """TrojanPlate's saved nearby menus — labeled supplement for the off-campus tab.
+
+    ``period`` defaults to the request meal period. Daily ``/v1/live/plan`` passes
+    ``period=None`` so breakfast-only saved dishes are not dropped by the shared
+    lunch placeholder used for one-shot discovery.
+    """
     from trojanbites_extract.plan.menus import load_off_campus_menu
     try: data=load_off_campus_menu()
     except (OSError,ValueError): return [],[],[]
-    return _curated_hits(data,body,skip,require_radius=True,source_label='saved_snapshot')
+    return _curated_hits(data,body,skip,require_radius=True,period=period,source_label='saved_snapshot')
 
 
 def _curated_usc(body, skip=(), *, residential_fallback=False):
@@ -537,7 +549,7 @@ def venue_images(sources, restaurant_names) -> dict[str,dict]:
     return {name:{'url':url,'credit':row.get('photo_credit')} for (name,row),url in zip(wanted.items(),urls) if url}
 
 
-def _offcampus(body):
+def _offcampus(body, *, all_periods=False):
     s=get_settings()
     supplement=bool(getattr(s,'live_snapshot_supplement',False))
     warnings=DiscoveryNotes()
@@ -626,7 +638,9 @@ def _offcampus(body):
     if unreadable:
         warnings.append(f"{len(unreadable)} nearby restaurant{'s' if len(unreadable)!=1 else ''} had no menu we could read online ({', '.join(unreadable[:4])}{'…' if len(unreadable)>4 else ''}).")
     if supplement:
-        extra_hits,extra_sources,extra_venues=_curated_offcampus(body,{_venue_key(h.restaurant_name) for h in hits})
+        curated_period=None if all_periods else ...
+        extra_hits,extra_sources,extra_venues=_curated_offcampus(
+            body,{_venue_key(h.restaurant_name) for h in hits},period=curated_period)
         if extra_hits:
             hits.extend(extra_hits);sources.extend(extra_sources);warnings.venues.extend(extra_venues)
             warnings.append("Some options come from TrojanPlate's saved menus for nearby restaurants; confirm current prices and availability.")

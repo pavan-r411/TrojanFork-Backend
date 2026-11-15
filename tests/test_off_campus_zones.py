@@ -1,3 +1,6 @@
+from fastapi.testclient import TestClient
+
+from trojanbites_extract.api.app import app
 from trojanbites_extract.boundary.load import load_boundary
 from trojanbites_extract.boundary.pip import point_in_polygon
 from trojanbites_extract.campus.registry import clear_campus_cache, load_campus
@@ -7,6 +10,21 @@ from trojanbites_extract.extract.gemini import extract_links_from_html
 
 def setup_function():
     clear_campus_cache()
+
+
+def test_location_zone_api_allows_live_location_inside_dps_only():
+    client = TestClient(app)
+    inside = client.get("/v1/location/zone", params={"lat": 34.0224, "lng": -118.2851})
+    assert inside.status_code == 200
+    body = inside.json()
+    assert body["allowed_for_live_location"] is True
+    assert body["dps_membership"] in {"inside", "boundary"}
+
+    outside = client.get("/v1/location/zone", params={"lat": 34.0522, "lng": -118.2437})  # DTLA
+    assert outside.status_code == 200
+    denied = outside.json()
+    assert denied["allowed_for_live_location"] is False
+    assert denied["location_zone"] == "outside_dps"
 
 
 def test_campus_and_dps_boundaries_load():

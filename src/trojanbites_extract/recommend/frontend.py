@@ -25,9 +25,10 @@ _DRINK = re.compile(r'\b(?:coffee|espresso|latte|cappuccino|americano|macchiato|
 # Explicit lunch/dinner labels still win; this does not invent a dish.
 _BREAKFAST_DISH = re.compile(
     r'\b(?:breakfasts?|brunch|pancakes?|waffles?|omelettes?|omelets?|scrambled eggs?|oatmeal|overnight oats|granola|'
-    r'bagels?|breakfast burritos?|breakfast sandwiches?|avocado toast|french toast|hash ?browns?|eggs benedict|'
+    r'bagels?|breakfast burritos?|breakfast sandwich(?:es)?|avocado toast|french toast|hash ?browns?|eggs? benedict|'
     r'yogurt parfaits?|huevos|croissants?|muffins?|acai bowls?|breakfast tacos?|biscuits?(?: and gravy)?|'
-    r'breakfast platters?|breakfast bowls?|breakfast quesadillas?|egg sandwiches?|chilaquiles)\b', re.I)
+    r'breakfast platters?|breakfast bowls?|breakfast quesadillas?|egg(?: white)?(?:s)?(?: and)?(?: cheese)? sandwich(?:es)?|'
+    r'egg mcmuffins?|breakfast sandwich(?:es)?|chilaquiles)\b', re.I)
 _UNVERIFIED_BREAKFAST = ('Breakfast availability is unverified: the menu does not label a breakfast period, '
     'so this dish was included only because its name matches a breakfast item.')
 
@@ -302,6 +303,21 @@ def daily_plan(body: PlanRequest) -> dict:
     off_campus=body.mode=='off_campus'
     if off_campus and ctx.origin is None:
         raise LiveDiscoveryError('Choose a location before building an off-campus plan.')
+    # Off-campus live GPS is limited to the USC DPS patrol zone; landmarks stay allowed as fallback.
+    if off_campus and ctx.origin is not None:
+        try:
+            from trojanbites_extract.campus.registry import load_campus
+            from trojanbites_extract.campus.zones import classify_location
+            zone = classify_location(ctx.origin.lat, ctx.origin.lng, load_campus('usc_upc'))
+            if zone.location_zone == 'outside_dps':
+                raise LiveDiscoveryError(
+                    'Live location is outside the USC DPS patrol area. '
+                    'Choose a campus landmark (USC Village, Tommy Trojan, or Leavey Library) for Off-Campus suggestions.'
+                )
+        except LiveDiscoveryError:
+            raise
+        except Exception:
+            pass
     cuisines=list(dict.fromkeys(value.strip() for value in (ctx.preferred_cuisines or p.preferred_cuisines) if value.strip()))
     allergies=[value.strip() for value in p.allergies if value.strip()]
     dislikes=[value.strip() for value in p.disliked_ingredients if value.strip()]
@@ -316,8 +332,16 @@ def daily_plan(body: PlanRequest) -> dict:
         diet=p.dietary_preferences,preferences=preferences,
         budget_max=ctx.per_meal_budget_cents/100 if off_campus else None,include_unknown_prices=ctx.include_unknown_prices,include_ai_estimates=ctx.include_ai_estimates)
     periods=['breakfast','lunch','dinner']+(['snack'] if p.snacks else [])
-    # Discover/extract once per daily off-campus request.
-    shared=_offcampus(base) if off_campus else ([],[],[])
+    # Discover/extract once per daily off-campus request. all_periods=True so the
+    # curated supplement keeps breakfast-only dishes (shared request uses lunch).
+    # Accept monkeypatched _offcampus(body) callables that ignore kwargs.
+    if off_campus:
+        try:
+            shared=_offcampus(base, all_periods=True)
+        except TypeError:
+            shared=_offcampus(base)
+    else:
+        shared=([],[],[])
     eligible_restaurants=len({item.restaurant_id for item in shared[0]}) if off_campus else None
     timestamp=datetime.now(timezone.utc).isoformat()
     used_ids=set();used_names=set();used_restaurants=set();all_sources={}
@@ -390,9 +414,17 @@ def daily_plan(body: PlanRequest) -> dict:
             candidates=kept
             # Prefer published meal labels, then substantial entrees — never invent periods.
             candidates.sort(key=lambda h:(_basis_rank(evidence.get(h.item_id,'labeled')), -_entree_score(h.item_name)))
-        # Reserve candidates for later slots instead of filling the first slot with everything.
-        reserves=sum(any(offered(h,later) for h in candidates) for later in periods[index+1:])
-        limit=min(3,max(1,len(candidates)//(1+reserves)) if candidates else 0)
+        # Aim for up to 3 choices. Unlabeled all-day dishes can also serve later slots, so
+        # reserve some of that shared pool — but never throttle a slot that already has
+        # period-specific inventory (labeled breakfast / name-inferred breakfast). Those
+        # used to count as "offered" for lunch/dinner via the unlabeled path and capped
+        # breakfast at 1 even when several breakfast dishes were available.
+        specific=sum(1 for h in candidates if evidence.get(h.item_id) in {'labeled','inferred'})
+        if specific:
+            limit=min(3,len(candidates))
+        else:
+            reserves=sum(any(offered(h,later) for h in candidates) for later in periods[index+1:])
+            limit=min(3,max(1,len(candidates)//(1+reserves)) if candidates else 0)
         # Prefer kitchens not already used for an earlier meal in this daily plan.
         preferred=[h for h in candidates if h.restaurant_id not in used_restaurants]
         ranking_pool=preferred if len({h.restaurant_id for h in preferred})>=1 and preferred else candidates
