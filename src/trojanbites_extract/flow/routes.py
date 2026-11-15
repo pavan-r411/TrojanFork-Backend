@@ -5,7 +5,7 @@ from datetime import date as Date, datetime
 from typing import Literal
 from zoneinfo import ZoneInfo
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query as ApiQuery
 from pydantic import BaseModel, ConfigDict, Field
 
 from trojanbites_extract.flow import engine, explain as explain_mod, feed, parse as parse_mod
@@ -57,6 +57,12 @@ class OriginIn(BaseModel):
     label: str | None = Field(None, max_length=120)
 
 
+class BandIn(BaseModel):
+    model_config = ConfigDict(extra='ignore')
+    min: float = Field(ge=0, le=25, allow_inf_nan=False)
+    max: float = Field(ge=0.05, le=25, allow_inf_nan=False)
+
+
 class OptionsIn(BaseModel):
     model_config = ConfigDict(extra='ignore')
     mode: Literal['usc_dining', 'off_campus']
@@ -68,11 +74,12 @@ class OptionsIn(BaseModel):
     budget: BudgetIn = Field(default_factory=BudgetIn)
     campus: CampusIn = Field(default_factory=CampusIn)
     origin: OriginIn | None = None
-    max_miles: float = Field(0.3, ge=0.05, le=1.0)
-    rank_by: Literal['nearest', 'fit', 'cheapest'] = 'nearest'
+    max_miles: float | None = Field(0.3, ge=0.05, le=25.0)   # null means any distance
+    bands: list[BandIn] | None = Field(None, max_length=6)    # walking bands in miles; when given they replace max_miles
+    rank_by: Literal['fit', 'nearest', 'cheapest', 'protein', 'lighter'] = 'fit'
     exclude_ids: list[str] = Field(default_factory=list, max_length=200)
     avoid_venue_ids: list[str] = Field(default_factory=list, max_length=50)
-    pool_size: int = Field(24, ge=3, le=48)
+    pool_size: int = Field(600, ge=3, le=800)
 
 
 def build_query(body: OptionsIn) -> engine.Query:
@@ -84,6 +91,7 @@ def build_query(body: OptionsIn) -> engine.Query:
         meals_left=body.budget.meals_left, swipes_remaining=body.campus.swipes_remaining, halls=list(body.campus.halls),
         include_retail=body.campus.include_retail, lat=body.origin.lat if body.origin else None,
         lng=body.origin.lng if body.origin else None, max_miles=body.max_miles, rank_by=body.rank_by,
+        bands=[(b.min, b.max) for b in body.bands if b.max > b.min] if body.bands else None,
         exclude_ids=set(body.exclude_ids), avoid_venue_ids=set(body.avoid_venue_ids), pool_size=body.pool_size, at_time=body.at_time)
 
 
@@ -95,6 +103,11 @@ def options(body: OptionsIn) -> dict:
         return engine.recommend(build_query(body))
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+
+@router.get('/bands')
+def bands(lat: float = ApiQuery(..., ge=-90, le=90), lng: float = ApiQuery(..., ge=-180, le=180)) -> dict:
+    return engine.band_overview(lat, lng, today_la())
 
 
 class ParseIn(BaseModel):

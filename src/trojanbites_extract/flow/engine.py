@@ -21,6 +21,11 @@ GAIN = {'gain', 'gradual_weight_gain', 'weight_gain'}
 STRENGTH = {'muscle', 'build_muscle', 'training', 'training_support'}
 WALK_DETOUR = 1.25            # straight-line to street-route allowance
 WALK_MIN_PER_MILE = 20.0      # 3 mph
+ANY_DISTANCE_SCALE = 1.0      # with no walking limit, closeness still counts, spread over the first mile
+# Walking bands. Together they cover every restaurant in the dataset (the farthest is about 1.1 miles from campus), so
+# nobody is left out for being far: a student chooses which bands to include, and all three are on by default.
+BANDS = ((0.0, 0.3), (0.3, 0.5), (0.5, 1.5))
+BAND_LABEL = {(0.0, 0.3): 'Up to 0.3 mi', (0.3, 0.5): '0.3 to 0.5 mi', (0.5, 1.5): '0.5 to 1.5 mi'}
 SNACKISH = {'snack entree', 'smoothie', 'side', 'sides', 'pastry', 'cookie', 'dessert', 'desserts', 'toast', 'protein box',
             'egg bites', 'appetizer', 'appetizers', 'bread', 'onigiri', 'musubi', 'cafe item', 'small plate'}
 WEEKDAYS = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')
@@ -48,11 +53,12 @@ class Query:
     include_retail: bool = False
     lat: float | None = None
     lng: float | None = None
-    max_miles: float = 0.3
-    rank_by: str = 'nearest'
+    max_miles: float | None = 0.3     # legacy single limit; None means no limit
+    bands: list[tuple[float, float]] | None = None   # distance bands (from, to] in miles; when set they replace max_miles
+    rank_by: str = 'fit'
     exclude_ids: set[str] = field(default_factory=set)
     avoid_venue_ids: set[str] = field(default_factory=set)
-    pool_size: int = 24
+    pool_size: int = 600
     at_time: str | None = None
 
 
@@ -175,6 +181,20 @@ def is_meal_like(d: Dish, meal: str) -> bool:
     return True
 
 
+def in_range(q: Query, miles: float) -> bool:
+    """Is a restaurant this far away inside what the student chose? Bands share their edges, so none can fall between two."""
+    if q.bands:
+        return any(lo - 1e-9 <= miles <= hi + 1e-9 for lo, hi in q.bands)
+    return q.max_miles is None or miles <= q.max_miles + 1e-9
+
+
+def reach(q: Query) -> float:
+    """The farthest distance the student's choice allows, for scaling the closeness score."""
+    if q.bands:
+        return max(hi for _, hi in q.bands)
+    return q.max_miles or ANY_DISTANCE_SCALE
+
+
 def cash_cap(q: Query) -> float | None:
     caps = [c for c in (q.per_meal_usd, q.daily_remaining_usd) if c is not None]
     return min(caps) if caps else None
@@ -232,7 +252,7 @@ def eligible(q: Query, pool: list[Dish] | None = None) -> tuple[list[Dish], dict
             hidden['budget'] += 1
             continue
         miles, _ = walk(v, q)
-        if v.kind != 'hall' and miles is not None and miles > q.max_miles + 1e-9:
+        if v.kind != 'hall' and miles is not None and not in_range(q, miles):
             hidden['distance'] += 1
             continue
         if hours_status(v, q.day, at)[0] is False:
@@ -265,10 +285,8 @@ def _weights(q: Query) -> dict[str, float]:
         w = {'cal': .35, 'protein': .25, 'price': .10, 'dist': .10, 'cuisine': .08, 'conf': .12}
     else:
         w = {'cal': .36, 'protein': .16, 'price': .12, 'dist': .14, 'cuisine': .10, 'conf': .12}
-    if q.rank_by == 'cheapest':
-        w['price'] += .30
-    elif q.rank_by == 'nearest':
-        w['dist'] += .08
+    if q.cuisines:
+        w['cuisine'] = .30  # the student named cuisines on purpose: let that show in the order, never in the filters
     total = sum(w.values())
     return {k: v / total for k, v in w.items()}
 
@@ -296,7 +314,7 @@ def score(d: Dish, v: Venue, q: Query, miles: float | None) -> tuple[float, dict
     if q.daily_remaining_usd is not None and q.meals_left > 0:
         cap = min(cap, max(8.0, q.daily_remaining_usd / q.meals_left * 1.35))
     price_fit = 1.0 if d.price_kind == 'swipe' or d.price_usd is None else max(0.0, 1 - 0.6 * d.price_usd / cap)
-    scale = 0.5 if v.kind == 'hall' else max(q.max_miles, 0.3)
+    scale = 0.5 if v.kind == 'hall' else max(reach(q), 0.3)
     dist_fit = 0.5 if miles is None else max(0.0, 1 - min(1.0, miles / scale))
     wanted = {c.casefold() for c in q.cuisines}
     cuisine_fit = 1.0 if wanted and ({c.casefold() for c in v.cuisines} & wanted or any(w in d.name.casefold() for w in wanted)) else 0.0
@@ -379,14 +397,17 @@ def option(d: Dish, v: Venue, q: Query, score_value: float, miles: float | None,
         'walk': {'miles': None if miles is None else round(miles, 2), 'minutes': None if minutes is None else int(minutes), 'method': 'straight_line_estimate'},
         'hours': {'open': open_now, 'label': hours_label},
         'source': {'kind': d.source_kind, 'label': d.source_label, 'date': d.source_date, 'url': d.extra.get('feed_url') or v.source_url or v.website},
-        'goal_tags': list(d.goal_tags), 'image_url': d.image_url, 'availability_note': d.availability_note,
+        'goal_tags': list(d.goal_tags), 'image_url': d.image_url, 'image': d.extra.get('image'), 'availability_note': d.availability_note,
         'subtitle': d.description if d.category == 'plate' else None, 'components': d.extra.get('components'),
         'score': score_value, 'reasons': reasons(d, v, q, miles, minutes),
     }
 
 
-def paginate(options: list[dict], size: int = 3) -> list[list[int]]:
-    """Group the ranked pool into pages of `size`, spreading venues and never repeating a dish name on a page."""
+def paginate(options: list[dict], size: int = 3, spread: bool = True) -> list[list[int]]:
+    """Group the ordered pool into pages of `size`, never repeating a dish name on a page.
+
+    With `spread`, a page takes one dish per venue first, for variety. Without it the order is kept as it is, which is what
+    "closest hall" needs: the nearest hall's plates come first, then the next hall's."""
     remaining = list(range(len(options)))
     pages: list[list[int]] = []
     norm = lambda s: re.sub(r'[^a-z]+', ' ', s.lower()).strip()
@@ -398,7 +419,7 @@ def paginate(options: list[dict], size: int = 3) -> list[list[int]]:
             if len(page) == size:
                 break
             o = options[i]
-            if o['venue']['id'] in venues_seen or norm(o['name']) in names:
+            if (spread and o['venue']['id'] in venues_seen) or norm(o['name']) in names:
                 continue
             page.append(i); venues_seen.add(o['venue']['id']); names.add(norm(o['name'])); remaining.remove(i)
         for i in list(remaining):
@@ -414,7 +435,26 @@ def paginate(options: list[dict], size: int = 3) -> list[list[int]]:
     return pages
 
 
+SORTS = ('fit', 'nearest', 'cheapest', 'protein', 'lighter')
+_FAR = 9e9
+
+
+def sort_key(rank_by: str):
+    """Ordering over (score, miles, minutes, dish, venue) rows. Every sort ends in score, then id, so ties are stable."""
+    if rank_by == 'nearest':
+        return lambda t: (round(t[1], 2) if t[1] is not None else _FAR, -t[0], t[3].id)
+    if rank_by == 'cheapest':
+        # Swipe-priced hall food all costs one swipe, so ties fall back to best fit. Unknown cash prices go last.
+        return lambda t: ((t[3].price_usd if t[3].price_usd is not None else _FAR) if t[3].price_kind == 'cash' else 0.0, -t[0], t[3].id)
+    if rank_by == 'protein':
+        return lambda t: (-(round(t[3].protein_g / 2) if t[3].protein_g is not None else -1), -t[0], t[3].id)
+    if rank_by == 'lighter':
+        return lambda t: (round(t[3].calories / 50) if t[3].calories is not None else _FAR, -t[0], t[3].id)
+    return lambda t: (-t[0], t[3].id)
+
+
 def rank(q: Query, kept: list[Dish]) -> list[dict]:
+    """Score every dish that passed the hard filters, then order the whole pool by the chosen sort."""
     venues, _, _ = dataset()
     scored = []
     for d in kept:
@@ -422,12 +462,8 @@ def rank(q: Query, kept: list[Dish]) -> list[dict]:
         miles, minutes = walk(v, q)
         s, _parts = score(d, v, q, miles)
         scored.append((s, miles, minutes, d, v))
-    scored.sort(key=lambda t: (-t[0], t[3].id))
+    scored.sort(key=sort_key(q.rank_by if q.rank_by in SORTS else 'fit'))
     top = scored[:max(3, q.pool_size)]
-    if q.rank_by == 'nearest':
-        top.sort(key=lambda t: (round(t[1], 2) if t[1] is not None else 9e9, -t[0], t[3].id))
-    elif q.rank_by == 'cheapest':
-        top.sort(key=lambda t: ((t[3].price_usd or 0) if t[3].price_kind == 'cash' else 0, -t[0], t[3].id))
     return [option(d, v, q, s, m, mins) for s, m, mins, d, v in top]
 
 
@@ -437,13 +473,24 @@ RELAX_STEPS = (0.5, 0.75, 1.0)
 def relax_hints(q: Query, pool: list[Dish], hidden: dict, current: int) -> list[dict]:
     """What a student could loosen to see more choices. Allergies and diet are never offered."""
     hints = []
-    if hidden.get('distance') and q.mode == 'off_campus':
+    if hidden.get('distance') and q.mode == 'off_campus' and q.bands:
+        chosen = {tuple(b) for b in q.bands}
+        for band in BANDS:
+            if band in chosen:
+                continue
+            n = len(eligible(replace(q, bands=[*q.bands, band]), pool)[0])
+            if n > current:
+                hints.append({'key': 'distance_band', 'value': list(band), 'label': f'Add restaurants {BAND_LABEL[band].lower()} away', 'gain': n - current})
+    elif hidden.get('distance') and q.mode == 'off_campus' and q.max_miles is not None:
         for miles in RELAX_STEPS:
             if miles > q.max_miles:
                 n = len(eligible(replace(q, max_miles=miles), pool)[0])
                 if n > current:
                     hints.append({'key': 'max_miles', 'value': miles, 'label': f'Walk up to {miles:g} mi', 'gain': n - current})
                     break
+        n_all = len(eligible(replace(q, max_miles=None), pool)[0])
+        if n_all > current:
+            hints.append({'key': 'max_miles', 'value': None, 'label': 'Remove the walking limit', 'gain': n_all - current})
     if hidden.get('budget') and q.per_meal_usd is not None:
         for extra in (3, 6):
             n = len(eligible(replace(q, per_meal_usd=q.per_meal_usd + extra), pool)[0])
@@ -488,7 +535,35 @@ def recommend(q: Query) -> dict:
         'meal': q.meal, 'mode': q.mode, 'date': str(q.day), 'generated_at': datetime.now(timezone.utc).isoformat(),
         'menu': {'halls': report},
         'targets': {'meal_kcal': targets(q)[0], 'meal_protein_g': targets(q)[1]},
-        'options': options, 'pages': paginate(options),
-        'stats': {'considered': len(pool), 'eligible': len(kept), 'hidden': {k: v for k, v in hidden.items() if v}},
+        'options': options, 'pages': paginate(options, spread=not (q.mode == 'usc_dining' and q.rank_by == 'nearest')),
+        'stats': {'considered': len(pool), 'eligible': len(kept), 'venues': len({d.venue_id for d in kept}),
+                  'hidden': {k: v for k, v in hidden.items() if v}},
         'relax': hints, 'warnings': warnings,
     }
+
+
+def band_overview(lat: float, lng: float, day: Date | None = None) -> dict:
+    """Every off-campus restaurant, grouped by walking band from a starting point, so no restaurant is out of reach."""
+    venues, dishes, _ = dataset()
+    counts: dict[str, int] = {}
+    for d in dishes:
+        counts[d.venue_id] = counts.get(d.venue_id, 0) + 1
+    q = Query(mode='off_campus', meal='lunch', day=day or Date.today(), lat=lat, lng=lng)
+    bands = [{'min': lo, 'max': hi, 'label': BAND_LABEL[(lo, hi)], 'restaurants': []} for lo, hi in BANDS]
+    unavailable, beyond = [], []
+    for v in venues.values():
+        if v.category != 'off_campus':
+            continue
+        miles, minutes = walk(v, q)
+        if not v.eligible:
+            unavailable.append({'id': v.id, 'name': v.name, 'reason': 'Reported closed' if 'closed' in (v.status or '') else 'Not available right now'})
+            continue
+        row = {'id': v.id, 'name': v.name, 'cuisines': list(v.cuisines), 'miles': None if miles is None else round(miles, 2),
+               'minutes': None if minutes is None else int(minutes), 'dishes': counts.get(v.id, 0), 'address': v.address}
+        home = next((b for b in bands if miles is not None and b['min'] - 1e-9 <= miles <= b['max'] + 1e-9 and (b['min'] == 0 or miles > b['min'])), None)
+        (home['restaurants'] if home else beyond).append(row)
+    for b in bands:
+        b['restaurants'].sort(key=lambda r: (r['miles'], r['name']))
+        b['count'] = len(b['restaurants'])
+        b['dishes'] = sum(r['dishes'] for r in b['restaurants'])
+    return {'bands': bands, 'total': sum(b['count'] for b in bands), 'beyond': beyond, 'unavailable': unavailable}

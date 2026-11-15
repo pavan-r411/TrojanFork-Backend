@@ -7,6 +7,7 @@ from typing import Any, Literal
 
 from fastapi import FastAPI, Header, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from pydantic import BaseModel, Field
 
 from trojanbites_extract.campus.registry import list_campuses, load_campus, load_universities_registry
@@ -68,6 +69,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+app.add_middleware(GZipMiddleware, minimum_size=1024)   # a full menu of options is large but compresses about 10 to 1
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

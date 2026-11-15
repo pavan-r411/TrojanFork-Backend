@@ -173,6 +173,135 @@ def test_randomised_profiles_never_violate_a_hard_rule():
                   daily_remaining_usd=rng.choice([None, 15, 30]) if mode == 'off_campus' else None,
                   meal_kcal=rng.choice([500, 650, 800]), meal_protein_g=rng.choice([25, 35, 45]),
                   cuisines=rng.sample(['indian', 'mexican', 'chinese', 'korean', 'italian', 'american'], rng.choice([0, 1, 2])),
-                  rank_by=rng.choice(['nearest', 'fit', 'cheapest']), swipes_remaining=rng.choice([None, 0, 3]))
+                  rank_by=rng.choice(['nearest', 'fit', 'cheapest', 'protein', 'lighter']), swipes_remaining=rng.choice([None, 0, 3]),
+                  max_miles=rng.choice([None, 0.3, 0.5, 1.0]))
         problems = verify.result_violations(q, engine.recommend(q))
         assert problems == [], (q, problems)
+
+
+def test_picked_cuisines_lift_matching_dishes_but_never_break_a_hard_rule():
+    plain = engine.recommend(off(per_meal_usd=16, pool_size=24))['options']
+    picked = engine.recommend(off(per_meal_usd=16, pool_size=24, cuisines=['korean', 'japanese']))['options']
+    wanted = {'korean', 'japanese'}
+    hits = lambda opts: sum(1 for o in opts[:3] if {c.casefold() for c in o['venue'].get('cuisines', [])} & wanted)
+    assert hits(picked) > hits(plain)
+    assert all(o['price']['cash_cents'] <= 1600 for o in picked)
+
+
+# ---------------------------------------------------------------- sorts and distance
+
+def _key_values(options, key):
+    return [key(o) for o in options]
+
+
+def test_each_sort_really_orders_the_whole_pool_off_campus():
+    by = lambda sort: engine.recommend(off(max_miles=None, per_meal_usd=15, rank_by=sort))['options']
+    nearest, cheapest, protein, lighter, fit = by('nearest'), by('cheapest'), by('protein'), by('lighter'), by('fit')
+    miles = _key_values(nearest, lambda o: round(o['walk']['miles'], 2))
+    assert miles == sorted(miles)
+    cash = _key_values(cheapest, lambda o: o['price']['cash_cents'])
+    assert cash == sorted(cash)
+    grams = _key_values(protein, lambda o: round(o['nutrition']['protein_g'] / 2))
+    assert grams == sorted(grams, reverse=True)
+    kcal = _key_values(lighter, lambda o: round(o['nutrition']['calories'] / 50))
+    assert kcal == sorted(kcal)
+    scores = _key_values(fit, lambda o: o['score'])
+    assert scores == sorted(scores, reverse=True)
+    firsts = {tuple(o['id'] for o in opts[:3]) for opts in (nearest, cheapest, protein, lighter, fit)}
+    assert len(firsts) == 5, 'every sort should lead with different dishes'
+    assert {o['id'] for o in nearest} == {o['id'] for o in cheapest} == {o['id'] for o in fit}, 'sorts reorder, they never drop dishes'
+
+
+def test_any_distance_includes_every_open_restaurant_that_passes_the_rules():
+    near = engine.recommend(off(max_miles=0.3, per_meal_usd=40))
+    anywhere = engine.recommend(off(max_miles=None, per_meal_usd=40))
+    assert anywhere['stats']['eligible'] > near['stats']['eligible']
+    assert anywhere['stats']['venues'] > near['stats']['venues'] + 20
+    assert 'distance' not in anywhere['stats']['hidden']
+    assert max(o['walk']['miles'] for o in anywhere['options']) > 0.5
+    assert len(anywhere['options']) == anywhere['stats']['eligible'], 'every eligible dish is in the list'
+
+
+def test_any_distance_is_offered_as_a_relaxation_and_the_walk_limit_still_works():
+    tight = engine.recommend(off(max_miles=0.05, per_meal_usd=15))
+    assert any(h['key'] == 'max_miles' and h['value'] is None for h in tight['relax'] + engine.relax_hints(
+        off(max_miles=0.05, per_meal_usd=15), *engine._candidates(off(max_miles=0.05, per_meal_usd=15))[:1], {'distance': 9}, 0))
+    assert all(o['walk']['miles'] <= 0.3 + 1e-9 for o in engine.recommend(off(max_miles=0.3))['options'])
+
+
+def test_closest_hall_sort_keeps_the_nearest_hall_together_on_page_one():
+    result = engine.recommend(usc(meal='lunch', rank_by='nearest', lat=34.0258, lng=-118.2854))
+    first = [result['options'][i] for i in result['pages'][0]]
+    assert len({o['venue']['id'] for o in first}) == 1, 'closest hall: three plates from the nearest hall'
+    fit = engine.recommend(usc(meal='lunch', rank_by='fit', lat=34.0258, lng=-118.2854))
+    assert len({fit['options'][i]['venue']['id'] for i in fit['pages'][0]}) > 1, 'best fit still mixes halls for variety'
+
+
+def test_hall_sorts_by_protein_and_calories_differ_from_best_fit():
+    lead = lambda sort: [o['id'] for o in engine.recommend(usc(meal='lunch', rank_by=sort))['options'][:3]]
+    assert lead('protein') != lead('lighter') and lead('lighter') != lead('fit')
+
+
+# ---------------------------------------------------------------- distance bands
+
+ORIGINS = {'USC Village': (34.0258, -118.2854), 'Tommy Trojan': (34.0206, -118.2854), 'Leavey Library': (34.0217, -118.2829)}
+ALL_BANDS = [(0.0, 0.3), (0.3, 0.5), (0.5, 1.5)]
+
+
+@pytest.mark.parametrize('origin', ORIGINS)
+def test_the_bands_together_reach_every_open_restaurant(origin):
+    lat, lng = ORIGINS[origin]
+    overview = engine.band_overview(lat, lng)
+    venues, _, _ = engine.dataset()
+    open_venues = [v for v in venues.values() if v.category == 'off_campus' and v.eligible]
+    assert overview['total'] == len(open_venues) and overview['beyond'] == []
+    ids = [r['id'] for b in overview['bands'] for r in b['restaurants']]
+    assert len(ids) == len(set(ids)), 'a restaurant belongs to exactly one band'
+    assert all(b['count'] > 0 for b in overview['bands']), 'every band has restaurants to use'
+    assert [u['name'] for u in overview['unavailable']] == ["Tacoyo's Restaurant"], 'the one closed restaurant is listed, not hidden'
+
+
+def test_choosing_all_three_bands_leaves_nobody_out_and_one_band_shows_only_that_band():
+    everything = engine.recommend(off(bands=ALL_BANDS, per_meal_usd=40))
+    assert 'distance' not in everything['stats']['hidden']
+    assert everything['stats']['eligible'] == engine.recommend(off(max_miles=None, per_meal_usd=40))['stats']['eligible']
+    far = engine.recommend(off(bands=[(0.5, 1.5)], per_meal_usd=40))
+    assert far['options'] and all(0.5 - 1e-9 <= o['walk']['miles'] + 0.005 and o['walk']['miles'] <= 1.5 for o in far['options'])
+    near = engine.recommend(off(bands=[(0.0, 0.3)], per_meal_usd=40))
+    assert near['stats']['eligible'] + engine.recommend(off(bands=[(0.3, 0.5)], per_meal_usd=40))['stats']['eligible'] \
+        + far['stats']['eligible'] >= everything['stats']['eligible'] - 1, 'the three bands add up to the whole'
+    assert any(h['key'] == 'distance_band' for h in near['relax'] + engine.relax_hints(off(bands=[(0.0, 0.3)], per_meal_usd=40), *engine._candidates(off(per_meal_usd=40))[:1], {'distance': 9}, 0))
+
+
+def test_api_accepts_bands_and_lists_restaurants_by_band():
+    from fastapi.testclient import TestClient
+    from trojanbites_extract.api.app import app
+    client = TestClient(app)
+    lat, lng = ORIGINS['USC Village']
+    body = {'mode': 'off_campus', 'meal': 'lunch', 'date': '2026-11-16', 'origin': {'lat': lat, 'lng': lng},
+            'bands': [{'min': 0.5, 'max': 1.5}], 'budget': {'per_meal_usd': 20}, 'rank_by': 'nearest'}
+    result = client.post('/v1/flow/options', json=body).json()
+    assert result['options'] and min(o['walk']['miles'] for o in result['options']) >= 0.49
+    listing = client.get('/v1/flow/bands', params={'lat': lat, 'lng': lng}).json()
+    assert listing['total'] == 71 and [b['count'] for b in listing['bands']] == [17, 20, 34]
+    assert client.post('/v1/flow/options', json={**body, 'bands': [{'min': 2, 'max': 1}]}).status_code in (200, 422)
+
+
+def test_photo_overlay_attaches_only_dishes_it_lists_and_never_changes_the_menu():
+    from trojanbites_extract.flow import data
+    _venues, dishes, _meta = data.dataset()
+    overlay = json.loads(Path(data.IMAGES_PATH).read_text(encoding='utf-8'))['images']
+    withpic = [d for d in dishes if d.image_url]
+    assert len(withpic) == len(overlay) == 231
+    assert all(d.id in overlay for d in withpic)
+    assert all(d.extra['image']['source'] and d.extra['image']['match'] for d in withpic)
+    # Only photos of the same dish, from the venue's own or delivery-menu sources, are ever used.
+    assert {d.extra['image']['match'] for d in withpic} <= {'exact_dish', 'same_dish_other_branch'}
+    assert not {d.extra['image']['source'] for d in withpic} & {'yelp', 'google_maps'}
+    assert all(d.venue_id for d in withpic)
+    # The overlay adds pictures, never dishes: the menu is the same size as the source dataset.
+    assert len(dishes) == 759
+    # Every picture file the overlay points at is a real file the UI can load.
+    frontend = Path(data.ROOT).parent / 'TrojanFork-Frontend'
+    if frontend.exists():
+        assert all((frontend / d.image_url).is_file() for d in withpic)

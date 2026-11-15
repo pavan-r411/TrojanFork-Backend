@@ -7,6 +7,12 @@ from __future__ import annotations
 
 import re
 
+
+def _engine():
+    from trojanbites_extract.flow import engine  # imported late: engine does not import this module, but keep it cycle-proof
+    return engine
+
+
 _ALLERGY_WORDS = {
     'peanuts': r'peanuts?', 'tree nuts': r'almonds?|walnuts?|pecans?|cashews?|pistachios?|hazelnuts?|macadamia',
     'eggs': r'eggs?|omelet\w*|frittata|quiche|mayo(?:nnaise)?|aioli', 'soy': r'soy\w*|tofu|edamame|tempeh|miso',
@@ -74,8 +80,8 @@ def violations(q, option: dict) -> list[str]:
             problems.append(f'${dollars:.2f} over remaining daily budget')
     if q.mode == 'off_campus' and option['venue']['kind'] != 'hall':
         miles = option['walk']['miles']
-        if miles is not None and miles > q.max_miles + 1e-6:
-            problems.append(f'{miles} mi beyond {q.max_miles} mi')
+        if miles is not None and not _engine().in_range(q, miles):
+            problems.append(f'{miles} mi outside the chosen distance')
     if q.mode == 'usc_dining' and option['price']['kind'] != 'swipe':
         problems.append('hall option priced in cash')
     if q.min_protein_g and (option['nutrition']['protein_g'] or 0) < q.min_protein_g:

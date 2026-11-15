@@ -1,0 +1,2096 @@
+{
+ "generated_at": "2026-11-15T13:20:32+00:00",
+ "bundle": "usc_restaurants_dataset_bundle.zip",
+ "policy": "Same-dish photos from the restaurant's own site or delivery menu only. See scripts/build_dish_images.py.",
+ "counts": {
+  "mapped": 231,
+  "skipped": {
+   "no local photo (placeholder or failed download)": 342,
+   "user-contributed or personal-blog photo": 59,
+   "stand-in photo, not this dish": 104,
+   "solid black cut-out background": 13,
+   "too small (under 200 px)": 10
+  }
+ },
+ "images": {
+  "usc-university-club-pan-seared-barramundi": {
+   "file": "assets/dishes/usc-university-club-pan-seared-barramundi-d4d876.jpg",
+   "source": "restaurant_site",
+   "match": "exact_dish",
+   "page": "https://universityclub.usc.edu/",
+   "venue": "Amy King Dundon-Berchtold University Club",
+   "width": 480,
+   "height": 640
+  },
+  "cava-greens-grains-grilled-chicken": {
+   "file": "assets/dishes/cava-greens-grains-grilled-chicken-8b6abb.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/cava-los-angeles-25051256/31732950/",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-harissa-avocado-bowl": {
+   "file": "assets/dishes/cava-harissa-avocado-bowl-205b4b.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/cava-los-angeles-25051256/31732950/",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-falafel-bowl": {
+   "file": "assets/dishes/cava-falafel-bowl-74d7a4.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/cava-los-angeles-25051256/31732950/",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-usc-village-steak-+-harissa-bowl": {
+   "file": "assets/dishes/cava-usc-village-steak-harissa-bowl-91b8d6.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/cava-los-angeles-25051256/31732950/",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-usc-village-chicken-rice-bowl": {
+   "file": "assets/dishes/cava-usc-village-chicken-rice-bowl-f18a54.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://cava.com/menu/chicken-rice-bowl",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-usc-village-greek-salad-bowl": {
+   "file": "assets/dishes/cava-usc-village-greek-salad-bowl-31b0fa.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/cava-los-angeles-25051256/31732950/",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-usc-village-supergreens-grilled-chicken-bowl": {
+   "file": "assets/dishes/cava-usc-village-supergreens-grilled-chicken-bowl-975528.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/cava-los-angeles-25051256/31732950/",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-usc-village-salmon-yogurt-dill-bowl": {
+   "file": "assets/dishes/cava-usc-village-salmon-yogurt-dill-bowl-f2d577.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/cava-los-angeles-25051256/31732950/",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-usc-village-spicy-lamb-avocado-bowl": {
+   "file": "assets/dishes/cava-usc-village-spicy-lamb-avocado-bowl-96f5f1.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/cava-los-angeles-25051256/31732950/",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-usc-village-greek-chicken-pita": {
+   "file": "assets/dishes/cava-usc-village-greek-chicken-pita-d5ef91.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://cava.com/menu/greek-chicken-pita",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "cava-usc-village-pita-chips": {
+   "file": "assets/dishes/cava-usc-village-pita-chips-ceb9c3.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://cava.com/menu/pita-chips",
+   "venue": "CAVA - USC Village",
+   "width": 640,
+   "height": 640
+  },
+  "sweetgreen-harvest-bowl": {
+   "file": "assets/dishes/sweetgreen-harvest-bowl-004fd5.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-kale-caesar": {
+   "file": "assets/dishes/sweetgreen-kale-caesar-b2b914.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-crispy-rice-bowl": {
+   "file": "assets/dishes/sweetgreen-crispy-rice-bowl-2b21b4.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-usc-village-shroomami-bowl": {
+   "file": "assets/dishes/sweetgreen-usc-village-shroomami-bowl-d4fc74.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-usc-village-guacamole-greens": {
+   "file": "assets/dishes/sweetgreen-usc-village-guacamole-greens-0864f5.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-usc-village-chicken-pesto-parm": {
+   "file": "assets/dishes/sweetgreen-usc-village-chicken-pesto-parm-73e82a.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-usc-village-hot-honey-chicken-plate": {
+   "file": "assets/dishes/sweetgreen-usc-village-hot-honey-chicken-plate-3b2468.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-usc-village-buffalo-chicken": {
+   "file": "assets/dishes/sweetgreen-usc-village-buffalo-chicken-d976ab.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-usc-village-super-green-goddess": {
+   "file": "assets/dishes/sweetgreen-usc-village-super-green-goddess-c01e54.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-usc-village-chicken-sesame-crunch-salad": {
+   "file": "assets/dishes/sweetgreen-usc-village-chicken-sesame-crunch-salad-e45861.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-usc-village-hummus-crunch": {
+   "file": "assets/dishes/sweetgreen-usc-village-hummus-crunch-053d88.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "sweetgreen-usc-village-caramelized-garlic-steak-plate": {
+   "file": "assets/dishes/sweetgreen-usc-village-caramelized-garlic-steak-plate-ae026c.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.sweetgreen.com/menu/?region=dc-md-va",
+   "venue": "sweetgreen - USC Village",
+   "width": 600,
+   "height": 600
+  },
+  "chipotle-chicken-burrito-bowl": {
+   "file": "assets/dishes/chipotle-chicken-burrito-bowl-5e791c.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/chipotle-mexican-grill-los-angeles-269924/1662518/",
+   "venue": "Chipotle Mexican Grill - USC",
+   "width": 640,
+   "height": 640
+  },
+  "chipotle-steak-salad-bowl": {
+   "file": "assets/dishes/chipotle-steak-salad-bowl-b4d4cf.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/chipotle-mexican-grill-los-angeles-269924/1662518/",
+   "venue": "Chipotle Mexican Grill - USC",
+   "width": 640,
+   "height": 640
+  },
+  "chipotle-figueroa-usc-chicken-quesadilla": {
+   "file": "assets/dishes/chipotle-figueroa-usc-chicken-quesadilla-35407f.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/chipotle-mexican-grill-los-angeles-269924/1662518/",
+   "venue": "Chipotle Mexican Grill - USC",
+   "width": 640,
+   "height": 640
+  },
+  "chipotle-figueroa-usc-high-protein-bowl": {
+   "file": "assets/dishes/chipotle-figueroa-usc-high-protein-bowl-d28164.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/chipotle-mexican-grill-los-angeles-269924/1662518/",
+   "venue": "Chipotle Mexican Grill - USC",
+   "width": 640,
+   "height": 640
+  },
+  "chipotle-figueroa-usc-chips-guacamole": {
+   "file": "assets/dishes/chipotle-figueroa-usc-chips-guacamole-7e587d.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/chipotle-mexican-grill-los-angeles-269924/1662518/",
+   "venue": "Chipotle Mexican Grill - USC",
+   "width": 640,
+   "height": 320
+  },
+  "chipotle-figueroa-usc-kid-s-build-your-own-chicken-tacos": {
+   "file": "assets/dishes/chipotle-figueroa-usc-kid-s-build-your-own-chicken-tacos-37f62c.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/chipotle-mexican-grill-los-angeles-269924/1662518/",
+   "venue": "Chipotle Mexican Grill - USC",
+   "width": 640,
+   "height": 640
+  },
+  "bacari-sea-bass": {
+   "file": "assets/dishes/bacari-sea-bass-e5d1e0.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/bacari-west-adams",
+   "venue": "Bacari W. Adams",
+   "width": 640,
+   "height": 445
+  },
+  "bacari-tuscan-kale-salad": {
+   "file": "assets/dishes/bacari-tuscan-kale-salad-8ba1c3.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/bacari-west-adams",
+   "venue": "Bacari W. Adams",
+   "width": 640,
+   "height": 455
+  },
+  "bacari-asian-pear-brie-pizza": {
+   "file": "assets/dishes/bacari-asian-pear-brie-pizza-f8bd19.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/bacari-west-adams",
+   "venue": "Bacari W. Adams",
+   "width": 640,
+   "height": 444
+  },
+  "bacari-w-adams-burrata-caprese": {
+   "file": "assets/dishes/bacari-w-adams-burrata-caprese-e929b5.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/bacari-west-adams",
+   "venue": "Bacari W. Adams",
+   "width": 640,
+   "height": 524
+  },
+  "bacari-w-adams-mac-cheese": {
+   "file": "assets/dishes/bacari-w-adams-mac-cheese-b5efef.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/bacari-west-adams",
+   "venue": "Bacari W. Adams",
+   "width": 640,
+   "height": 470
+  },
+  "bacari-w-adams-fried-chicken-sliders": {
+   "file": "assets/dishes/bacari-w-adams-fried-chicken-sliders-6c2585.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/bacari-west-adams",
+   "venue": "Bacari W. Adams",
+   "width": 640,
+   "height": 468
+  },
+  "bacari-w-adams-bacari-burger": {
+   "file": "assets/dishes/bacari-w-adams-bacari-burger-73bc9a.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/bacari-west-adams",
+   "venue": "Bacari W. Adams",
+   "width": 640,
+   "height": 411
+  },
+  "bacari-w-adams-margherita-pizza": {
+   "file": "assets/dishes/bacari-w-adams-margherita-pizza-0e82a7.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/bacari-west-adams",
+   "venue": "Bacari W. Adams",
+   "width": 640,
+   "height": 435
+  },
+  "chick-fil-a-usc-grilled-chicken-sandwich": {
+   "file": "assets/dishes/chick-fil-a-usc-grilled-chicken-sandwich-81a175.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/entrees",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-chick-fil-a-chicken-sandwich": {
+   "file": "assets/dishes/chick-fil-a-usc-chick-fil-a-chicken-sandwich-92bfe0.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/entrees",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-grilled-nuggets-8-ct": {
+   "file": "assets/dishes/chick-fil-a-usc-grilled-nuggets-8-ct-37f1fb.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com:443/locations/tx/augusta-woods-kuykendahl/menu/grilled-nuggets",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-grilled-chicken-cool-wrap": {
+   "file": "assets/dishes/chick-fil-a-usc-grilled-chicken-cool-wrap-844a40.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/entrees",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-spicy-chicken-sandwich": {
+   "file": "assets/dishes/chick-fil-a-usc-spicy-chicken-sandwich-174344.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/entrees",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-chick-fil-a-deluxe-sandwich": {
+   "file": "assets/dishes/chick-fil-a-usc-chick-fil-a-deluxe-sandwich-15752f.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/entrees",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-grilled-chicken-club-sandwich": {
+   "file": "assets/dishes/chick-fil-a-usc-grilled-chicken-club-sandwich-39561e.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/entrees",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-chick-fil-a-nuggets-8-ct": {
+   "file": "assets/dishes/chick-fil-a-usc-chick-fil-a-nuggets-8-ct-5cc903.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/entrees",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-chick-n-strips-3-ct": {
+   "file": "assets/dishes/chick-fil-a-usc-chick-n-strips-3-ct-646cce.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/entrees",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-waffle-potato-fries-medium": {
+   "file": "assets/dishes/chick-fil-a-usc-waffle-potato-fries-medium-600626.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com:443/locations/ga/brookhaven-in-line/menu/chick-fil-a-waffle-potato-fries",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 523
+  },
+  "chick-fil-a-usc-mac-cheese": {
+   "file": "assets/dishes/chick-fil-a-usc-mac-cheese-d3260c.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 300,
+   "height": 300
+  },
+  "chick-fil-a-usc-egg-white-grill": {
+   "file": "assets/dishes/chick-fil-a-usc-egg-white-grill-4d1c87.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/breakfast",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "chick-fil-a-usc-chick-fil-a-chicken-biscuit": {
+   "file": "assets/dishes/chick-fil-a-usc-chick-fil-a-chicken-biscuit-1a4fb3.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.chick-fil-a.com/menu/breakfast",
+   "venue": "Chick-fil-A (USC In-Line)",
+   "width": 640,
+   "height": 640
+  },
+  "mcdonalds-figueroa-2810-big-mac": {
+   "file": "assets/dishes/mcdonalds-figueroa-2810-big-mac-29abae.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.mcdonalds.at/produkt/big-mac",
+   "venue": "McDonald's (2810 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "mcdonalds-figueroa-2810-medium-french-fries": {
+   "file": "assets/dishes/mcdonalds-figueroa-2810-medium-french-fries-868f06.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "http://mcdonalds.com.lb/en/item/regular-world-famous-fries-r",
+   "venue": "McDonald's (2810 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "mcdonalds-figueroa-2810-mcdouble": {
+   "file": "assets/dishes/mcdonalds-figueroa-2810-mcdouble-e37e84.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.mcdonalds.com/ca/fr-ca/product/mcdouble.html",
+   "venue": "McDonald's (2810 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "mcdonalds-figueroa-2810-mcchicken": {
+   "file": "assets/dishes/mcdonalds-figueroa-2810-mcchicken-b91421.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.mcdonalds.at/produkt/mcchicken",
+   "venue": "McDonald's (2810 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "mcdonalds-figueroa-2810-hash-browns": {
+   "file": "assets/dishes/mcdonalds-figueroa-2810-hash-browns-f4ce23.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.mcdonalds.com/bh/en-bh/product/hashbrowns.html",
+   "venue": "McDonald's (2810 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "taco-bell-figueroa-2722-chicken-quesadilla": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-chicken-quesadilla-9de154.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "http://tacobell.com/food/quesadillas/chicken-quesadilla?store=034583",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 365
+  },
+  "taco-bell-figueroa-2722-crunchwrap-supreme": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-crunchwrap-supreme-1d6027.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food/specialties/22362?customizedProduct=7150dbe7-7826-458c-8c32-c99ca424f276&utm_source=directShared&store=017468",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 365
+  },
+  "taco-bell-figueroa-2722-bean-burrito-fresco-style": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-bean-burrito-fresco-style-a27b31.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food?store=037739",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 563
+  },
+  "taco-bell-figueroa-2722-cheesy-gordita-crunch": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-cheesy-gordita-crunch-05ab03.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://rb.gy/scfse4",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 290
+  },
+  "taco-bell-figueroa-2722-beefy-5-layer-burrito": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-beefy-5-layer-burrito-ddc1cd.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food/burritos/beefy-5-layer-burrito?store=033090",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 563
+  },
+  "taco-bell-figueroa-2722-crunchy-taco": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-crunchy-taco-027865.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food?store=037739",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 290
+  },
+  "taco-bell-figueroa-2722-soft-taco-beef": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-soft-taco-beef-c331dc.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.ie/author/amy-deans/",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 303
+  },
+  "taco-bell-figueroa-2722-soft-taco-chicken": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-soft-taco-chicken-26083d.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food/deals-and-combos/cantina-chicken-soft-taco?store=016744",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 365
+  },
+  "taco-bell-figueroa-2722-chalupa-supreme-chicken": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-chalupa-supreme-chicken-4899fb.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "http://ta.co/rewards",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "taco-bell-figueroa-2722-grilled-cheese-burrito": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-grilled-cheese-burrito-b5186b.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food?store=037739",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 290
+  },
+  "taco-bell-figueroa-2722-mexican-pizza": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-mexican-pizza-b0ada6.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food/specialties",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 630,
+   "height": 640
+  },
+  "taco-bell-figueroa-2722-nacho-fries": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-nacho-fries-30692e.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food/deals-and-combos/large-nacho-fries?store=015843",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 365
+  },
+  "taco-bell-figueroa-2722-crispy-chicken-nuggets-5-pc": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-crispy-chicken-nuggets-5-pc-df27b9.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food/deals-and-combos/5-piece-crispy-chicken-nuggets",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 365
+  },
+  "taco-bell-figueroa-2722-cheese-quesadilla": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-cheese-quesadilla-04f087.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://tacobell.fi/ruoka/cheese-quesadilla-2/",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 640,
+   "height": 360
+  },
+  "taco-bell-figueroa-2722-breakfast-crunchwrap-bacon": {
+   "file": "assets/dishes/taco-bell-figueroa-2722-breakfast-crunchwrap-bacon-e1aeab.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.tacobell.com/food?store=037739",
+   "venue": "Taco Bell (2722 S Figueroa)",
+   "width": 630,
+   "height": 640
+  },
+  "carls-jr-figueroa-2912-famous-star-with-cheese": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-famous-star-with-cheese-8a5e73.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-hand-breaded-chicken-sandwich": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-hand-breaded-chicken-sandwich-988e6e.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-western-bacon-cheeseburger": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-western-bacon-cheeseburger-8143ba.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-double-famous-star-with-cheese": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-double-famous-star-with-cheese-d36213.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-el-diablo": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-el-diablo-bd75cb.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-the-big-carl": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-the-big-carl-817429.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-hand-breaded-chicken-tenders-5-pc": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-hand-breaded-chicken-tenders-5-pc-149450.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-charbroiled-chicken-club-sandwich": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-charbroiled-chicken-club-sandwich-e06946.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-charbroiled-bbq-chicken-sandwich": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-charbroiled-bbq-chicken-sandwich-7ea104.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-the-breakfast-burger": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-the-breakfast-burger-95a614.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-steak-egg-burrito": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-steak-egg-burrito-997773.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-natural-cut-fries-medium": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-natural-cut-fries-medium-b7a10e.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "carls-jr-figueroa-2912-hash-rounds-medium": {
+   "file": "assets/dishes/carls-jr-figueroa-2912-hash-rounds-medium-3f93bc.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.carlsjr.com/menu/beverages",
+   "venue": "Carl's Jr. (2912 S Figueroa)",
+   "width": 459,
+   "height": 291
+  },
+  "dominos-figueroa-2803-philly-cheese-steak-pizza-2-slices,-medium-hand-toss": {
+   "file": "assets/dishes/dominos-figueroa-2803-philly-cheese-steak-pizza-2-slices-1b8464.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/dominos-los-angeles-33937827/64248946/",
+   "venue": "Domino's Pizza (2803 Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "dominos-figueroa-2803-8-pc-chicken-wings-plain": {
+   "file": "assets/dishes/dominos-figueroa-2803-8-pc-chicken-wings-plain-f14243.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/dominos-los-angeles-33937827/64248946/",
+   "venue": "Domino's Pizza (2803 Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "dominos-figueroa-2803-extravaganzza-pizza-2-slices-large-hand-tossed": {
+   "file": "assets/dishes/dominos-figueroa-2803-extravaganzza-pizza-2-slices-large-aaa531.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/dominos-los-angeles-33937827/64248946/",
+   "venue": "Domino's Pizza (2803 Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "dominos-figueroa-2803-meatzza-pizza-2-slices-large-hand-tossed": {
+   "file": "assets/dishes/dominos-figueroa-2803-meatzza-pizza-2-slices-large-hand--22c718.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/dominos-los-angeles-33937827/64248946/",
+   "venue": "Domino's Pizza (2803 Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "dominos-figueroa-2803-memphis-bbq-chicken-pizza-2-slices-large-hand-tossed": {
+   "file": "assets/dishes/dominos-figueroa-2803-memphis-bbq-chicken-pizza-2-slices-750c05.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/dominos-los-angeles-33937827/64248946/",
+   "venue": "Domino's Pizza (2803 Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "dominos-figueroa-2803-pacific-veggie-pizza-2-slices-large-hand-tossed": {
+   "file": "assets/dishes/dominos-figueroa-2803-pacific-veggie-pizza-2-slices-larg-0ef161.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/dominos-los-angeles-33937827/64248946/",
+   "venue": "Domino's Pizza (2803 Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "dominos-figueroa-2803-ultimate-pepperoni-pizza-2-slices-large-hand-tossed": {
+   "file": "assets/dishes/dominos-figueroa-2803-ultimate-pepperoni-pizza-2-slices--fb6b51.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/dominos-los-angeles-33937827/64248946/",
+   "venue": "Domino's Pizza (2803 Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "dominos-figueroa-2803-wisconsin-6-cheese-pizza-2-slices-large-hand-tossed": {
+   "file": "assets/dishes/dominos-figueroa-2803-wisconsin-6-cheese-pizza-2-slices--b3e270.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/dominos-los-angeles-33937827/64248946/",
+   "venue": "Domino's Pizza (2803 Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "dominos-figueroa-2803-spinach-feta-pizza-2-slices-large-hand-tossed": {
+   "file": "assets/dishes/dominos-figueroa-2803-spinach-feta-pizza-2-slices-large--c231fc.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/dominos-los-angeles-33937827/64248946/",
+   "venue": "Domino's Pizza (2803 Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "wingstop-figueroa-3584-boneless-wings-lemon-pepper-10-pc": {
+   "file": "assets/dishes/wingstop-figueroa-3584-boneless-wings-lemon-pepper-10-pc-2343e7.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://locations.wingstop.com/wingstop-2093-sacramento-ca-95822/flavors",
+   "venue": "Wingstop (3584 S Figueroa)",
+   "width": 512,
+   "height": 640
+  },
+  "jersey-mikes-figueroa-3584-turkey-and-provolone-sub-regular,-mikes-way": {
+   "file": "assets/dishes/jersey-mikes-figueroa-3584-turkey-and-provolone-sub-regu-0a3eb0.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.jerseymikes.com/menu/cold-subs",
+   "venue": "Jersey Mike's Subs (3584 S Figueroa)",
+   "width": 400,
+   "height": 220
+  },
+  "jersey-mikes-figueroa-3584-#13-the-original-italian-regular": {
+   "file": "assets/dishes/jersey-mikes-figueroa-3584-13-the-original-italian-regul-6406dc.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.jerseymikes.com/menu/cold-subs",
+   "venue": "Jersey Mike's Subs (3584 S Figueroa)",
+   "width": 400,
+   "height": 220
+  },
+  "jersey-mikes-figueroa-3584-6-roast-beef-and-provolone-regular": {
+   "file": "assets/dishes/jersey-mikes-figueroa-3584-6-roast-beef-and-provolone-re-093bb0.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.jerseymikes.com/menu/cold-subs",
+   "venue": "Jersey Mike's Subs (3584 S Figueroa)",
+   "width": 400,
+   "height": 220
+  },
+  "jersey-mikes-figueroa-3584-8-club-sub-regular": {
+   "file": "assets/dishes/jersey-mikes-figueroa-3584-8-club-sub-regular-e7db49.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.jerseymikes.com/menu/cold-subs",
+   "venue": "Jersey Mike's Subs (3584 S Figueroa)",
+   "width": 400,
+   "height": 220
+  },
+  "jersey-mikes-figueroa-3584-9-club-supreme-regular": {
+   "file": "assets/dishes/jersey-mikes-figueroa-3584-9-club-supreme-regular-d78558.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.jerseymikes.com/menu/cold-subs",
+   "venue": "Jersey Mike's Subs (3584 S Figueroa)",
+   "width": 400,
+   "height": 220
+  },
+  "jersey-mikes-figueroa-3584-2-jersey-shore-s-favorite-regular": {
+   "file": "assets/dishes/jersey-mikes-figueroa-3584-2-jersey-shore-s-favorite-reg-20ff3c.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.jerseymikes.com/menu/cold-subs",
+   "venue": "Jersey Mike's Subs (3584 S Figueroa)",
+   "width": 400,
+   "height": 220
+  },
+  "jersey-mikes-figueroa-3584-10-tuna-fish-regular": {
+   "file": "assets/dishes/jersey-mikes-figueroa-3584-10-tuna-fish-regular-f88f90.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.jerseymikes.com/menu/cold-subs",
+   "venue": "Jersey Mike's Subs (3584 S Figueroa)",
+   "width": 400,
+   "height": 220
+  },
+  "which-wich-figueroa-3584-the-wicked-wich-medium": {
+   "file": "assets/dishes/which-wich-figueroa-3584-the-wicked-wich-medium-c71edc.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://whichwich.com/",
+   "venue": "Which Wich (3584 S Figueroa)",
+   "width": 640,
+   "height": 250
+  },
+  "subway-figueroa-2805-oven-roasted-turkey-footlong": {
+   "file": "assets/dishes/subway-figueroa-2805-oven-roasted-turkey-footlong-25476f.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/subway-los-angeles-271990/12731162/",
+   "venue": "Subway (2805 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "subway-figueroa-2805-grilled-chicken-footlong": {
+   "file": "assets/dishes/subway-figueroa-2805-grilled-chicken-footlong-a84547.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/subway-los-angeles-271990/12731162/",
+   "venue": "Subway (2805 S Figueroa)",
+   "width": 640,
+   "height": 320
+  },
+  "subway-figueroa-2805-sweet-onion-chicken-teriyaki-footlong": {
+   "file": "assets/dishes/subway-figueroa-2805-sweet-onion-chicken-teriyaki-footlo-0af863.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/subway-los-angeles-271990/12731162/",
+   "venue": "Subway (2805 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "subway-figueroa-2805-tuna-footlong": {
+   "file": "assets/dishes/subway-figueroa-2805-tuna-footlong-04483e.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/subway-los-angeles-271990/12731162/",
+   "venue": "Subway (2805 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "subway-figueroa-2805-veggie-delite-footlong": {
+   "file": "assets/dishes/subway-figueroa-2805-veggie-delite-footlong-f1a244.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/subway-los-angeles-271990/12731162/",
+   "venue": "Subway (2805 S Figueroa)",
+   "width": 640,
+   "height": 320
+  },
+  "subway-figueroa-2805-chicken-bacon-ranch-footlong": {
+   "file": "assets/dishes/subway-figueroa-2805-chicken-bacon-ranch-footlong-256b2a.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/subway-los-angeles-271990/12731162/",
+   "venue": "Subway (2805 S Figueroa)",
+   "width": 640,
+   "height": 640
+  },
+  "starbucks-usc-village-egg-white-&-roasted-red-pepper-egg-bites": {
+   "file": "assets/dishes/starbucks-usc-village-egg-white-roasted-red-pepper-egg-b-4f5832.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/starbucks-los-angeles-24715317/19829179/",
+   "venue": "Starbucks (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "starbucks-usc-village-spinach,-feta-&-egg-white-wrap": {
+   "file": "assets/dishes/starbucks-usc-village-spinach-feta-egg-white-wrap-f804b2.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/starbucks-los-angeles-24715317/19829179/",
+   "venue": "Starbucks (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "starbucks-usc-village-impossible-breakfast-sandwich": {
+   "file": "assets/dishes/starbucks-usc-village-impossible-breakfast-sandwich-380dd9.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/starbucks-los-angeles-24715317/19829179/",
+   "venue": "Starbucks (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "starbucks-usc-village-turkey-bacon-cheddar-egg-white-sandwich": {
+   "file": "assets/dishes/starbucks-usc-village-turkey-bacon-cheddar-egg-white-san-8d0904.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/starbucks-los-angeles-24715317/19829179/",
+   "venue": "Starbucks (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "starbucks-usc-village-double-smoked-bacon-cheddar-egg-sandwich": {
+   "file": "assets/dishes/starbucks-usc-village-double-smoked-bacon-cheddar-egg-sa-41d973.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/starbucks-los-angeles-24715317/19829179/",
+   "venue": "Starbucks (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "starbucks-usc-village-sausage-cheddar-egg-sandwich": {
+   "file": "assets/dishes/starbucks-usc-village-sausage-cheddar-egg-sandwich-9a30b0.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/starbucks-los-angeles-24715317/19829179/",
+   "venue": "Starbucks (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "starbucks-usc-village-bacon-gruyere-egg-bites": {
+   "file": "assets/dishes/starbucks-usc-village-bacon-gruyere-egg-bites-10b332.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/starbucks-los-angeles-24715317/19829179/",
+   "venue": "Starbucks (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "bruxie-usc-village-chicken-&-waffle": {
+   "file": "assets/dishes/bruxie-usc-village-chicken-waffle-a11f1a.jpg",
+   "source": "delivery_menu",
+   "match": "same_dish_other_branch",
+   "page": "https://toast.app/r/bruxie-north-hollywood-5230-lankershim-blvd/order/item-angry-bacon-mac-cheese-reg_1b9e1271-81ac-4ab8-964c-6ea4b3a9461e?utm_medium=redirect",
+   "venue": "Bruxie (USC Village)",
+   "width": 640,
+   "height": 427
+  },
+  "bruxie-usc-village-brioche-breakfast-sandwich": {
+   "file": "assets/dishes/bruxie-usc-village-brioche-breakfast-sandwich-729437.jpg",
+   "source": "delivery_menu",
+   "match": "same_dish_other_branch",
+   "page": "https://toast.app/r/bruxie-north-hollywood-5230-lankershim-blvd/order/item-angry-bacon-mac-cheese-reg_1b9e1271-81ac-4ab8-964c-6ea4b3a9461e?utm_medium=redirect",
+   "venue": "Bruxie (USC Village)",
+   "width": 640,
+   "height": 427
+  },
+  "bruxie-usc-village-the-original-sandwich": {
+   "file": "assets/dishes/bruxie-usc-village-the-original-sandwich-ec7c30.jpg",
+   "source": "delivery_menu",
+   "match": "same_dish_other_branch",
+   "page": "https://toast.app/r/bruxie-north-hollywood-5230-lankershim-blvd/order/item-angry-bacon-mac-cheese-reg_1b9e1271-81ac-4ab8-964c-6ea4b3a9461e?utm_medium=redirect",
+   "venue": "Bruxie (USC Village)",
+   "width": 640,
+   "height": 427
+  },
+  "bruxie-usc-village-buffalo-chicken-sandwich": {
+   "file": "assets/dishes/bruxie-usc-village-buffalo-chicken-sandwich-752434.jpg",
+   "source": "delivery_menu",
+   "match": "same_dish_other_branch",
+   "page": "https://toast.app/r/bruxie-north-hollywood-5230-lankershim-blvd/order/item-angry-bacon-mac-cheese-reg_1b9e1271-81ac-4ab8-964c-6ea4b3a9461e?utm_medium=redirect",
+   "venue": "Bruxie (USC Village)",
+   "width": 640,
+   "height": 427
+  },
+  "bruxie-usc-village-the-crispy-chicken-sandwich": {
+   "file": "assets/dishes/bruxie-usc-village-the-crispy-chicken-sandwich-7a43c8.jpg",
+   "source": "delivery_menu",
+   "match": "same_dish_other_branch",
+   "page": "https://toast.app/r/bruxie-north-hollywood-5230-lankershim-blvd/order/item-angry-bacon-mac-cheese-reg_1b9e1271-81ac-4ab8-964c-6ea4b3a9461e?utm_medium=redirect",
+   "venue": "Bruxie (USC Village)",
+   "width": 640,
+   "height": 427
+  },
+  "bruxie-usc-village-naked-bruxie-waffle": {
+   "file": "assets/dishes/bruxie-usc-village-naked-bruxie-waffle-a704ea.jpg",
+   "source": "delivery_menu",
+   "match": "same_dish_other_branch",
+   "page": "https://toast.app/r/bruxie-north-hollywood-5230-lankershim-blvd/order/item-angry-bacon-mac-cheese-reg_1b9e1271-81ac-4ab8-964c-6ea4b3a9461e?utm_medium=redirect",
+   "venue": "Bruxie (USC Village)",
+   "width": 640,
+   "height": 427
+  },
+  "rock-reillys-usc-village-fish-and-chips": {
+   "file": "assets/dishes/rock-reillys-usc-village-fish-and-chips-282099.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/rock-and-reillys-usc-los-angeles-458572/2603710/",
+   "venue": "Rock & Reilly's (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "rock-reillys-usc-village-nashville-chicken-sandwich": {
+   "file": "assets/dishes/rock-reillys-usc-village-nashville-chicken-sandwich-80585e.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/rock-and-reillys-usc-village-3201-s-hoover-st-1810/order/item-brown-sugar-bbq-chicken-sandwhich_35ff4c20-e22d-4d7a-924a-31e7777a4dd9",
+   "venue": "Rock & Reilly's (USC Village)",
+   "width": 635,
+   "height": 640
+  },
+  "rock-reillys-usc-village-reilly-s-bacon-cheeseburger": {
+   "file": "assets/dishes/rock-reillys-usc-village-reilly-s-bacon-cheeseburger-dc50a7.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/rock-and-reillys-usc-village-3201-s-hoover-st-1810/order/item-brown-sugar-bbq-chicken-sandwhich_35ff4c20-e22d-4d7a-924a-31e7777a4dd9",
+   "venue": "Rock & Reilly's (USC Village)",
+   "width": 640,
+   "height": 552
+  },
+  "rock-reillys-usc-village-grilled-wings": {
+   "file": "assets/dishes/rock-reillys-usc-village-grilled-wings-53765c.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/rock-and-reillys-usc-village-3201-s-hoover-st-1810/order/item-brown-sugar-bbq-chicken-sandwhich_35ff4c20-e22d-4d7a-924a-31e7777a4dd9",
+   "venue": "Rock & Reilly's (USC Village)",
+   "width": 360,
+   "height": 640
+  },
+  "ramen-kenjo-usc-village-tonkotsu-ramen": {
+   "file": "assets/dishes/ramen-kenjo-usc-village-tonkotsu-ramen-cdf88e.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/en/store/ramen-kenjo-los-angeles-25575507/25367350/",
+   "venue": "Ramen Kenjo (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "ramen-kenjo-usc-village-chashu-pork-donburi": {
+   "file": "assets/dishes/ramen-kenjo-usc-village-chashu-pork-donburi-3d1003.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/en/store/ramen-kenjo-los-angeles-25575507/25367350/",
+   "venue": "Ramen Kenjo (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "ramen-kenjo-usc-village-spicy-miso-ramen-spicy": {
+   "file": "assets/dishes/ramen-kenjo-usc-village-spicy-miso-ramen-spicy-e3b72e.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/en/store/ramen-kenjo-los-angeles-25575507/25367350/",
+   "venue": "Ramen Kenjo (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "ramen-kenjo-usc-village-trojan-gyoza": {
+   "file": "assets/dishes/ramen-kenjo-usc-village-trojan-gyoza-c9ee55.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/en/store/ramen-kenjo-los-angeles-25575507/25367350/",
+   "venue": "Ramen Kenjo (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "city-tacos-usc-village-sd-carne-asada-taco": {
+   "file": "assets/dishes/city-tacos-usc-village-sd-carne-asada-taco-a30192.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/city-tacos-los-angeles-2422257/2473639/",
+   "venue": "City Tacos (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "city-tacos-usc-village-cali-munch-burrito": {
+   "file": "assets/dishes/city-tacos-usc-village-cali-munch-burrito-3131be.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/city-tacos-los-angeles-2422257/2473639/",
+   "venue": "City Tacos (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "city-tacos-usc-village-camaron-enchilado-taco": {
+   "file": "assets/dishes/city-tacos-usc-village-camaron-enchilado-taco-4e2d1e.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/city-tacos-los-angeles-2422257/2473639/",
+   "venue": "City Tacos (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "city-tacos-usc-village-surf-turf-taco": {
+   "file": "assets/dishes/city-tacos-usc-village-surf-turf-taco-749abc.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/city-tacos-los-angeles-2422257/2473639/",
+   "venue": "City Tacos (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "terra-mia-usc-village-margherita-pizza-2-slices": {
+   "file": "assets/dishes/terra-mia-usc-village-margherita-pizza-2-slices-8e125a.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/terra-mia-pizzeria-los-angeles-32246383/74574953/",
+   "venue": "Terra Mia Pizzeria (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "terra-mia-usc-village-pepperoni-pizza-2-slices": {
+   "file": "assets/dishes/terra-mia-usc-village-pepperoni-pizza-2-slices-81d565.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/terra-mia-pizzeria-los-angeles-32246383/74574953/",
+   "venue": "Terra Mia Pizzeria (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "terra-mia-usc-village-bbq-chicken-pizza-2-slices": {
+   "file": "assets/dishes/terra-mia-usc-village-bbq-chicken-pizza-2-slices-cd06b8.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/terra-mia-pizzeria-los-angeles-32246383/74574953/",
+   "venue": "Terra Mia Pizzeria (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "terra-mia-usc-village-meat-lovers-pizza-2-slices": {
+   "file": "assets/dishes/terra-mia-usc-village-meat-lovers-pizza-2-slices-4f4713.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/terra-mia-pizzeria-los-angeles-32246383/74574953/",
+   "venue": "Terra Mia Pizzeria (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "terra-mia-usc-village-house-pizza-2-slices": {
+   "file": "assets/dishes/terra-mia-usc-village-house-pizza-2-slices-43f6a3.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/terra-mia-pizzeria-los-angeles-32246383/74574953/",
+   "venue": "Terra Mia Pizzeria (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "sunlife-organics-usc-village-protein-smoothie": {
+   "file": "assets/dishes/sunlife-organics-usc-village-protein-smoothie-8942de.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/sunlife-organics-usc-village/order/r-52c5e2ca-d232-4616-bddb-14ffca57d1ee/item-billion-dollar-smoothie_09c20813-ebb7-4c8d-aba3-fab0c59bfa64?utm_medium=redirect",
+   "venue": "Sunlife Organics (USC Village)",
+   "width": 640,
+   "height": 360
+  },
+  "sunlife-organics-usc-village-million-dollar-smoothie": {
+   "file": "assets/dishes/sunlife-organics-usc-village-million-dollar-smoothie-97952a.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/sunlife-organics-usc-village/order/r-52c5e2ca-d232-4616-bddb-14ffca57d1ee/item-billion-dollar-smoothie_09c20813-ebb7-4c8d-aba3-fab0c59bfa64?utm_medium=redirect",
+   "venue": "Sunlife Organics (USC Village)",
+   "width": 640,
+   "height": 360
+  },
+  "sunlife-organics-usc-village-wolverine": {
+   "file": "assets/dishes/sunlife-organics-usc-village-wolverine-cbb43f.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/sunlife-organics-usc-village/order/r-52c5e2ca-d232-4616-bddb-14ffca57d1ee/item-billion-dollar-smoothie_09c20813-ebb7-4c8d-aba3-fab0c59bfa64?utm_medium=redirect",
+   "venue": "Sunlife Organics (USC Village)",
+   "width": 640,
+   "height": 360
+  },
+  "sunlife-organics-usc-village-brazilian-bowl": {
+   "file": "assets/dishes/sunlife-organics-usc-village-brazilian-bowl-6ddd6f.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/sunlife-organics-usc-village/order/r-52c5e2ca-d232-4616-bddb-14ffca57d1ee/item-billion-dollar-smoothie_09c20813-ebb7-4c8d-aba3-fab0c59bfa64?utm_medium=redirect",
+   "venue": "Sunlife Organics (USC Village)",
+   "width": 640,
+   "height": 360
+  },
+  "sunlife-organics-usc-village-buddha-bowl": {
+   "file": "assets/dishes/sunlife-organics-usc-village-buddha-bowl-316141.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/sunlife-organics-usc-village/order/r-52c5e2ca-d232-4616-bddb-14ffca57d1ee/item-billion-dollar-smoothie_09c20813-ebb7-4c8d-aba3-fab0c59bfa64?utm_medium=redirect",
+   "venue": "Sunlife Organics (USC Village)",
+   "width": 640,
+   "height": 360
+  },
+  "insomnia-cookies-usc-village-classic-chocolate-chunk-cookie": {
+   "file": "assets/dishes/insomnia-cookies-usc-village-classic-chocolate-chunk-coo-c98c03.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/insomnia-cookies-los-angeles-23141003/109026156/",
+   "venue": "Insomnia Cookies (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "insomnia-cookies-usc-village-double-chocolate-cookie": {
+   "file": "assets/dishes/insomnia-cookies-usc-village-double-chocolate-cookie-3b48c7.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/insomnia-cookies-los-angeles-23141003/109026156/",
+   "venue": "Insomnia Cookies (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "insomnia-cookies-usc-village-peanut-butter-chip-cookie": {
+   "file": "assets/dishes/insomnia-cookies-usc-village-peanut-butter-chip-cookie-d47bb6.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/insomnia-cookies-los-angeles-23141003/109026156/",
+   "venue": "Insomnia Cookies (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "insomnia-cookies-usc-village-snickerdoodle-cookie": {
+   "file": "assets/dishes/insomnia-cookies-usc-village-snickerdoodle-cookie-af6839.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/insomnia-cookies-los-angeles-23141003/109026156/",
+   "venue": "Insomnia Cookies (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "insomnia-cookies-usc-village-s-mores-deluxe-cookie": {
+   "file": "assets/dishes/insomnia-cookies-usc-village-s-mores-deluxe-cookie-d4154d.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/insomnia-cookies-los-angeles-23141003/109026156/",
+   "venue": "Insomnia Cookies (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "softies-burger-usc-village-loaded-fries": {
+   "file": "assets/dishes/softies-burger-usc-village-loaded-fries-77298a.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.doordash.com/store/softies-burger-los-angeles-36527912/82001361/",
+   "venue": "Softies Burger (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "holbox-baja-fish-taco": {
+   "file": "assets/dishes/holbox-baja-fish-taco-b43c89.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/holbox-3655-south-grand-avenue-c9",
+   "venue": "Holbox",
+   "width": 500,
+   "height": 474
+  },
+  "holbox-scallop-aguachile": {
+   "file": "assets/dishes/holbox-scallop-aguachile-c6824f.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/holbox-3655-south-grand-avenue-c9",
+   "venue": "Holbox",
+   "width": 565,
+   "height": 640
+  },
+  "holbox-smoked-kanpachi-taco": {
+   "file": "assets/dishes/holbox-smoked-kanpachi-taco-250732.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/holbox-3655-south-grand-avenue-c9",
+   "venue": "Holbox",
+   "width": 640,
+   "height": 592
+  },
+  "holbox-camarones-al-mojo": {
+   "file": "assets/dishes/holbox-camarones-al-mojo-923959.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/holbox-3655-south-grand-avenue-c9",
+   "venue": "Holbox",
+   "width": 500,
+   "height": 588
+  },
+  "chichen-itza-panuchos-order-of-2": {
+   "file": "assets/dishes/chichen-itza-panuchos-order-of-2-8bea10.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/chichen-itza-restaurant-3655-south-grand-avenue-c6/order/item-sopa-de-lima_8f91b857-5941-4164-bacd-6f8dc7e10042",
+   "venue": "Chichen Itza Restaurant",
+   "width": 640,
+   "height": 427
+  },
+  "chichen-itza-trio-yucateco": {
+   "file": "assets/dishes/chichen-itza-trio-yucateco-381617.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://toast.app/r/chichen-itza-restaurant-3655-south-grand-avenue-c6/order/item-sopa-de-lima_8f91b857-5941-4164-bacd-6f8dc7e10042",
+   "venue": "Chichen Itza Restaurant",
+   "width": 539,
+   "height": 520
+  },
+  "komal-quesadilla-with-quesillo-fresh-masa": {
+   "file": "assets/dishes/komal-quesadilla-with-quesillo-fresh-masa-834df0.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://komal.toast.site/order/komal-3655-south-grand-avenue",
+   "venue": "KOMAL",
+   "width": 480,
+   "height": 640
+  },
+  "komal-tetela-masa-pocket-with-beans": {
+   "file": "assets/dishes/komal-tetela-masa-pocket-with-beans-1996eb.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://komal.toast.site/order/komal-3655-south-grand-avenue",
+   "venue": "KOMAL",
+   "width": 640,
+   "height": 426
+  },
+  "komal-taco-sonia": {
+   "file": "assets/dishes/komal-taco-sonia-3b4104.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://komal.toast.site/order/komal-3655-south-grand-avenue",
+   "venue": "KOMAL",
+   "width": 640,
+   "height": 426
+  },
+  "komal-molotes-de-platano": {
+   "file": "assets/dishes/komal-molotes-de-platano-7e6dad.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://komal.toast.site/order/komal-3655-south-grand-avenue",
+   "venue": "KOMAL",
+   "width": 640,
+   "height": 640
+  },
+  "komal-tlacoyos": {
+   "file": "assets/dishes/komal-tlacoyos-2f5d3a.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://komal.toast.site/order/komal-3655-south-grand-avenue",
+   "venue": "KOMAL",
+   "width": 480,
+   "height": 640
+  },
+  "komal-milpa-salad": {
+   "file": "assets/dishes/komal-milpa-salad-918e0c.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://komal.toast.site/order/komal-3655-south-grand-avenue",
+   "venue": "KOMAL",
+   "width": 640,
+   "height": 426
+  },
+  "komal-squash-blossom-quesadilla": {
+   "file": "assets/dishes/komal-squash-blossom-quesadilla-15b19c.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://komal.toast.site/order/komal-3655-south-grand-avenue",
+   "venue": "KOMAL",
+   "width": 640,
+   "height": 426
+  },
+  "thai-by-trio-pad-thai-with-chicken": {
+   "file": "assets/dishes/thai-by-trio-pad-thai-with-chicken-8f21b7.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.toasttab.com/local/order/thaibytrio",
+   "venue": "Thai by Trio",
+   "width": 640,
+   "height": 360
+  },
+  "thai-by-trio-pad-see-ew-with-beef": {
+   "file": "assets/dishes/thai-by-trio-pad-see-ew-with-beef-25c1f5.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.toasttab.com/local/order/thaibytrio",
+   "venue": "Thai by Trio",
+   "width": 640,
+   "height": 360
+  },
+  "thai-by-trio-crab-fried-rice": {
+   "file": "assets/dishes/thai-by-trio-crab-fried-rice-e664b7.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.toasttab.com/local/order/thaibytrio",
+   "venue": "Thai by Trio",
+   "width": 640,
+   "height": 360
+  },
+  "thai-by-trio-thai-green-curry-with-chicken": {
+   "file": "assets/dishes/thai-by-trio-thai-green-curry-with-chicken-fe0c37.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.toasttab.com/local/order/thaibytrio",
+   "venue": "Thai by Trio",
+   "width": 640,
+   "height": 480
+  },
+  "thai-by-trio-panang-curry-with-chicken": {
+   "file": "assets/dishes/thai-by-trio-panang-curry-with-chicken-d2a32b.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.toasttab.com/local/order/thaibytrio",
+   "venue": "Thai by Trio",
+   "width": 640,
+   "height": 480
+  },
+  "thai-by-trio-drunken-noodles": {
+   "file": "assets/dishes/thai-by-trio-drunken-noodles-136029.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.toasttab.com/local/order/thaibytrio",
+   "venue": "Thai by Trio",
+   "width": 640,
+   "height": 360
+  },
+  "thai-by-trio-thai-fried-rice-with-chicken": {
+   "file": "assets/dishes/thai-by-trio-thai-fried-rice-with-chicken-0fb00b.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.toasttab.com/local/order/thaibytrio",
+   "venue": "Thai by Trio",
+   "width": 640,
+   "height": 360
+  },
+  "thai-by-trio-khao-soi": {
+   "file": "assets/dishes/thai-by-trio-khao-soi-45c6b5.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.toasttab.com/local/order/thaibytrio",
+   "venue": "Thai by Trio",
+   "width": 640,
+   "height": 427
+  },
+  "five-guys-usc-bacon-cheeseburger": {
+   "file": "assets/dishes/five-guys-usc-bacon-cheeseburger-f6bd53.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com.au/menu/burgers/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 447
+  },
+  "five-guys-usc-little-hamburger": {
+   "file": "assets/dishes/five-guys-usc-little-hamburger-d41ab5.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com/menu/burgers/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 445
+  },
+  "five-guys-usc-little-bacon-cheeseburger": {
+   "file": "assets/dishes/five-guys-usc-little-bacon-cheeseburger-01626b.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com/menu/Burgers?utm_source=nl_thejuice&utm_medium=newsletter&utm_campaign=Oct-28",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 445
+  },
+  "five-guys-usc-regular-cajun-fries": {
+   "file": "assets/dishes/five-guys-usc-regular-cajun-fries-c3f20a.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com/menu/Fries/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 426
+  },
+  "five-guys-usc-hamburger": {
+   "file": "assets/dishes/five-guys-usc-hamburger-8e08e7.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.co.uk/menu/burgers/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 447
+  },
+  "five-guys-usc-cheeseburger": {
+   "file": "assets/dishes/five-guys-usc-cheeseburger-127615.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.fr/menu/menu-burger-hamburgers-cheeseburgers-et-plus-encore/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 447
+  },
+  "five-guys-usc-bacon-burger": {
+   "file": "assets/dishes/five-guys-usc-bacon-burger-c8a65d.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com/menu/burgers/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 445
+  },
+  "five-guys-usc-little-cheeseburger": {
+   "file": "assets/dishes/five-guys-usc-little-cheeseburger-425109.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com.au/menu/burgers/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 447
+  },
+  "five-guys-usc-hot-dog": {
+   "file": "assets/dishes/five-guys-usc-hot-dog-788566.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com.hk/menu/%e5%85%a8%e7%89%9b%e7%86%b1%e7%8b%97%e8%8f%9c%e5%96%ae%ef%bc%9a%e5%85%a8%e7%89%9b%e7%86%b3%e7%8b%97%e3%80%81%e5%85%a8%e7%89%9b%e8%8a%9d%e5%a3%ab%e7%86%b3%e7%8b%97%e6%88%96%e5%85%a8%e7%89%9b%e7%85%b1/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 447
+  },
+  "five-guys-usc-bacon-cheese-dog": {
+   "file": "assets/dishes/five-guys-usc-bacon-cheese-dog-c50c3c.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com/menu/Dogs/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 445
+  },
+  "five-guys-usc-little-five-guys-style-fries": {
+   "file": "assets/dishes/five-guys-usc-little-five-guys-style-fries-56318a.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com/menu/toppings/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 516
+  },
+  "five-guys-usc-large-five-guys-style-fries": {
+   "file": "assets/dishes/five-guys-usc-large-five-guys-style-fries-2e1272.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com/menu/toppings/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 516
+  },
+  "five-guys-usc-large-cajun-fries": {
+   "file": "assets/dishes/five-guys-usc-large-cajun-fries-ee96df.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.fiveguys.com/menu/Fries/",
+   "venue": "Five Guys (USC, 530 W 27th St)",
+   "width": 640,
+   "height": 426
+  },
+  "ebaes-original-ebaes-ramen": {
+   "file": "assets/dishes/ebaes-original-ebaes-ramen-2cc9fe.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.ezcater.com/catering/pvt/ebaes-3?fcv=1",
+   "venue": "Ebaes Ramen & Sushi",
+   "width": 640,
+   "height": 320
+  },
+  "ebaes-spicy-tonkotsu-ramen": {
+   "file": "assets/dishes/ebaes-spicy-tonkotsu-ramen-6f07d1.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.ezcater.com/catering/pvt/ebaes-3?fcv=1",
+   "venue": "Ebaes Ramen & Sushi",
+   "width": 640,
+   "height": 320
+  },
+  "ebaes-tonkotsu-ramen": {
+   "file": "assets/dishes/ebaes-tonkotsu-ramen-2c11be.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.ezcater.com/catering/pvt/ebaes-3?fcv=1",
+   "venue": "Ebaes Ramen & Sushi",
+   "width": 640,
+   "height": 320
+  },
+  "ebaes-vegetarian-ramen": {
+   "file": "assets/dishes/ebaes-vegetarian-ramen-fa981b.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://www.ezcater.com/catering/pvt/ebaes-3?fcv=1",
+   "venue": "Ebaes Ramen & Sushi",
+   "width": 640,
+   "height": 320
+  },
+  "natures-brew-egg-sandwich": {
+   "file": "assets/dishes/natures-brew-egg-sandwich-76a606.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/natures-brew/item-big-blue_1c8b7a45-700d-465f-b4e8-b1e4207cbb24",
+   "venue": "Nature's Brew by Bacari",
+   "width": 640,
+   "height": 544
+  },
+  "natures-brew-bacon-burrito": {
+   "file": "assets/dishes/natures-brew-bacon-burrito-118fc9.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/natures-brew/item-big-blue_1c8b7a45-700d-465f-b4e8-b1e4207cbb24",
+   "venue": "Nature's Brew by Bacari",
+   "width": 619,
+   "height": 640
+  },
+  "natures-brew-chorizo-burrito": {
+   "file": "assets/dishes/natures-brew-chorizo-burrito-da5fa0.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.toasttab.com/online/natures-brew/item-big-blue_1c8b7a45-700d-465f-b4e8-b1e4207cbb24",
+   "venue": "Nature's Brew by Bacari",
+   "width": 619,
+   "height": 640
+  },
+  "skywalker-grill-skywalker-ranch-wagyu-burger": {
+   "file": "assets/dishes/skywalker-grill-skywalker-ranch-wagyu-burger-51ec4c.jpg",
+   "source": "restaurant_site",
+   "match": "exact_dish",
+   "page": "https://www.exqz.com/news/2026/09/inside-skywalker-grill-the-cherry-wood-dining-room-on-top-of-the-lucas-museum",
+   "venue": "Skywalker Grill (Lucas Museum rooftop)",
+   "width": 640,
+   "height": 480
+  },
+  "skywalker-grill-honey-miso-glazed-salmon": {
+   "file": "assets/dishes/skywalker-grill-honey-miso-glazed-salmon-fc28ca.jpg",
+   "source": "restaurant_site",
+   "match": "exact_dish",
+   "page": "https://www.exqz.com/news/2026/09/inside-skywalker-grill-the-cherry-wood-dining-room-on-top-of-the-lucas-museum",
+   "venue": "Skywalker Grill (Lucas Museum rooftop)",
+   "width": 640,
+   "height": 480
+  },
+  "ono-hawaiian-bbq-hawaiian-bbq-chicken-plate": {
+   "file": "assets/dishes/ono-hawaiian-bbq-hawaiian-bbq-chicken-plate-8d3a98.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "ono-hawaiian-bbq-chicken-katsu-plate": {
+   "file": "assets/dishes/ono-hawaiian-bbq-chicken-katsu-plate-3b99b9.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "ono-hawaiian-bbq-kalbi-short-ribs-plate": {
+   "file": "assets/dishes/ono-hawaiian-bbq-kalbi-short-ribs-plate-b27c82.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "ono-hawaiian-bbq-grilled-chicken-breast-plate": {
+   "file": "assets/dishes/ono-hawaiian-bbq-grilled-chicken-breast-plate-57445f.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "ono-hawaiian-bbq-hawaiian-bbq-beef-plate": {
+   "file": "assets/dishes/ono-hawaiian-bbq-hawaiian-bbq-beef-plate-051eb5.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "ono-hawaiian-bbq-kalua-pork-with-cabbage-plate": {
+   "file": "assets/dishes/ono-hawaiian-bbq-kalua-pork-with-cabbage-plate-715f55.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "ono-hawaiian-bbq-island-white-fish-plate": {
+   "file": "assets/dishes/ono-hawaiian-bbq-island-white-fish-plate-0fe80e.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "ono-hawaiian-bbq-island-fire-chicken-plate": {
+   "file": "assets/dishes/ono-hawaiian-bbq-island-fire-chicken-plate-1c71b4.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "ono-hawaiian-bbq-hawaiian-bbq-mix-plate": {
+   "file": "assets/dishes/ono-hawaiian-bbq-hawaiian-bbq-mix-plate-c13a91.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "ono-hawaiian-bbq-spam-musubi-2-pc": {
+   "file": "assets/dishes/ono-hawaiian-bbq-spam-musubi-2-pc-eada6c.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://onohawaiianbbq.com/our-food/plate-lunches/#section-7",
+   "venue": "Ono Hawaiian BBQ",
+   "width": 640,
+   "height": 640
+  },
+  "northern-cafe-juicy-pork-dumplings-10-pc": {
+   "file": "assets/dishes/northern-cafe-juicy-pork-dumplings-10-pc-e18c68.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://pos.chowbus.com/online-ordering/store/NORTHERN-CAFE/21054",
+   "venue": "Northern Cafe (Dumpling House)",
+   "width": 426,
+   "height": 640
+  },
+  "northern-cafe-braised-beef-noodle-soup": {
+   "file": "assets/dishes/northern-cafe-braised-beef-noodle-soup-c4dad9.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://pos.chowbus.com/online-ordering/store/NORTHERN-CAFE/21054",
+   "venue": "Northern Cafe (Dumpling House)",
+   "width": 511,
+   "height": 640
+  },
+  "piara-pizza-vermont-large-pepperoni-pizza-2-slice-serving": {
+   "file": "assets/dishes/piara-pizza-vermont-large-pepperoni-pizza-2-slice-servin-2ed35b.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.chownow.com/order/6604/locations/54865",
+   "venue": "Piara Pizza (Vermont Ave)",
+   "width": 640,
+   "height": 480
+  },
+  "piara-pizza-vermont-piara-personal-pan-cheese-pizza": {
+   "file": "assets/dishes/piara-pizza-vermont-piara-personal-pan-cheese-pizza-17281f.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.chownow.com/order/6604/locations/54865",
+   "venue": "Piara Pizza (Vermont Ave)",
+   "width": 640,
+   "height": 480
+  },
+  "piara-pizza-vermont-piara-deep-dish-cheese-pizza": {
+   "file": "assets/dishes/piara-pizza-vermont-piara-deep-dish-cheese-pizza-602036.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.chownow.com/order/6604/locations/54865",
+   "venue": "Piara Pizza (Vermont Ave)",
+   "width": 640,
+   "height": 480
+  },
+  "piara-pizza-vermont-large-piara-meat-lovers-pizza": {
+   "file": "assets/dishes/piara-pizza-vermont-large-piara-meat-lovers-pizza-44de65.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.chownow.com/order/6604/locations/54865",
+   "venue": "Piara Pizza (Vermont Ave)",
+   "width": 640,
+   "height": 480
+  },
+  "piara-pizza-vermont-large-piara-hawaiian-pizza": {
+   "file": "assets/dishes/piara-pizza-vermont-large-piara-hawaiian-pizza-393cf0.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://order.chownow.com/order/6604/locations/54865",
+   "venue": "Piara Pizza (Vermont Ave)",
+   "width": 640,
+   "height": 480
+  },
+  "dutch-bros-usc-protein-coffee-iced,-large": {
+   "file": "assets/dishes/dutch-bros-usc-protein-coffee-iced-large-016f42.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.dutchbros.com/menu/iced-coffee/iced-protein-coffee/build-your-own-protein-latte/",
+   "venue": "Dutch Bros Coffee (USC)",
+   "width": 640,
+   "height": 640
+  },
+  "dutch-bros-usc-cold-brew-coffee": {
+   "file": "assets/dishes/dutch-bros-usc-cold-brew-coffee-3f0d33.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.dutchbros.com/menu/coffee-classics/nitro",
+   "venue": "Dutch Bros Coffee (USC)",
+   "width": 640,
+   "height": 640
+  },
+  "dutch-bros-usc-iced-golden-eagle": {
+   "file": "assets/dishes/dutch-bros-usc-iced-golden-eagle-0380a4.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.dutchbros.com/menu/dutch-faves/golden-eagle/",
+   "venue": "Dutch Bros Coffee (USC)",
+   "width": 640,
+   "height": 640
+  },
+  "dutch-bros-usc-cocomo-iced-medium": {
+   "file": "assets/dishes/dutch-bros-usc-cocomo-iced-medium-fe11c9.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.dutchbros.com/menu/iced-coffee/iced-dutch-faves/cocomo/",
+   "venue": "Dutch Bros Coffee (USC)",
+   "width": 640,
+   "height": 640
+  },
+  "dutch-bros-usc-vanilla-protein-latte-iced-medium": {
+   "file": "assets/dishes/dutch-bros-usc-vanilla-protein-latte-iced-medium-ccb90a.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://www.dutchbros.com/menu/iced-coffee/iced-protein-coffee/vanilla-protein-latte/",
+   "venue": "Dutch Bros Coffee (USC)",
+   "width": 640,
+   "height": 640
+  },
+  "gogobop-usc-village-beef-bulgogi-bowl": {
+   "file": "assets/dishes/gogobop-usc-village-beef-bulgogi-bowl-7012e1.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://gogobop.toast.site/menu/gogobop-westwood/group_817e97a5-bdb4-4deb-aebf-ae0dafa46097/item-beef-bulgogi-bowl_13a058d3-a290-4785-8e23-cde6f3b4fdfa",
+   "venue": "Gogobop Korean Rice Bar (USC Village)",
+   "width": 640,
+   "height": 360
+  },
+  "gogobop-usc-village-gochujang-chicken-bowl": {
+   "file": "assets/dishes/gogobop-usc-village-gochujang-chicken-bowl-3d1c9e.jpg",
+   "source": "delivery_menu",
+   "match": "same_dish_other_branch",
+   "page": "https://www.doordash.com/store/gogobop-korean-rice-bar-los-angeles-387010/72378367/",
+   "venue": "Gogobop Korean Rice Bar (USC Village)",
+   "width": 640,
+   "height": 640
+  },
+  "gogobop-usc-village-tofu-bowl": {
+   "file": "assets/dishes/gogobop-usc-village-tofu-bowl-bb7639.jpg",
+   "source": "delivery_menu",
+   "match": "same_dish_other_branch",
+   "page": "https://www.doordash.com/store/gogobop-korean-rice-bar-los-angeles-387010/72378367/",
+   "venue": "Gogobop Korean Rice Bar (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "gogobop-usc-village-hotteok-korean-sweet-pancake": {
+   "file": "assets/dishes/gogobop-usc-village-hotteok-korean-sweet-pancake-6391e1.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://gogobop.toast.site/menu/gogobop-westwood/group_ab30800f-4ceb-44b7-9845-dab356136c51/item-hotteok_237d7402-4d39-4eee-b0ba-29ecb06e2dff",
+   "venue": "Gogobop Korean Rice Bar (USC Village)",
+   "width": 640,
+   "height": 427
+  },
+  "gogobop-usc-village-spicy-pork-bowl": {
+   "file": "assets/dishes/gogobop-usc-village-spicy-pork-bowl-7e9343.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://gogobop.toast.site/menu/gogobop-westwood/group_817e97a5-bdb4-4deb-aebf-ae0dafa46097/item-spicy-pork-bowl_5ab735df-7e83-4ba1-8e32-e012b475653d",
+   "venue": "Gogobop Korean Rice Bar (USC Village)",
+   "width": 640,
+   "height": 427
+  },
+  "gogobop-usc-village-pork-belly-bowl": {
+   "file": "assets/dishes/gogobop-usc-village-pork-belly-bowl-e31e08.jpg",
+   "source": "delivery_menu",
+   "match": "exact_dish",
+   "page": "https://gogobop.toast.site/menu/gogobop-westwood/group_817e97a5-bdb4-4deb-aebf-ae0dafa46097/item-pork-belly-bowl_beacadba-2068-432e-80e2-9a758bedfe63",
+   "venue": "Gogobop Korean Rice Bar (USC Village)",
+   "width": 640,
+   "height": 427
+  },
+  "gogobop-usc-village-kimchi-fried-rice": {
+   "file": "assets/dishes/gogobop-usc-village-kimchi-fried-rice-108053.jpg",
+   "source": "delivery_menu",
+   "match": "same_dish_other_branch",
+   "page": "https://www.doordash.com/store/gogobop-korean-rice-bar-los-angeles-387010/72378367/",
+   "venue": "Gogobop Korean Rice Bar (USC Village)",
+   "width": 640,
+   "height": 320
+  },
+  "cold-stone-figueroa-founders-favorite-love-it-size": {
+   "file": "assets/dishes/cold-stone-figueroa-founders-favorite-love-it-size-2c3386.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://order.coldstonecreamery.com/menu/usc",
+   "venue": "Cold Stone Creamery (Tuscany)",
+   "width": 640,
+   "height": 427
+  },
+  "cold-stone-figueroa-peanut-butter-cup-perfection-love-it-size": {
+   "file": "assets/dishes/cold-stone-figueroa-peanut-butter-cup-perfection-love-it-15226e.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://order.coldstonecreamery.com/menu/usc",
+   "venue": "Cold Stone Creamery (Tuscany)",
+   "width": 640,
+   "height": 427
+  },
+  "cold-stone-figueroa-birthday-cake-remix-love-it-size": {
+   "file": "assets/dishes/cold-stone-figueroa-birthday-cake-remix-love-it-size-528ae1.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://order.coldstonecreamery.com/menu/usc",
+   "venue": "Cold Stone Creamery (Tuscany)",
+   "width": 640,
+   "height": 427
+  },
+  "cold-stone-figueroa-chocolate-devotion-love-it-size": {
+   "file": "assets/dishes/cold-stone-figueroa-chocolate-devotion-love-it-size-8793ea.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://order.coldstonecreamery.com/menu/usc",
+   "venue": "Cold Stone Creamery (Tuscany)",
+   "width": 640,
+   "height": 427
+  },
+  "cold-stone-figueroa-cheesecake-fantasy-love-it-size": {
+   "file": "assets/dishes/cold-stone-figueroa-cheesecake-fantasy-love-it-size-3bbc76.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://order.coldstonecreamery.com/menu/usc",
+   "venue": "Cold Stone Creamery (Tuscany)",
+   "width": 640,
+   "height": 427
+  },
+  "qwench-hoover-pbandh-protein-blend": {
+   "file": "assets/dishes/qwench-hoover-pbandh-protein-blend-eb827f.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://qwenchjuice.com/menu/pbh/",
+   "venue": "QWENCH Juice Bar & DRNK Coffee (Hoover)",
+   "width": 289,
+   "height": 404
+  },
+  "qwench-hoover-k-bowl-acai-bowl": {
+   "file": "assets/dishes/qwench-hoover-k-bowl-acai-bowl-cc1793.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://qwenchjuice.com/menu/k-bowl/",
+   "venue": "QWENCH Juice Bar & DRNK Coffee (Hoover)",
+   "width": 289,
+   "height": 404
+  },
+  "qwench-hoover-p-bowl": {
+   "file": "assets/dishes/qwench-hoover-p-bowl-778e7c.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://qwenchjuice.com/menu/p-bowl/",
+   "venue": "QWENCH Juice Bar & DRNK Coffee (Hoover)",
+   "width": 289,
+   "height": 404
+  },
+  "qwench-hoover-g-bowl": {
+   "file": "assets/dishes/qwench-hoover-g-bowl-4a4506.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://qwenchjuice.com/menu/g-bowl/",
+   "venue": "QWENCH Juice Bar & DRNK Coffee (Hoover)",
+   "width": 289,
+   "height": 404
+  },
+  "qwench-hoover-mango-blend": {
+   "file": "assets/dishes/qwench-hoover-mango-blend-731ec8.jpg",
+   "source": "official_chain_site",
+   "match": "exact_dish",
+   "page": "https://qwenchjuice.com/menu/mango-blend/",
+   "venue": "QWENCH Juice Bar & DRNK Coffee (Hoover)",
+   "width": 270,
+   "height": 404
+  }
+ }
+}

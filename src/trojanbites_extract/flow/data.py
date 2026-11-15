@@ -10,6 +10,7 @@ from trojanbites_extract.flow.model import Dish, Venue, canonical_allergen_tags
 from trojanbites_extract.settings import ROOT
 
 DATASET_PATH = ROOT / 'restaurants_usc_complete.json'
+IMAGES_PATH = ROOT / 'dish_images.json'   # curated dish photos, built by scripts/build_dish_images.py
 HALL_KEYS = (('everybody', 'evk'), ('parkside', 'parkside'), ('village', 'university-village'))
 
 _lock = threading.Lock()
@@ -32,7 +33,7 @@ def _num(value):
     return number if number >= 0 else None
 
 
-def _dish(raw: dict, venue: Venue) -> Dish | None:
+def _dish(raw: dict, venue: Venue, photos: dict | None = None) -> Dish | None:
     name = str(raw.get('dish_name') or '').strip()
     if not name or not raw.get('dish_id'):
         return None
@@ -43,6 +44,8 @@ def _dish(raw: dict, venue: Venue) -> Dish | None:
     status = raw.get('nutrition_status') or 'estimated'
     goal_tags = tuple(t for t in (raw.get('goal_tags') or []) if isinstance(t, str) and len(t) > 2)
     swipe = price.get('pricing_model') == 'meal_swipe_fixed_cost'
+    photo = (photos or {}).get(str(raw['dish_id']))
+    own_image = raw.get('image_url') if isinstance(raw.get('image_url'), str) else None
     return Dish(
         id=str(raw['dish_id']), venue_id=venue.id, name=name, category=str(raw.get('category') or '').strip().lower(),
         meal_times=frozenset(str(m).lower() for m in raw.get('meal_times') or []),
@@ -55,13 +58,18 @@ def _dish(raw: dict, venue: Venue) -> Dish | None:
         allergen_status='published' if status == 'verified_published' else 'curated',
         is_vegetarian=bool(diet.get('is_vegetarian')), is_vegan=bool(diet.get('is_vegan')),
         ingredients_text=str(raw.get('ingredients_text') or ''), goal_tags=goal_tags,
-        image_url=raw.get('image_url') if isinstance(raw.get('image_url'), str) else None,
+        image_url=(photo or {}).get('file') or own_image,
+        extra={'image': {'source': photo.get('source'), 'match': photo.get('match'), 'page': photo.get('page')}} if photo else {},
         source_kind='dataset', source_label='Saved menu', source_date=str(raw.get('last_verified_at') or '') or None,
         availability_note=(raw['availability'] if isinstance(raw.get('availability'), str) and not re.fullmatch(r'[a-z_]+', raw['availability']) else None))
 
 
 def _load() -> tuple[dict[str, Venue], list[Dish], dict]:
     data = json.loads(DATASET_PATH.read_text(encoding='utf-8'))
+    try:
+        photos = json.loads(IMAGES_PATH.read_text(encoding='utf-8')).get('images') or {}
+    except (OSError, ValueError):
+        photos = {}
     venues: dict[str, Venue] = {}
     dishes: list[Dish] = []
     for category in ('usc_dining', 'off_campus'):
@@ -81,14 +89,14 @@ def _load() -> tuple[dict[str, Venue], list[Dish], dict]:
                 phone=(raw.get('contact') or {}).get('phone'))
             venues[venue.id] = venue
             for dish_raw in raw.get('dishes') or []:
-                dish = _dish(dish_raw, venue)
+                dish = _dish(dish_raw, venue, photos)
                 if dish:
                     dishes.append(dish)
     return venues, dishes, dict(data.get('metadata') or {})
 
 
 def dataset() -> tuple[dict[str, Venue], list[Dish], dict]:
-    mtime = DATASET_PATH.stat().st_mtime
+    mtime = (DATASET_PATH.stat().st_mtime, IMAGES_PATH.stat().st_mtime if IMAGES_PATH.exists() else 0)
     with _lock:
         if _cache['mtime'] != mtime:
             venues, dishes, meta = _load()

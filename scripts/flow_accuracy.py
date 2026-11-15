@@ -37,6 +37,11 @@ def install_offline_feed() -> None:
     feed.fetch_hall = fake
 
 
+# None keeps the legacy max_miles path; the rest are the three bands in every combination the app can send.
+BAND_SETS = [None, [(0.0, 0.3)], [(0.3, 0.5)], [(0.5, 1.5)], [(0.0, 0.3), (0.3, 0.5)],
+             [(0.3, 0.5), (0.5, 1.5)], [(0.0, 0.3), (0.5, 1.5)], [(0.0, 0.3), (0.3, 0.5), (0.5, 1.5)]]
+
+
 def profile(rng: random.Random, days: list[date]) -> Query:
     mode = rng.choice(['usc_dining', 'off_campus'])
     return Query(
@@ -45,8 +50,8 @@ def profile(rng: random.Random, days: list[date]) -> Query:
         goal=rng.choice(['balanced', 'lose', 'gain', 'maintain']), lat=34.0224 + rng.uniform(-0.006, 0.006), lng=-118.2851 + rng.uniform(-0.006, 0.006),
         per_meal_usd=rng.choice([None, 6, 9, 12, 18, 25]) if mode == 'off_campus' else None,
         daily_remaining_usd=rng.choice([None, 10, 20, 40]) if mode == 'off_campus' else None, meals_left=rng.choice([1, 2, 3]),
-        meal_kcal=rng.choice([450, 600, 750, 900]), meal_protein_g=rng.choice([20, 30, 40, 50]), max_miles=rng.choice([0.2, 0.3, 0.5]),
-        cuisines=rng.sample(CUISINES, rng.choice([0, 0, 1, 2])), rank_by=rng.choice(['nearest', 'fit', 'cheapest']),
+        meal_kcal=rng.choice([450, 600, 750, 900]), meal_protein_g=rng.choice([20, 30, 40, 50]), max_miles=rng.choice([None, 0.2, 0.3, 0.5, 1.0]), bands=rng.choice(BAND_SETS),
+        cuisines=rng.sample(CUISINES, rng.choice([0, 0, 1, 2])), rank_by=rng.choice(['fit', 'nearest', 'cheapest', 'protein', 'lighter']),
         swipes_remaining=rng.choice([None, 0, 2, 5]), min_protein_g=rng.choice([None, None, 25]))
 
 
