@@ -1,0 +1,23 @@
+{
+  "profile": {
+    "nutrition_goal": "feel_balanced",
+    "dietary_preference": "vegetarian",
+    "allergies": [],
+    "prefer_high_protein": true,
+    "height_cm": 173,
+    "weight_kg": 68,
+    "activity_level": "moderate"
+  },
+  "situation": {
+    "mode": "hybrid",
+    "meal_swipes_remaining": 3,
+    "dining_dollars_remaining": 8,
+    "budget_per_meal": 15,
+    "budget_daily": 20,
+    "lat": 34.0224,
+    "lng": -118.2851,
+    "max_miles": 0.3,
+    "preferred_cuisines": ["Mediterranean", "Italian"]
+  },
+  "locked": []
+}

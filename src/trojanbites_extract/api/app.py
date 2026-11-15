@@ -17,6 +17,8 @@ from trojanbites_extract.jobs.ingestion import (
 )
 from trojanbites_extract.plan.engine import plan_day, swap_meal
 from trojanbites_extract.plan.menus import load_off_campus_menu, load_usc_dining_menu
+from trojanbites_extract.plan.search import search_menus
+from trojanbites_extract.plan.targets import estimate_daily_targets
 from trojanbites_extract.query.filters import (
     DEFAULT_MAX_DISTANCE_MILES,
     MealQuery,
@@ -56,7 +58,7 @@ app = FastAPI(
         "Unknown nutrition stays null; never invent dishes. "
         "Contract: docs/API_CONTRACT.md · Judging: docs/JUDGING.md"
     ),
-    version="0.4.1",
+    version="0.5.0",
     lifespan=lifespan,
 )
 
@@ -200,7 +202,7 @@ class PlanProfile(BaseModel):
 
 
 class PlanSituation(BaseModel):
-    mode: Literal["usc_dining", "off_campus"]
+    mode: Literal["usc_dining", "off_campus", "hybrid"]
     meal_periods: list[str] = Field(default_factory=lambda: ["breakfast", "lunch", "dinner"])
     lat: float | None = 34.0224
     lng: float | None = -118.2851
@@ -213,6 +215,8 @@ class PlanSituation(BaseModel):
     include_snacks: bool = False
     menu_date: str | None = None
     ranking_priority: str = "balanced"
+    min_protein: float | None = Field(None, ge=0, description="Minimum protein grams per dish")
+    allow_estimated_nutrition: bool = True
 
 
 class LockedMeal(BaseModel):
@@ -255,6 +259,22 @@ def api_plan_swap(body: PlanSwapBody) -> dict[str, Any]:
         dish_id=body.dish_id,
         status=body.status,
     )
+
+
+@app.post("/v1/profile/targets")
+def api_profile_targets(body: PlanProfile) -> dict[str, Any]:
+    """Estimated daily macro targets for Profile / nutrition rings (not dish macros)."""
+    return estimate_daily_targets(body.model_dump())
+
+
+@app.get("/v1/search")
+def api_search(
+    q: str = Query(..., min_length=1),
+    mode: Literal["usc_dining", "off_campus", "all", "hybrid"] = "all",
+    limit: int = Query(20, ge=1, le=100),
+    menu_date: str | None = None,
+) -> dict[str, Any]:
+    return search_menus(q=q, mode=mode, limit=limit, menu_date=menu_date)
 
 
 @app.get("/v1/menus/usc-dining")

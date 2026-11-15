@@ -70,8 +70,10 @@ flowchart TB
 |---|---|---|
 | `GET` | `/health` | Health |
 | `GET` | `/v1/usc/overview` | Pitch + catalog stats |
-| `POST` | `/v1/plan/day` | Full-day plan (≤3 recs per period) |
-| `POST` | `/v1/plan/swap` | Swap a meal; replan remainder |
+| `POST` | `/v1/plan/day` | Full-day plan (`usc_dining` / `off_campus` / `hybrid`) |
+| `POST` | `/v1/plan/swap` | Swap a meal; replan + `rebalance_delta` |
+| `POST` | `/v1/profile/targets` | Estimated daily macro targets |
+| `GET` | `/v1/search` | Free-text snapshot search |
 | `GET` | `/v1/menus/usc-dining` | Dining snapshot |
 | `GET` | `/v1/menus/off-campus` | Off-campus curated set |
 

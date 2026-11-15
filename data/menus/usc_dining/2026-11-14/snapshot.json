@@ -5,9 +5,10 @@
     "menu_date": "2026-11-14",
     "version": "0.1-hackathon",
     "source_url": "https://hospitality.usc.edu/dining-hall-menus/",
-    "source_note": "Hackathon dated snapshot of typical residential dining offerings for Village, EVK, and Parkside. Live Hospitality menus change daily; this file is labeled for demo reproducibility. Nutrition is unavailable unless noted. Allergen cross-contact may occur — never treat labels as a medical guarantee.",
+    "source_note": "Hackathon dated snapshot of typical residential dining offerings for Village, EVK, and Parkside. Live Hospitality menus change daily; this file is labeled for demo reproducibility. Nutrition is unavailable unless noted. Allergen cross-contact may occur \u2014 never treat labels as a medical guarantee.",
     "payment_model": "meal_swipe_ayce",
-    "record_policy": "Do not invent per-dish purchase prices for AYCE halls. Unknown macros stay null."
+    "record_policy": "Do not invent per-dish purchase prices for AYCE halls. Unknown macros stay null.",
+    "nutrition_note": "Some dish macros are estimated heuristics for the hackathon demo UI (confidence=estimated). They are not official USC Hospitality values."
   },
   "venues": [
     {
@@ -48,11 +49,29 @@
       "venue_name": "Everybody's Kitchen",
       "name": "Steel-cut oatmeal bar",
       "description": "Oatmeal with fruit and seed toppings",
-      "meal_periods": ["breakfast"],
-      "dietary_labels": ["vegetarian", "vegan"],
-      "allergens_published": ["may contain gluten"],
+      "meal_periods": [
+        "breakfast"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan"
+      ],
+      "allergens_published": [
+        "may contain gluten"
+      ],
       "station": "Breakfast bar",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 320,
+          "protein_g": 12,
+          "carbohydrates_g": 55,
+          "fat_g": 6,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -62,11 +81,29 @@
       "venue_name": "Everybody's Kitchen",
       "name": "Tofu scramble",
       "description": "Seasoned tofu with peppers and onions",
-      "meal_periods": ["breakfast"],
-      "dietary_labels": ["vegetarian", "vegan"],
-      "allergens_published": ["soy"],
+      "meal_periods": [
+        "breakfast"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan"
+      ],
+      "allergens_published": [
+        "soy"
+      ],
       "station": "Hot line",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 280,
+          "protein_g": 22,
+          "carbohydrates_g": 12,
+          "fat_g": 14,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -76,11 +113,29 @@
       "venue_name": "Everybody's Kitchen",
       "name": "Egg-white scramble with spinach",
       "description": "Egg whites, spinach, tomatoes",
-      "meal_periods": ["breakfast"],
-      "dietary_labels": ["vegetarian", "high_protein"],
-      "allergens_published": ["egg"],
+      "meal_periods": [
+        "breakfast"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "high_protein"
+      ],
+      "allergens_published": [
+        "egg"
+      ],
       "station": "Hot line",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 220,
+          "protein_g": 28,
+          "carbohydrates_g": 6,
+          "fat_g": 6,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -90,11 +145,30 @@
       "venue_name": "USC Village Dining Hall",
       "name": "Greek yogurt parfait",
       "description": "Yogurt, berries, granola",
-      "meal_periods": ["breakfast"],
-      "dietary_labels": ["vegetarian"],
-      "allergens_published": ["dairy", "may contain gluten", "tree nuts"],
+      "meal_periods": [
+        "breakfast"
+      ],
+      "dietary_labels": [
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "dairy",
+        "may contain gluten",
+        "tree nuts"
+      ],
       "station": "Breakfast bar",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 340,
+          "protein_g": 20,
+          "carbohydrates_g": 42,
+          "fat_g": 8,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -104,11 +178,29 @@
       "venue_name": "USC Village Dining Hall",
       "name": "Avocado toast",
       "description": "Wheat toast, smashed avocado, chili flakes",
-      "meal_periods": ["breakfast"],
-      "dietary_labels": ["vegetarian", "vegan"],
-      "allergens_published": ["gluten"],
+      "meal_periods": [
+        "breakfast"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan"
+      ],
+      "allergens_published": [
+        "gluten"
+      ],
       "station": "Grill",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 380,
+          "protein_g": 10,
+          "carbohydrates_g": 40,
+          "fat_g": 18,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -118,11 +210,30 @@
       "venue_name": "Parkside Restaurant & Grill",
       "name": "Breakfast burrito",
       "description": "Eggs, potatoes, cheese, salsa in tortilla",
-      "meal_periods": ["breakfast"],
-      "dietary_labels": ["vegetarian"],
-      "allergens_published": ["egg", "dairy", "gluten"],
+      "meal_periods": [
+        "breakfast"
+      ],
+      "dietary_labels": [
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "egg",
+        "dairy",
+        "gluten"
+      ],
       "station": "Grill",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 520,
+          "protein_g": 24,
+          "carbohydrates_g": 48,
+          "fat_g": 22,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -132,11 +243,28 @@
       "venue_name": "Parkside Restaurant & Grill",
       "name": "Turkey sausage and eggs",
       "description": "Scrambled eggs with turkey sausage",
-      "meal_periods": ["breakfast"],
-      "dietary_labels": ["high_protein"],
-      "allergens_published": ["egg"],
+      "meal_periods": [
+        "breakfast"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "egg"
+      ],
       "station": "Hot line",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 410,
+          "protein_g": 32,
+          "carbohydrates_g": 8,
+          "fat_g": 24,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -146,11 +274,31 @@
       "venue_name": "Everybody's Kitchen",
       "name": "Mediterranean grain bowl",
       "description": "Quinoa, chickpeas, cucumber, tomato, tahini",
-      "meal_periods": ["lunch", "dinner"],
-      "dietary_labels": ["vegetarian", "vegan", "high_protein"],
-      "allergens_published": ["sesame"],
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan",
+        "high_protein"
+      ],
+      "allergens_published": [
+        "sesame"
+      ],
       "station": "Bowls",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 480,
+          "protein_g": 22,
+          "carbohydrates_g": 58,
+          "fat_g": 16,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -160,11 +308,28 @@
       "venue_name": "Everybody's Kitchen",
       "name": "Herb grilled chicken",
       "description": "Grilled chicken breast with herbs",
-      "meal_periods": ["lunch", "dinner"],
-      "dietary_labels": ["high_protein", "halal_friendly"],
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary_labels": [
+        "high_protein",
+        "halal_friendly"
+      ],
       "allergens_published": [],
       "station": "Grill",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 360,
+          "protein_g": 42,
+          "carbohydrates_g": 4,
+          "fat_g": 12,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -174,11 +339,32 @@
       "venue_name": "Everybody's Kitchen",
       "name": "Chicken Caesar salad",
       "description": "Romaine, grilled chicken, Caesar dressing, croutons",
-      "meal_periods": ["lunch", "dinner"],
-      "dietary_labels": ["high_protein"],
-      "allergens_published": ["dairy", "egg", "gluten", "fish"],
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "dairy",
+        "egg",
+        "gluten",
+        "fish"
+      ],
       "station": "Salads",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 520,
+          "protein_g": 38,
+          "carbohydrates_g": 22,
+          "fat_g": 28,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -188,11 +374,30 @@
       "venue_name": "USC Village Dining Hall",
       "name": "Tofu vegetable stir-fry",
       "description": "Tofu, broccoli, peppers, jasmine rice",
-      "meal_periods": ["lunch", "dinner"],
-      "dietary_labels": ["vegetarian", "vegan"],
-      "allergens_published": ["soy"],
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan"
+      ],
+      "allergens_published": [
+        "soy"
+      ],
       "station": "Global",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 450,
+          "protein_g": 24,
+          "carbohydrates_g": 52,
+          "fat_g": 14,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -202,11 +407,29 @@
       "venue_name": "USC Village Dining Hall",
       "name": "Baked salmon with lemon",
       "description": "Oven-baked salmon, seasonal vegetables",
-      "meal_periods": ["lunch", "dinner"],
-      "dietary_labels": ["high_protein"],
-      "allergens_published": ["fish"],
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "fish"
+      ],
       "station": "Grill",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 480,
+          "protein_g": 36,
+          "carbohydrates_g": 10,
+          "fat_g": 24,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -216,11 +439,28 @@
       "venue_name": "USC Village Dining Hall",
       "name": "Black bean taco plate",
       "description": "Corn tortillas, black beans, salsa, cabbage",
-      "meal_periods": ["lunch", "dinner"],
-      "dietary_labels": ["vegetarian", "vegan"],
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan"
+      ],
       "allergens_published": [],
       "station": "Mexican",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 420,
+          "protein_g": 18,
+          "carbohydrates_g": 58,
+          "fat_g": 12,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -230,11 +470,29 @@
       "venue_name": "Parkside Restaurant & Grill",
       "name": "Turkey burger",
       "description": "Turkey patty, lettuce, tomato, bun",
-      "meal_periods": ["lunch", "dinner"],
-      "dietary_labels": ["high_protein"],
-      "allergens_published": ["gluten"],
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "gluten"
+      ],
       "station": "Grill",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 560,
+          "protein_g": 34,
+          "carbohydrates_g": 42,
+          "fat_g": 24,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -244,11 +502,30 @@
       "venue_name": "Parkside Restaurant & Grill",
       "name": "Pasta primavera",
       "description": "Pasta with seasonal vegetables in light sauce",
-      "meal_periods": ["lunch", "dinner"],
-      "dietary_labels": ["vegetarian"],
-      "allergens_published": ["gluten", "dairy"],
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary_labels": [
+        "vegetarian"
+      ],
+      "allergens_published": [
+        "gluten",
+        "dairy"
+      ],
       "station": "Pasta",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 540,
+          "protein_g": 16,
+          "carbohydrates_g": 72,
+          "fat_g": 18,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -258,11 +535,29 @@
       "venue_name": "Parkside Restaurant & Grill",
       "name": "Lentil curry with rice",
       "description": "Red lentil curry, basmati rice",
-      "meal_periods": ["lunch", "dinner"],
-      "dietary_labels": ["vegetarian", "vegan", "halal_friendly"],
+      "meal_periods": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan",
+        "halal_friendly"
+      ],
       "allergens_published": [],
       "station": "Global",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 460,
+          "protein_g": 20,
+          "carbohydrates_g": 68,
+          "fat_g": 10,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -272,11 +567,30 @@
       "venue_name": "Everybody's Kitchen",
       "name": "Falafel plate",
       "description": "Falafel, hummus, salad, pita",
-      "meal_periods": ["dinner"],
-      "dietary_labels": ["vegetarian", "vegan"],
-      "allergens_published": ["sesame", "gluten"],
+      "meal_periods": [
+        "dinner"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan"
+      ],
+      "allergens_published": [
+        "sesame",
+        "gluten"
+      ],
       "station": "Mediterranean",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 510,
+          "protein_g": 18,
+          "carbohydrates_g": 55,
+          "fat_g": 22,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -286,11 +600,30 @@
       "venue_name": "USC Village Dining Hall",
       "name": "Chicken teriyaki bowl",
       "description": "Chicken, rice, steamed broccoli, teriyaki",
-      "meal_periods": ["dinner"],
-      "dietary_labels": ["high_protein"],
-      "allergens_published": ["soy", "gluten", "sesame"],
+      "meal_periods": [
+        "dinner"
+      ],
+      "dietary_labels": [
+        "high_protein"
+      ],
+      "allergens_published": [
+        "soy",
+        "gluten",
+        "sesame"
+      ],
       "station": "Bowls",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 580,
+          "protein_g": 40,
+          "carbohydrates_g": 62,
+          "fat_g": 14,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -300,11 +633,29 @@
       "venue_name": "Parkside Restaurant & Grill",
       "name": "Three-bean vegetarian chili",
       "description": "Bean chili with cornbread (optional)",
-      "meal_periods": ["dinner"],
-      "dietary_labels": ["vegetarian", "vegan"],
-      "allergens_published": ["may contain gluten"],
+      "meal_periods": [
+        "dinner"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan"
+      ],
+      "allergens_published": [
+        "may contain gluten"
+      ],
       "station": "Soup / stew",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 380,
+          "protein_g": 18,
+          "carbohydrates_g": 48,
+          "fat_g": 10,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -314,11 +665,27 @@
       "venue_name": "USC Village Dining Hall",
       "name": "Fresh fruit cup",
       "description": "Seasonal cut fruit",
-      "meal_periods": ["snack"],
-      "dietary_labels": ["vegetarian", "vegan"],
+      "meal_periods": [
+        "snack"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan"
+      ],
       "allergens_published": [],
       "station": "Fruit",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 90,
+          "protein_g": 1,
+          "carbohydrates_g": 22,
+          "fat_g": 0,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     },
@@ -328,11 +695,30 @@
       "venue_name": "Everybody's Kitchen",
       "name": "Steamed edamame",
       "description": "Lightly salted edamame",
-      "meal_periods": ["snack"],
-      "dietary_labels": ["vegetarian", "vegan", "high_protein"],
-      "allergens_published": ["soy"],
+      "meal_periods": [
+        "snack"
+      ],
+      "dietary_labels": [
+        "vegetarian",
+        "vegan",
+        "high_protein"
+      ],
+      "allergens_published": [
+        "soy"
+      ],
       "station": "Sides",
-      "nutrition": { "confidence": "unavailable", "published": null },
+      "nutrition": {
+        "confidence": "estimated",
+        "published": null,
+        "estimated": {
+          "calories_kcal": 180,
+          "protein_g": 17,
+          "carbohydrates_g": 12,
+          "fat_g": 8,
+          "method": "typical_dish_heuristic_hackathon",
+          "note": "Not restaurant-published. For planning UI only \u2014 confirm with dining staff."
+        }
+      },
       "payment_model": "meal_swipe_ayce",
       "price_amount": null
     }
