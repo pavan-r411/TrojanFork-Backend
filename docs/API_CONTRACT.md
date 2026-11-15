@@ -3,7 +3,7 @@
 **Product:** TrojanPlate  
 **Tagline:** Your goals. Your campus. Your plate.  
 **Product scope:** USC University Park Campus daily diet planner  
-**API version:** 0.4.0  
+**API version:** 0.5.0  
 **Base URL (local):** `http://127.0.0.1:8000`  
 **Interactive docs:** `http://127.0.0.1:8000/docs`  
 **OpenAPI JSON:** `http://127.0.0.1:8000/openapi.json`  
@@ -55,15 +55,34 @@
 
 ### `POST /v1/plan/day`
 
-Build a full-day plan for `usc_dining` or `off_campus`.
+Build a full-day plan for `usc_dining`, `off_campus`, or `hybrid`.
 
-**Body:** `{ "profile": {...}, "situation": { "mode": "usc_dining"|"off_campus", ... }, "locked": [] }`
+**Body:** `{ "profile": {...}, "situation": { "mode": "usc_dining"|"off_campus"|"hybrid", ... }, "locked": [] }`
 
-**Response:** periods with up to 3 recommendations each, `why[]`, nutrition confidence, price/swipe model, limitations.
+**Response includes:**
+- `periods[]` with ≤3 recommendations, `suggested_time`, `match_percent`, `walk_minutes_estimate`, `why[]`
+- `daily_targets` (estimated student needs when height/weight provided)
+- `daily_planned` (sum of known/estimated dish macros)
+- `spending` (swipes + cash / Dining Dollars)
+- Per card: `protein_g`, `calories_kcal`, `nutrition.confidence` (`confirmed`|`estimated`|`unavailable`)
+- Optional `situation.min_protein` hard filter
+- Dining-hall macros may be **estimated** heuristics (labeled); published values used when available
+
+**Hybrid:** main meals from USC dining (swipe/AYCE); snacks from curated off-campus (cash/Dollars).
 
 ### `POST /v1/plan/swap`
 
-Lock one meal (`meal_period` + `dish_id`) and replan the rest of the day.
+Lock one meal (`meal_period` + `dish_id`) and replan the rest of the day.  
+Returns `rebalance_delta` (`calories_kcal` / `protein_g` null when macros unknown).
+
+### `POST /v1/profile/targets`
+
+Estimated daily macro targets for Profile rings (`confidence: estimated|unavailable`).  
+Not dish nutrition.
+
+### `GET /v1/search?q=&mode=all|usc_dining|off_campus|hybrid&limit=`
+
+Free-text search over grounded snapshot dishes.
 
 ### `GET /v1/menus/usc-dining` · `GET /v1/menus/off-campus`
 

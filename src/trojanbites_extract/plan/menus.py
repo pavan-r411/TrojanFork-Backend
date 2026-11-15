@@ -47,3 +47,7 @@ def load_off_campus_menu() -> dict[str, Any]:
 def clear_menu_cache() -> None:
     load_usc_dining_menu.cache_clear()
     load_off_campus_menu.cache_clear()
+
+
+# Ensure process picks up snapshot edits during reload
+clear_menu_cache()
