@@ -533,3 +533,22 @@ Idempotency key: `campus_slice:{campus_id}:{YYYY-MM-DD}` (one active/completed j
 ---
 
 *Source of truth in code: `src/trojanbites_extract/api/app.py`*
+
+## Live recommendation flow (Google Places + OpenAI)
+
+`POST /v1/live/suggest` is the request-scoped route for the new application flow. It does not query the stored catalog or use Gemini. See README.md → On-demand live recommendations for the full Postman example.
+
+Required body: `mode` (`off_campus` or `usc_dining`), `date` (`YYYY-MM-DD`), `meal_period` (`breakfast`, `brunch`, `lunch`, `dinner`, `snack`).
+
+Off-campus location: both `lat`/`lng`, or a specific `location_name` resolved using Google Places. Optional `radius_miles` defaults to 0.3 (0.05–1). Optional `budget_max`, explicit `diet` claims, and existing `preferences` (goal, preferred_foods, targets, remaining). Coordinates take precedence over a supplied name. Location-name results include `resolved_location` so the client can show/verify the match.
+
+USC: optional `dining_hall` (`evk`, `parkside`, `university-village`, `All halls`). Menus come from the official, date-specific USC Hospitality JSON feed, not restaurant discovery.
+
+Response includes `data_mode: live`, `retrieved_at`, `suggested_meals`, `personalization`, `sources`, `warnings`, `resolved_location`, `distance_metric`. Unknown nutrition/prices are null. Source failures may produce partial or empty results; provider setup/extraction failures return 503 with a sanitized `detail`. Input schema violations return 422. No stored or invented menu fallback occurs. The original `/v1/suggest` and `/v1/recommendations` remain legacy catalog routes.
+
+
+### Daily plan for the connected UI
+
+`POST /v1/live/plan` accepts `{mode, date, profile, context}`. `profile` supports goal, dietary_preferences, allergies, disliked_ingredients, snacks, targets, remaining. `context` supports origin `{lat,lng}`, max_walk_m, per_meal_budget_cents, daily_budget_cents, meal_swipes_available, dining_hall. Response is the frontend `DailyPlan` type with source-attributed recommendations for breakfast/lunch/dinner and optional snack. Off-campus retrieval/extraction runs once within the request. Selections and locks are managed in the browser, and do not imply consumption. No user database is accessed.
+
+The frontend is served at `/ui/`. It uses `/v1/live/plan`, not the legacy catalog `/v1/suggest`. Nutrition targets and eaten logs are session-local in the browser, with no calls to the previously proposed server `/api/nutrition/daily` or `/api/meals/log` routes. These routes are not implemented. No demo data is used in live mode.

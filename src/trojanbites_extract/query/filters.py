@@ -58,6 +58,12 @@ class MealHit:
     restaurant_lat: float | None = None
     restaurant_lng: float | None = None
     campus_id: str | None = None
+    variant_id: str | None = None
+    published_carbohydrates_g: float | None = None
+    published_fat_g: float | None = None
+    serving_label: str | None = None
+    nutrition_evidence_status: str = 'unknown'
+    ai_estimates: dict | None = None
     price_note: str = "menu_price_excludes_tax_and_fees"
     distance_metric: str = "haversine_miles_straight_line"
 
@@ -235,6 +241,11 @@ def filter_meals(session: Session, q: MealQuery) -> list[MealHit]:
             hits.append(
                 MealHit(
                     item_id=item.item_id,
+                    variant_id=variant.variant_id,
+                    serving_label=variant.serving_label,
+                    nutrition_evidence_status=status,
+                    published_carbohydrates_g=nut.carbohydrates_g if nut and status == 'restaurant_published' else None,
+                    published_fat_g=nut.fat_g if nut and status == 'restaurant_published' else None,
                     restaurant_id=restaurant.restaurant_id,
                     restaurant_name=restaurant.name,
                     item_name=item.name,

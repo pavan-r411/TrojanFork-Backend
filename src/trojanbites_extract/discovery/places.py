@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 import httpx
+from trojanbites_extract.provider_records import record_response
 
 from trojanbites_extract.discovery.base import DiscoveryCandidate, Tile
 from trojanbites_extract.settings import require_google_key
@@ -53,6 +54,7 @@ class PlacesDiscoveryAdapter:
                     },
                 }
                 resp = client.post(self.nearby_url, headers=headers, json=body)
+                record_response('google_maps','nearby_search',resp)
                 if resp.status_code == 429:
                     resp.raise_for_status()
                 resp.raise_for_status()

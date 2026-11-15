@@ -18,3 +18,5 @@ exports/**
 *.log
 .coverage
 htmlcov/
+# Local Maps/OpenAI debug responses
+data/provider_records/

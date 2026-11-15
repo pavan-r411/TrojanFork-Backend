@@ -21,6 +21,8 @@ from trojanbites_extract.query.filters import (
     filter_meals,
     nearby_restaurants,
 )
+from trojanbites_extract.recommend.live import LiveRequest, LiveDiscoveryError, live_suggest
+from trojanbites_extract.recommend.service import UserPreferences, select_meals
 from trojanbites_extract.settings import get_settings, load_extraction_config
 from trojanbites_extract.store.db import init_db, session_scope
 from trojanbites_extract.store.models import MenuItem, Restaurant
@@ -38,7 +40,7 @@ app = FastAPI(
     description=(
         "Multi-university food discovery API. "
         "Location resolves campus; suggestions use stored catalogs. "
-        "LLM extraction runs in background jobs only."
+        "Live recommendations fetch official menus on demand using Google Places and OpenAI."
     ),
     version="0.2.0",
     lifespan=lifespan,
@@ -369,6 +371,8 @@ class SuggestBody(BaseModel):
     meal_period: str | None = None
     limit: int = Field(20, ge=1, le=100)
     collect_missing: bool = True
+    personalize: bool = True
+    preferences: UserPreferences = Field(default_factory=UserPreferences)
 
 
 @app.post("/v1/suggest")
@@ -402,7 +406,12 @@ def suggest(body: SuggestBody) -> dict[str, Any]:
             user_lng=body.lng,
             max_distance_miles=body.max_miles if body.lat is not None else None,
         )
-        meals = filter_meals(session, q)[: body.limit]
+        meals = filter_meals(session, q)
+    personalization = select_meals(meals, body.preferences, body.meal_period) if body.personalize else None
+    # Restrictions remain enforced even when personalization is explicitly disabled.
+    if not body.personalize and (body.preferences.allergies or body.preferences.excluded_ingredients):
+        personalization = select_meals([], body.preferences, body.meal_period)
+    suggested = personalization.meals[:body.limit] if personalization else [asdict(m) for m in meals[:body.limit]]
 
     return {
         "mode": "location_enabled" if body.lat is not None else "campus_selected",
@@ -412,14 +421,15 @@ def suggest(body: SuggestBody) -> dict[str, Any]:
         "distance_metric": "haversine_miles_straight_line",
         "price_basis": "menu_price_excludes_tax_and_fees",
         "nearby_restaurants": [asdict(r) for r in near],
-        "suggested_meals": [asdict(m) for m in meals],
-        "counts": {"restaurants": len(near), "meals": len(meals)},
+        "suggested_meals": suggested,
+        "personalization": personalization.model_dump(exclude={'meals'}) if personalization else {'provider': 'deterministic', 'status': 'not_requested', 'warnings': []},
+        "counts": {"restaurants": len(near), "meals": len(suggested)},
         "ingestion_job": job_info,
         "explanations": [
             {
-                "type": "deterministic",
+                "type": personalization.provider if personalization else "deterministic",
                 "text": (
-                    f"Showing stored {active} matches only. "
+                    f"Showing stored {active} matches only. AI ranks eligible records when available. "
                     "Constraints are not silently relaxed. "
                     "Missing calories/protein stay unknown."
                 ),
@@ -463,3 +473,40 @@ def ingestion_status(job_id: str) -> dict[str, Any]:
 
 def create_app() -> FastAPI:
     return app
+
+
+@app.post('/v1/live/suggest')
+def live_recommendations(body: 'LiveRequest') -> dict[str, Any]:
+    try:
+        return live_suggest(body)
+    except LiveDiscoveryError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+
+from trojanbites_extract.recommend.frontend import PlanRequest, daily_plan
+
+@app.post('/v1/live/plan')
+def frontend_daily_plan(body: PlanRequest) -> dict[str, Any]:
+    try:
+        return daily_plan(body)
+    except LiveDiscoveryError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+# The frontend and API share an origin; no backend URL is embedded in browser code.
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+_frontend = Path(__file__).resolve().parents[4] / 'TrojanFork-Frontend'
+class FrontendFiles(StaticFiles):
+    async def get_response(self, path, scope):
+        if any(part.startswith('.') for part in Path(path).parts):
+            raise HTTPException(status_code=404)
+        response=await super().get_response(path, scope)
+        response.headers['Cache-Control']='no-store'
+        return response
+
+if _frontend.is_dir():
+    app.mount('/ui', FrontendFiles(directory=str(_frontend), html=True), name='trojanplate-ui')
+    from fastapi.responses import RedirectResponse
+    @app.get('/')
+    def frontend_home():
+        return RedirectResponse('/ui/')

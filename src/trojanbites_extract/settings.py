@@ -19,6 +19,19 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    provider_records_enabled: bool = False
+    provider_records_dir: Path = Path('data/provider_records')
+
+    gemini_api_key: str | None = None
+    gemini_model: str = 'gemini-3.5-flash'
+    gemini_timeout_s: float = Field(35, gt=0, le=60)
+
+    recommendation_provider: str = 'openai'
+    openai_api_key: str | None = None
+    openai_model: str = 'gpt-4.1-mini'
+    openai_timeout_s: float = Field(8.0, gt=0, le=30)
+    recommendation_candidate_limit: int = Field(30, ge=1, le=100)
+
     anthropic_api_key: str | None = None
     anthropic_model: str = "claude-sonnet-4-5-20250929"
     google_maps_api_key: str | None = None
