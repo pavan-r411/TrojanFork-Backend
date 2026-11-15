@@ -175,6 +175,45 @@ def test_swap_locks_and_replans():
     assert "calories_kcal" in second["rebalance_delta"]
 
 
+def test_snapshot_within_slot_and_across_day_variety():
+    plan = plan_day(
+        {"nutrition_goal": "balanced"},
+        {
+            "mode": "off_campus",
+            "lat": 34.0258,
+            "lng": -118.2854,
+            "max_miles": 0.5,
+            "budget_per_meal": 20,
+            "budget_daily": 60,
+            "meal_periods": ["breakfast", "lunch", "dinner"],
+        },
+    )
+    all_dish_ids = []
+    top_venues = []
+    for block in plan["periods"]:
+        recs = block["recommendations"]
+        assert block.get("suggested_time") == {
+            "breakfast": "08:30",
+            "lunch": "12:30",
+            "dinner": "18:30",
+        }[block["meal_period"]]
+        dish_ids = [r["dish_id"] for r in recs]
+        venue_ids = [r["venue_id"] for r in recs]
+        assert len(dish_ids) == len(set(dish_ids))
+        # Prefer distinct restaurants within the slot when inventory allows.
+        if block.get("diagnostics", {}).get("distinct_restaurants_remaining", 0) >= 3:
+            assert len(set(venue_ids)) == len(venue_ids)
+        all_dish_ids.extend(dish_ids)
+        if recs:
+            top_venues.append(recs[0]["venue_id"])
+        assert "diagnostics" in block
+        assert block["diagnostics"]["requested_service_time"] == block["suggested_time"]
+    assert len(all_dish_ids) == len(set(all_dish_ids))
+    # Prefer different restaurants for the selected (top) pick of each meal.
+    if len(top_venues) == 3 and plan["periods"][0]["diagnostics"]["distinct_restaurants_remaining"] >= 3:
+        assert len(set(top_venues)) >= 2
+
+
 def test_allergy_hard_filter():
     plan = plan_day(
         {

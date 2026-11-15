@@ -118,3 +118,68 @@ def test_cuisine_preferences_reach_live_ranking(monkeypatch):
     monkeypatch.setattr(frontend,'select_meals',rank)
     frontend.daily_plan(frontend.PlanRequest(mode='usc_dining',date=date(2026,11,14),context={'preferred_cuisines':[' Indian ','Mexican','Indian']}))
     assert captured==[['Indian','Mexican']]*3
+
+
+def test_usc_requests_carry_each_meal_period(monkeypatch):
+    periods=[]
+    monkeypatch.setattr(frontend,'_offcampus',lambda *_: (_ for _ in ()).throw(AssertionError('campus plan must not call off-campus discovery')))
+    def usc(body):
+        periods.append(body.meal_period)
+        return [],[],[]
+    monkeypatch.setattr(frontend,'_usc',usc)
+    monkeypatch.setattr(frontend,'select_meals',lambda *a:RecommendationResult(provider='deterministic',status='no_matches',meals=[]))
+    frontend.daily_plan(frontend.PlanRequest(mode='usc_dining',date=date(2026,11,14)))
+    assert periods==['breakfast','lunch','dinner']
+
+
+def test_daily_plan_prefers_unused_restaurants_across_slots(monkeypatch):
+    from dataclasses import replace
+    meals=[]
+    sources=[]
+    for period,venues in [('breakfast',['B1','B2','B3']),('lunch',['L1','L2','L3']),('dinner',['D1','D2','D3'])]:
+        for venue in venues:
+            item_id=f'{period}-{venue}'
+            meals.append(replace(hit(),item_id=item_id,restaurant_id=venue,restaurant_name=venue,item_name=f'{venue} {period} plate'))
+            sources.append({'item_id':item_id,'menu_url':'https://venue.test/menu','meal_periods':[period]})
+    monkeypatch.setattr(frontend,'_offcampus',lambda body:(meals,sources,[]))
+    monkeypatch.setattr(frontend,'select_meals',lambda hits,*a:RecommendationResult(provider='openai',status='completed',meals=[asdict(x) for x in hits[:3]]))
+    data=frontend.daily_plan(frontend.PlanRequest(mode='off_campus',date=date(2026,11,14),context={'origin':{'lat':34.02,'lng':-118.28}}))
+    by_slot={slot['slot']:slot for slot in data['slots']}
+    breakfast_venues={r['venue']['id'] for r in by_slot['breakfast']['recommendations']}
+    lunch_venues={r['venue']['id'] for r in by_slot['lunch']['recommendations']}
+    dinner_venues={r['venue']['id'] for r in by_slot['dinner']['recommendations']}
+    assert breakfast_venues=={'B1','B2','B3'}
+    assert lunch_venues=={'L1','L2','L3'}
+    assert dinner_venues=={'D1','D2','D3'}
+    assert breakfast_venues.isdisjoint(lunch_venues)
+    assert lunch_venues.isdisjoint(dinner_venues)
+    assert by_slot['lunch']['empty_state']['diagnostics']['requested_service_time']=='12:30'
+    assert by_slot['dinner']['empty_state']['diagnostics']['requested_service_time']=='18:30'
+    assert by_slot['breakfast']['empty_state']['diagnostics']['final_selected_ids']
+
+
+def test_within_slot_keeps_distinct_restaurants_when_inventory_allows(monkeypatch):
+    from dataclasses import replace
+    meals=[replace(hit(),item_id=f'{venue}-{i}',restaurant_id=venue,restaurant_name=venue,item_name=f'{venue} dinner {i}')
+           for venue in ['Kitchen A','Kitchen B','Kitchen C'] for i in range(4)]
+    sources=[{'item_id':m.item_id,'menu_url':'https://venue.test/menu','meal_periods':['dinner']} for m in meals]
+    monkeypatch.setattr(frontend,'_offcampus',lambda body:(meals,sources,[]))
+    monkeypatch.setattr(frontend,'select_meals',lambda hits,*a:RecommendationResult(provider='openai',status='completed',meals=[asdict(x) for x in hits[:3]]))
+    data=frontend.daily_plan(frontend.PlanRequest(mode='off_campus',date=date(2026,11,14),context={'origin':{'lat':34.02,'lng':-118.28}}))
+    dinner=next(slot for slot in data['slots'] if slot['slot']=='dinner')['recommendations']
+    assert len(dinner)==3
+    assert len({r['venue']['id'] for r in dinner})==3
+    assert len({r['id'] for r in dinner})==3
+
+
+def test_insufficient_kitchens_explain_restaurant_repeat(monkeypatch):
+    from dataclasses import replace
+    meals=[replace(hit(),item_id=str(i),restaurant_id='only',restaurant_name='Only Spot',item_name=f'Only dish {i}') for i in range(3)]
+    sources=[{'item_id':str(i),'menu_url':'https://venue.test/menu','meal_periods':['lunch']} for i in range(3)]
+    monkeypatch.setattr(frontend,'_offcampus',lambda body:(meals,sources,[]))
+    monkeypatch.setattr(frontend,'select_meals',lambda hits,*a:RecommendationResult(provider='openai',status='completed',meals=[asdict(x) for x in hits[:3]]))
+    data=frontend.daily_plan(frontend.PlanRequest(mode='off_campus',date=date(2026,11,14),context={'origin':{'lat':34.02,'lng':-118.28}}))
+    lunch=next(slot for slot in data['slots'] if slot['slot']=='lunch')
+    assert len(lunch['recommendations'])==3
+    assert {r['venue']['id'] for r in lunch['recommendations']}=={'only'}
+    assert any('Only Spot' in note for note in [lunch['availability_note'], *data['warnings']])

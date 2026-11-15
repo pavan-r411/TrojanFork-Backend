@@ -422,10 +422,23 @@ def _score(
 
     venue_id = str(dish.get("venue_id") or "")
     if venue_id and venue_id in used_venues:
-        score -= 6
+        # Prefer a different restaurant across the day; never rely on randomness.
+        score -= 28
+        why.append("Another meal today already uses this restaurant")
     name = _norm(str(dish.get("name") or ""))
     if name in used_names:
-        score -= 20
+        score -= 40
+
+    periods = {_norm(p) for p in (dish.get("meal_periods") or [])}
+    if period in periods or (period == "breakfast" and "brunch" in periods):
+        score += 10
+        why.append(f"Menu labels this dish for {period}")
+    elif period == "lunch" and "brunch" in periods:
+        score += 8
+        why.append("Menu labels brunch (midday)")
+    elif not periods:
+        # Unlabeled all-day inventory stays eligible but ranks below labeled windows.
+        score -= 4
 
     conf = _nutrition_confidence(dish)
     if conf == "unavailable":
@@ -550,14 +563,46 @@ def _recommend_period(
     scored.sort(key=lambda t: t[0], reverse=True)
     picks: list[dict[str, Any]] = []
     seen: set[str] = set()
+    seen_venues: set[str] = set()
+    seen_names: set[str] = set(used_names)
+    # Pass 1: distinct dishes/names from distinct restaurants (when inventory allows).
     for s, dish, why in scored:
         did = str(dish.get("dish_id"))
-        if did in seen:
+        name = _norm(str(dish.get("name") or ""))
+        venue = str(dish.get("venue_id") or "")
+        if did in seen or (name and name in seen_names):
+            continue
+        if venue and venue in seen_venues:
             continue
         seen.add(did)
+        if name:
+            seen_names.add(name)
+        if venue:
+            seen_venues.add(venue)
         picks.append(_rec_from_dish(dish, situation, period, s, why, len(picks) + 1))
         if len(picks) >= limit:
             break
+    # Pass 2: if fewer than `limit` kitchens remain, add distinct dishes/names only — never
+    # invent venues; note the restaurant repeat when the same kitchen fills a seat.
+    if len(picks) < limit:
+        for s, dish, why in scored:
+            did = str(dish.get("dish_id"))
+            name = _norm(str(dish.get("name") or ""))
+            if did in seen or (name and name in seen_names):
+                continue
+            venue = str(dish.get("venue_id") or "")
+            if venue and venue in seen_venues:
+                why = list(why) + [
+                    "Restaurant repeat within this meal — not enough distinct kitchens left"
+                ]
+            seen.add(did)
+            if name:
+                seen_names.add(name)
+            if venue:
+                seen_venues.add(venue)
+            picks.append(_rec_from_dish(dish, situation, period, s, why, len(picks) + 1))
+            if len(picks) >= limit:
+                break
 
     notes: list[str] = []
     if len(picks) < limit:
@@ -565,13 +610,30 @@ def _recommend_period(
             f"Only {len(picks)} option(s) met hard constraints for {period}; "
             "not inventing fillers. Try relaxing cuisine, budget, or diet filters."
         )
+    elif len({p.get("venue_id") for p in picks}) < len(picks):
+        notes.append(
+            f"Fewer than {limit} distinct restaurants had eligible {period} dishes; "
+            "showing distinct dishes and noting restaurant repeats instead of inventing venues."
+        )
 
+    eligible_venues = {str(d.get("venue_id") or "") for _, d, _ in scored if d.get("venue_id")}
     return {
         "meal_period": period,
         "suggested_time": PERIOD_TIMES.get(period),
         "recommendations": picks,
         "count": len(picks),
         "notes": notes,
+        "diagnostics": {
+            "meal_period": period,
+            "requested_service_time": PERIOD_TIMES.get(period),
+            "candidates_scored": len(scored),
+            "distinct_dishes_remaining": len({str(d.get("dish_id")) for _, d, _ in scored}),
+            "distinct_restaurants_remaining": len(eligible_venues),
+            "final_selected_ids": [p.get("dish_id") for p in picks],
+            "final_restaurant_ids": [p.get("venue_id") for p in picks],
+            "used_venues_prior": sorted(used_venues),
+            "retrieval_source": "curated_snapshot",
+        },
     }
 
 
@@ -769,6 +831,7 @@ def plan_day(
     dish_by_id = {str(d.get("dish_id")): d for d in dishes}
     used_venues: set[str] = set()
     used_names: set[str] = set()
+    used_dish_ids: set[str] = set()
     remaining_cash = _initial_cash_pool(sit)
     remaining_swipes = sit.meal_swipes_remaining
     remaining_dollars = sit.dining_dollars_remaining
@@ -778,12 +841,21 @@ def plan_day(
 
     periods_out: list[dict[str, Any]] = []
 
+    def _mark_day_use(rec: dict[str, Any], *, as_selected: bool) -> None:
+        """Track dishes shown today; restaurants used by the selected/top pick across the day."""
+        used_dish_ids.add(str(rec.get("dish_id") or ""))
+        used_names.add(_norm(str(rec.get("name") or "")))
+        if as_selected and rec.get("venue_id"):
+            used_venues.add(str(rec.get("venue_id")))
+
     for period in sit.meal_periods:
         lock = next((L for L in locked_objs if L.meal_period == period), None)
         if lock and lock.dish_id in dish_by_id:
             dish = dish_by_id[lock.dish_id]
-            used_venues.add(str(dish.get("venue_id") or ""))
-            used_names.add(_norm(str(dish.get("name") or "")))
+            _mark_day_use(
+                {"dish_id": dish.get("dish_id"), "name": dish.get("name"), "venue_id": dish.get("venue_id")},
+                as_selected=True,
+            )
             price = dish.get("price_amount")
             if _uses_cash(sit, period, dish) and price is not None:
                 amt = float(price)
@@ -819,21 +891,27 @@ def plan_day(
             )
             continue
 
+        # Hard-exclude dishes already shown earlier today before scoring this period.
+        available = [d for d in dishes if str(d.get("dish_id")) not in used_dish_ids]
+        available_by_source = {
+            key: [d for d in vals if str(d.get("dish_id")) not in used_dish_ids]
+            for key, vals in by_source.items()
+        }
         block = _recommend_period(
-            dishes,
+            available,
             prof,
             sit,
             period,
             remaining_cash,
             used_venues,
             used_names,
-            by_source,
+            available_by_source,
         )
         periods_out.append(block)
         if block["recommendations"]:
+            for idx, rec in enumerate(block["recommendations"]):
+                _mark_day_use(rec, as_selected=idx == 0)
             top = block["recommendations"][0]
-            used_venues.add(str(top.get("venue_id") or ""))
-            used_names.add(_norm(str(top.get("name") or "")))
             amt = (top.get("price") or {}).get("amount")
             model = (top.get("price") or {}).get("model")
             if model != "meal_swipe_ayce" and amt is not None and remaining_cash is not None:

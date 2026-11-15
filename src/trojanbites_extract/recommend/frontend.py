@@ -74,29 +74,59 @@ class PlanRequest(BaseModel):
     context: Context = Field(default_factory=Context)
 
 
-def rank_across_kitchens(candidates, preferences, period, offset=0):
-    """One pick per kitchen (up to three kitchens) so a slot never collapses to a single venue."""
+def rank_across_kitchens(candidates, preferences, period, offset=0, avoid_restaurants=None):
+    """One pick per kitchen (up to three kitchens) so a slot never collapses to a single venue.
+
+    When only one kitchen has eligible inventory, return up to three distinct dishes from it
+    and explain the restaurant repeat rather than inventing venues.
+    """
+    avoid={str(r) for r in (avoid_restaurants or set()) if r}
     groups={}
     for item in candidates:
         groups.setdefault(item.restaurant_id,[]).append(item)
-    if len(groups)<2:
+    if not groups:
         return select_meals(candidates,preferences,period)
+    if len(groups)==1:
+        result=select_meals(candidates,preferences,period)
+        seen=set(); unique=[]
+        for meal in result.meals:
+            did=meal.get('item_id')
+            if did in seen: continue
+            seen.add(did)
+            unique.append(meal)
+        result.meals=unique[:3]
+        name=next(iter(groups.values()))[0].restaurant_name
+        if len(result.meals)>1:
+            result.warnings=list(dict.fromkeys(list(result.warnings)+[
+                f'Only one eligible restaurant ({name}) had enough distinct dishes for this meal; '
+                'showing alternatives from the same kitchen rather than inventing venues.']))
+        elif avoid and next(iter(groups)) in avoid:
+            result.warnings=list(dict.fromkeys(list(result.warnings)+[
+                f'Restaurant repeat: {name} — not enough unused kitchens remained under your filters.']))
+        return result
     wanted={c.casefold() for c in getattr(preferences,'preferred_cuisines',None) or []}
     kitchens=list(groups.values())
-    # Rotate which kitchens lead each meal period; kitchens matching a preferred cuisine always go first.
+    # Prefer kitchens not already used earlier in the day, then rotate by meal slot,
+    # then preferred cuisines — deterministic, not random.
     kitchens=kitchens[offset%len(kitchens):]+kitchens[:offset%len(kitchens)]
-    kitchens.sort(key=lambda items:not any(c.casefold() in wanted for c in items[0].cuisines))
+    kitchens.sort(key=lambda items:(items[0].restaurant_id in avoid,
+                                    not any(c.casefold() in wanted for c in (items[0].cuisines or []))))
     def best(items):
         result=select_meals(items,preferences,period)
         result.meals=result.meals[:1]
         return result
     with ThreadPoolExecutor(max_workers=3) as pool:
         results=list(pool.map(best,kitchens[:3]))
+    meals=[meal for r in results for meal in r.meals][:3]
+    warnings=list(dict.fromkeys(warning for r in results for warning in r.warnings))
+    reused=[m.get('restaurant_name') or m.get('restaurant_id') for m in meals if m.get('restaurant_id') in avoid]
+    if reused:
+        warnings.append('Restaurant repeat: '+', '.join(dict.fromkeys(str(x) for x in reused))+
+                        ' — not enough unused kitchens remained under your filters.')
     return RecommendationResult(
         provider='openai' if all(r.provider=='openai' for r in results) else 'deterministic',
         status='completed' if all(r.status=='completed' for r in results) else 'partial_personalization',
-        meals=[meal for r in results for meal in r.meals][:3],
-        warnings=list(dict.fromkeys(warning for r in results for warning in r.warnings)))
+        meals=meals, warnings=warnings)
 
 
 def _fill_estimates(meals, sources):
@@ -133,12 +163,15 @@ def _allergen_label(mode, source, user_allergens, unmapped):
 def _meal_basis(hit, source, period):
     """How a dish qualifies for a period.
 
-    Lunch and dinner accept unlabeled menus. Breakfast does not, unless the dish
-    name itself is a breakfast item — those stay marked inferred, not labeled.
-    A menu that already names other periods is not reclassified as breakfast.
+    Prefer published meal-period labels. Breakfast requires a label or a breakfast-like name
+    on an otherwise unlabeled menu. Lunch and dinner may use unlabeled all-day menus
+    (marked unlabeled — never invented). A menu that already names other periods is not
+    reclassified into a missing slot.
     """
     periods=[str(p).lower() for p in (source.get('meal_periods') or [])]
     if period in periods or (period=='breakfast' and 'brunch' in periods):
+        return 'labeled'
+    if period=='lunch' and 'brunch' in periods and 'lunch' not in periods:
         return 'labeled'
     if period in {'lunch','dinner'} and not periods:
         return 'unlabeled'
@@ -146,6 +179,11 @@ def _meal_basis(hit, source, period):
     if period=='breakfast' and not periods and _BREAKFAST_DISH.search(text):
         return 'inferred'
     return None
+
+
+def _basis_rank(basis):
+    """Prefer labeled service windows, then inferred breakfast names, then unlabeled all-day."""
+    return {'labeled':0,'inferred':1,'unlabeled':2}.get(basis, 9)
 
 
 def _empty_state(period, recommendations, diagnostics, *, off_campus, errored, availability_note=''):
@@ -272,11 +310,12 @@ def daily_plan(body: PlanRequest) -> dict:
     shared=_offcampus(base) if off_campus else ([],[],[])
     eligible_restaurants=len({item.restaurant_id for item in shared[0]}) if off_campus else None
     timestamp=datetime.now(timezone.utc).isoformat()
-    used_ids=set();used_names=set();all_sources={}
+    used_ids=set();used_names=set();used_restaurants=set();all_sources={}
     dish_key=lambda name: ' '.join(name.casefold().strip(' .!').split())
-    # Gather each period's pool first (USC feeds are cached per hall), so earlier slots can leave
-    # enough dishes for later ones — on brunch days breakfast and lunch draw from the same menu.
+    # Gather each period's pool first (USC feeds are cached per hall+date only — never by meal
+    # period — so a daily plan reuses one feed per hall while filtering each meal separately).
     pools={}
+    retrieval_source='live_retrieval'
     for period in periods:
         if off_campus:
             pools[period]=(shared[0],shared[1],[])
@@ -293,20 +332,28 @@ def daily_plan(body: PlanRequest) -> dict:
         return any(hit.item_id==other.item_id for other in pool[0])
     for pool in pools.values():
         if not isinstance(pool,LiveDiscoveryError): all_sources.update({source['item_id']:source for source in pool[1]})
+    if off_campus and shared[1] and all((s.get('source_kind')=='curated_snapshot') for s in shared[1]):
+        retrieval_source='curated_snapshot'
+    elif off_campus and shared[1] and any((s.get('source_kind')=='curated_snapshot') for s in shared[1]):
+        retrieval_source='live_and_curated'
     slots=[]
     # Slots are ranked in order: independent parallel ranking cannot enforce daily variety.
     for index,period in enumerate(periods):
         pool=pools[period]
         if isinstance(pool,LiveDiscoveryError):
-            diagnostics={'meal_period':period,'mode':body.mode,'pool_dishes':0,'eligible_dishes':0,
+            diagnostics={'meal_period':period,'mode':body.mode,'requested_service_time':{'breakfast':'08:30','lunch':'12:30','dinner':'18:30','snack':'15:30'}.get(period),
+                'pool_dishes':0,'eligible_dishes':0,'removed_already_selected':0,'removed_wrong_meal_period':0,
                 'labeled_matches':0,'inferred_breakfast_matches':0,'unlabeled_matches':0,'drinks_excluded':0,
-                'allergies_applied':allergies,'allergies_kept':True,'pool_error':str(pool)}
+                'distinct_dishes_remaining':0,'distinct_restaurants_remaining':0,'missing_nutrition_count':0,
+                'final_selected_ids':[],'retrieval_source':retrieval_source,'allergies_applied':allergies,
+                'allergies_kept':True,'used_restaurants_prior':sorted(used_restaurants),'pool_error':str(pool)}
             slots.append((period,RecommendationResult(provider='deterministic',status='unavailable',meals=[]),[str(pool)],{},diagnostics,True))
             continue
         hits,sources,notes=pool
+        removed_selected=sum(1 for h in hits if h.item_id in used_ids or dish_key(h.item_name) in used_names)
         fresh=list({h.item_id:h for h in hits if h.item_id not in used_ids and dish_key(h.item_name) not in used_names}.values())
         evidence={}
-        labeled=inferred=unlabeled=0
+        labeled=inferred=unlabeled=removed_period=0
         if off_campus:
             candidates=[]
             for hit in fresh:
@@ -314,6 +361,7 @@ def daily_plan(body: PlanRequest) -> dict:
                 if basis=='labeled': labeled+=1
                 elif basis=='inferred': inferred+=1
                 elif basis=='unlabeled': unlabeled+=1
+                else: removed_period+=1
                 if basis:
                     evidence[hit.item_id]=basis
                     candidates.append(hit)
@@ -330,14 +378,58 @@ def daily_plan(body: PlanRequest) -> dict:
                     continue
                 kept.append(hit)
             candidates=kept
-            candidates.sort(key=lambda h:-_entree_score(h.item_name))
+            # Prefer published meal labels, then substantial entrees — never invent periods.
+            candidates.sort(key=lambda h:(_basis_rank(evidence.get(h.item_id,'labeled')), -_entree_score(h.item_name)))
         # Reserve candidates for later slots instead of filling the first slot with everything.
         reserves=sum(any(offered(h,later) for h in candidates) for later in periods[index+1:])
-        limit=min(3,max(1,len(candidates)//(1+reserves)))
-        result=rank_across_kitchens(candidates,ranking,period,index)
-        result.meals=[m for m in result.meals if m['item_id'] not in used_ids][:limit]
+        limit=min(3,max(1,len(candidates)//(1+reserves)) if candidates else 0)
+        # Prefer kitchens not already used for an earlier meal in this daily plan.
+        preferred=[h for h in candidates if h.restaurant_id not in used_restaurants]
+        ranking_pool=preferred if len({h.restaurant_id for h in preferred})>=1 and preferred else candidates
+        result=rank_across_kitchens(ranking_pool or candidates,ranking,period,index,avoid_restaurants=used_restaurants)
+        # If preferring unused kitchens left the slot thin, fill remaining seats from the full pool
+        # without duplicating dishes — still one kitchen per card when possible.
+        picked_ids={m['item_id'] for m in result.meals}
+        if len(result.meals)<limit and ranking_pool is not candidates:
+            extra=rank_across_kitchens(
+                [h for h in candidates if h.item_id not in picked_ids],
+                ranking,period,index,avoid_restaurants=used_restaurants|{m.get('restaurant_id') for m in result.meals})
+            for meal in extra.meals:
+                if meal['item_id'] in picked_ids: continue
+                if any(meal.get('restaurant_id')==m.get('restaurant_id') for m in result.meals): continue
+                result.meals.append(meal)
+                result.warnings=list(dict.fromkeys(list(result.warnings)+list(extra.warnings)))
+                if len(result.meals)>=limit: break
+        # Distinct restaurants within the slot when enough kitchens exist; otherwise keep
+        # distinct dishes from the same kitchen and explain the repeat upstream.
+        kitchen_count=len({h.restaurant_id for h in candidates})
+        unique_meals=[]; seen_venues=set(); seen_dishes=set(); seen_slot_names=set()
+        def _accept(meal):
+            did=meal['item_id']; name=dish_key(meal.get('item_name') or ''); rid=meal.get('restaurant_id')
+            if did in used_ids or did in seen_dishes or (name and name in seen_slot_names): return False
+            if kitchen_count>=2 and rid in seen_venues: return False
+            seen_dishes.add(did)
+            if name: seen_slot_names.add(name)
+            if rid: seen_venues.add(rid)
+            unique_meals.append(meal)
+            return True
+        for meal in result.meals:
+            _accept(meal)
+            if len(unique_meals)>=limit: break
+        if len(unique_meals)<limit:
+            refill=rank_across_kitchens(
+                [h for h in candidates if h.item_id not in seen_dishes and dish_key(h.item_name) not in seen_slot_names
+                 and (kitchen_count<2 or h.restaurant_id not in seen_venues)],
+                ranking,period,index+1,avoid_restaurants=used_restaurants|seen_venues)
+            for meal in refill.meals:
+                _accept(meal)
+                if len(unique_meals)>=limit: break
+            result.warnings=list(dict.fromkeys(list(result.warnings)+list(refill.warnings)))
+        result.meals=unique_meals[:limit]
+        prior_restaurants=sorted(used_restaurants)
         used_ids.update(m['item_id'] for m in result.meals)
         used_names.update(dish_key(m['item_name']) for m in result.meals)
+        used_restaurants.update(m.get('restaurant_id') for m in result.meals if m.get('restaurant_id'))
         if any(evidence.get(m['item_id'])=='inferred' for m in result.meals):
             notes.append('Breakfast availability is unverified: these dishes match breakfast by name only and the menu does not label a breakfast period.')
         if not result.meals:
@@ -347,9 +439,20 @@ def daily_plan(body: PlanRequest) -> dict:
                 notes.append('Not enough distinct published dishes matched this meal period. Try adjusting your budget or radius.')
             elif not notes:
                 notes.append(f'USC lists no {period} dishes for this date that match your filters.')
-        diagnostics={'meal_period':period,'mode':body.mode,'pool_dishes':len(hits),'eligible_dishes':len(candidates),
+        missing_nutrition=sum(1 for h in candidates if h.published_calories_kcal is None)
+        diagnostics={'meal_period':period,'mode':body.mode,
+            'requested_service_time':{'breakfast':'08:30','lunch':'12:30','dinner':'18:30','snack':'15:30'}.get(period),
+            'pool_dishes':len(hits),'eligible_dishes':len(candidates),
+            'removed_already_selected':removed_selected,'removed_wrong_meal_period':removed_period,
             'labeled_matches':labeled,'inferred_breakfast_matches':inferred,'unlabeled_matches':unlabeled,
-            'drinks_excluded':drinks_excluded,'allergies_applied':allergies,'allergies_kept':True,'pool_error':None}
+            'drinks_excluded':drinks_excluded,
+            'distinct_dishes_remaining':len({h.item_id for h in candidates}),
+            'distinct_restaurants_remaining':len({h.restaurant_id for h in candidates}),
+            'missing_nutrition_count':missing_nutrition,
+            'final_selected_ids':[m['item_id'] for m in result.meals],
+            'final_restaurant_ids':[m.get('restaurant_id') for m in result.meals],
+            'retrieval_source':retrieval_source,'allergies_applied':allergies,'allergies_kept':True,
+            'used_restaurants_prior':prior_restaurants,'pool_error':None}
         slots.append((period,result,notes,evidence,diagnostics,False))
     chosen=[meal for _,result,_,_,_,_ in slots for meal in result.meals]
     warnings=[]
